@@ -64,8 +64,20 @@
     <Compile Include="frmWordle.Designer.cs">
       <DependentUpon>frmWordle.cs</DependentUpon>
     </Compile>
+    <Compile Include="letterBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="letterBox.Designer.cs">
+      <DependentUpon>letterBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UILine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UILine.Designer.cs">
+      <DependentUpon>UILine.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </EmbeddedResource>
