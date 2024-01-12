@@ -12,35 +12,45 @@ namespace Wordle_SDD
 {
     public partial class frmWordle : Form
     {
-        public Color baseColor 
+        private Color _baseColour = Color.FromArgb(20,20,20);
+        private Color _alternateColour = Color.FromArgb(75,75,75);
+        private Color _textColour = Color.Black;
+        private bool _darkMode;
+
+        public Color baseColour 
         {  
-            get {  return baseColor; }
-            set {  baseColor = value; }
+            get {  return _baseColour; }
+            set {  _baseColour = value; }
         }
-        public Color alternateColor 
+        public Color alternateColour 
         { 
-            get { return alternateColor; }
-            set { alternateColor = value; }
+            get { return _alternateColour; }
+            set { _alternateColour = value; }
         }
         public bool darkMode 
         { 
-            get { return darkMode; } 
-            set {  darkMode = value; } 
+            get { return _darkMode; } 
+            set { _darkMode = value; } 
+        }
+        public Color textColour
+        {
+            get { return _textColour; }
+            set { _textColour = value; }
         }
         public frmWordle()
         {
             InitializeComponent();
             if (darkMode == true)
             {
-                alternateColor = Color.FromArgb(75, 75, 75);
-                baseColor = Color.FromArgb(20, 20, 20);
+                alternateColour = Color.FromArgb(75, 75, 75);
+                baseColour = Color.FromArgb(20, 20, 20);
             }
             else
             {
-                alternateColor = Color.FromArgb(200,200,200);
-                baseColor = Color.FromArgb(245,245,245);
+                alternateColour = Color.FromArgb(200,200,200);
+                baseColour = Color.FromArgb(245,245,245);
             }
-            this.BackColor = baseColor;
+            this.BackColor = baseColour;
         }
 
         private void btnSettings_Click(object sender, EventArgs e)

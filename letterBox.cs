@@ -12,18 +12,19 @@ namespace Wordle_SDD
 {
     public partial class letterBox : UserControl
     {
-        private frmWordle wordleForm = new frmWordle();
-        public letterBox()
+        private frmWordle FrmWordle;
+        public letterBox(frmWordle _frmWordle)
         {
             InitializeComponent();
             this.Width = 70;
             this.Height = 70;
+            FrmWordle = _frmWordle; 
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            Color baseColor = wordleForm.baseColour;
-            Color alternateColor = wordleForm.alternateColour;
+            Color baseColor = FrmWordle.baseColour;
+            Color alternateColor = FrmWordle.alternateColour;
             Font charFont = new Font("Arial", 24, FontStyle.Bold);
 
             base.OnPaint(e);
