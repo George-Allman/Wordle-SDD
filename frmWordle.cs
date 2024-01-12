@@ -15,7 +15,9 @@ namespace Wordle_SDD
         private Color _baseColour = Color.FromArgb(20,20,20);
         private Color _alternateColour = Color.FromArgb(75,75,75);
         private Color _textColour = Color.Black;
-        private bool _darkMode;
+        private bool _darkMode = true;
+        private bool _highContrastMode = false;
+        private bool _onScreenKeyboard = true;
 
         public Color baseColour 
         {  
@@ -27,16 +29,27 @@ namespace Wordle_SDD
             get { return _alternateColour; }
             set { _alternateColour = value; }
         }
-        public bool darkMode 
-        { 
-            get { return _darkMode; } 
-            set { _darkMode = value; } 
-        }
         public Color textColour
         {
             get { return _textColour; }
             set { _textColour = value; }
         }
+        public bool darkMode 
+        { 
+            get { return _darkMode; } 
+            set { _darkMode = value; } 
+        }
+        public bool highContrastMode
+        {
+            get { return _highContrastMode; }
+            set { _highContrastMode = value; }
+        }
+        public bool onScreenKeyboard
+        {
+            get { return _onScreenKeyboard; }
+            set { _onScreenKeyboard = value; }
+        }
+
         public frmWordle()
         {
             InitializeComponent();
@@ -63,6 +76,23 @@ namespace Wordle_SDD
         {
             Form frmHelp = new frmHelp();
             frmHelp.Show();
+        }
+
+        public void resetForms()
+        {
+            // Iterate through all open forms in the application
+            foreach (Form form in Application.OpenForms)
+            {
+                // Trigger redraw for each form using a helper method
+                RedrawForm(form);
+            }
+        }
+        private static void RedrawForm(Form form)
+        {
+            // Trigger redraw for the given form
+            form.Invalidate();
+            form.Update();
+            form.Refresh();
         }
     }
 }

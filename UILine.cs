@@ -12,13 +12,13 @@ namespace Wordle_SDD
 {
     public partial class UILine : UserControl
     {
-        private frmWordle FrmWordle;
-        public UILine(frmWordle _frmWordle)
+        private frmWordle FrmWordle = new frmWordle();
+        public UILine()
         {
             InitializeComponent();
             this.Width = 300;
             this.Height = 3;
-            FrmWordle = _frmWordle;
+            
         }
 
         protected override void OnPaint(PaintEventArgs e)

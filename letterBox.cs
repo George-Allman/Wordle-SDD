@@ -12,13 +12,12 @@ namespace Wordle_SDD
 {
     public partial class letterBox : UserControl
     {
-        private frmWordle FrmWordle;
-        public letterBox(frmWordle _frmWordle)
+        private frmWordle FrmWordle = new frmWordle();
+        public letterBox()
         {
             InitializeComponent();
             this.Width = 70;
             this.Height = 70;
-            FrmWordle = _frmWordle; 
         }
 
         protected override void OnPaint(PaintEventArgs e)

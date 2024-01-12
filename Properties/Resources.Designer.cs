@@ -63,6 +63,16 @@ namespace Wordle_SDD.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap imgCrossIconLight {
+            get {
+                object obj = ResourceManager.GetObject("imgCrossIconLight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap imgHelpIconLight {
             get {
                 object obj = ResourceManager.GetObject("imgHelpIconLight", resourceCulture);
