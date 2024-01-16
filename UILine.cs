@@ -23,9 +23,7 @@ namespace Wordle_SDD
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            Color baseColor = FrmWordle.baseColour;
             Color alternateColor = FrmWordle.alternateColour;
-            Font charFont = new Font("Arial", 24, FontStyle.Bold);
 
             base.OnPaint(e);
 

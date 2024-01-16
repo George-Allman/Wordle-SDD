@@ -116,5 +116,14 @@
   <ItemGroup>
     <None Include="Resources\imgCrossIconLight.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgCrossIconDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgHelpIconDark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgSettingsIconDark.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

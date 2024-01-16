@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Wordle_SDD.Properties;
 
 namespace Wordle_SDD
 {
@@ -78,21 +79,22 @@ namespace Wordle_SDD
             frmHelp.Show();
         }
 
-        public void resetForms()
+        public void redrawForms()
         {
-            // Iterate through all open forms in the application
-            foreach (Form form in Application.OpenForms)
+            this.BackColor = baseColour;
+            lblTitle.ForeColor = textColour;
+            if (darkMode == true)
             {
-                // Trigger redraw for each form using a helper method
-                RedrawForm(form);
+                btnHelp.BackgroundImage = Resources.imgHelpIconLight;
+                btnSettings.BackgroundImage = Resources.imgSettingsIconLight;
             }
-        }
-        private static void RedrawForm(Form form)
-        {
-            // Trigger redraw for the given form
-            form.Invalidate();
-            form.Update();
-            form.Refresh();
+            else
+            {
+                btnHelp.BackgroundImage = Resources.imgHelpIconDark;
+                btnSettings.BackgroundImage = Resources.imgSettingsIconDark;
+            }
+
+            
         }
     }
 }

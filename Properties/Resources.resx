@@ -118,13 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="imgHelpIconLight" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imgHelpIconLight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="imgSettingsIconLight" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgSettingsIconLight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="imgHelpIconLight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgHelpIconLight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="imgCrossIconLight" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgCrossIconLight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgCrossIconDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgCrossIconDark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgHelpIconDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgHelpIconDark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgSettingsIconDark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgSettingsIconDark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -63,6 +63,16 @@ namespace Wordle_SDD.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap imgCrossIconDark {
+            get {
+                object obj = ResourceManager.GetObject("imgCrossIconDark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap imgCrossIconLight {
             get {
                 object obj = ResourceManager.GetObject("imgCrossIconLight", resourceCulture);
@@ -73,9 +83,29 @@ namespace Wordle_SDD.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap imgHelpIconDark {
+            get {
+                object obj = ResourceManager.GetObject("imgHelpIconDark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap imgHelpIconLight {
             get {
                 object obj = ResourceManager.GetObject("imgHelpIconLight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgSettingsIconDark {
+            get {
+                object obj = ResourceManager.GetObject("imgSettingsIconDark", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
