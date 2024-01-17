@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Wordle_SDD.Properties;
 
 namespace Wordle_SDD
 {
@@ -34,7 +36,8 @@ namespace Wordle_SDD
                 FrmWordle.baseColour = Color.FromArgb(245, 245, 245);
                 FrmWordle.textColour = Color.Black;
             }
-            FrmWordle.redrawForms();
+            redrawSettingsForm();
+            FrmWordle.redrawWordleForm();
         }
 
         private void chkHighContrast_CheckedChanged(object sender, EventArgs e)
@@ -47,12 +50,38 @@ namespace Wordle_SDD
             {
                 FrmWordle.highContrastMode = false;
             }
-            FrmWordle.redrawForms();
+            redrawSettingsForm();
+            FrmWordle.redrawWordleForm();
         }
 
         private void chkOnScreenKeyboard_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void redrawSettingsForm()
+        {
+            this.BackColor = FrmWordle.baseColour;
+            btnClose.ForeColor = FrmWordle.baseColour;
+            if (FrmWordle.darkMode == true)
+            {
+                btnClose.BackgroundImage = Resources.imgCrossIconLight;
+
+            }
+            else
+            {
+                btnClose.BackgroundImage = Resources.imgCrossIconDark;
+            }
+            chkDarkMode.ForeColor = FrmWordle.textColour;
+            chkHighContrast.ForeColor = FrmWordle.textColour;
+            chkOnScreenKeyboard.ForeColor = FrmWordle.textColour;
+            lblGraphicsTitle.ForeColor = FrmWordle.textColour;
+
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }

@@ -76,10 +76,10 @@ namespace Wordle_SDD
         private void btnHelp_Click(object sender, EventArgs e)
         {
             Form frmHelp = new frmHelp();
-            frmHelp.Show();
+            frmHelp.Show();                   
         }
 
-        public void redrawForms()
+        public void redrawWordleForm()
         {
             this.BackColor = baseColour;
             lblTitle.ForeColor = textColour;
@@ -92,9 +92,7 @@ namespace Wordle_SDD
             {
                 btnHelp.BackgroundImage = Resources.imgHelpIconDark;
                 btnSettings.BackgroundImage = Resources.imgSettingsIconDark;
-            }
-
-            
+            }         
         }
     }
 }

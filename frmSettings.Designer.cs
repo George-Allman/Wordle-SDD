@@ -29,37 +29,38 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.chkOnScreenKeyboard = new System.Windows.Forms.CheckBox();
             this.chkHighContrast = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblGraphicsTitle = new System.Windows.Forms.Label();
             this.chkDarkMode = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.chkOnScreenKeyboard);
             this.panel1.Controls.Add(this.chkHighContrast);
-            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.lblGraphicsTitle);
             this.panel1.Controls.Add(this.chkDarkMode);
             this.panel1.Location = new System.Drawing.Point(0, -1);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(272, 360);
             this.panel1.TabIndex = 0;
             // 
-            // button1
+            // btnClose
             // 
-            this.button1.BackgroundImage = global::Wordle_SDD.Properties.Resources.imgCrossIconLight;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.button1.Location = new System.Drawing.Point(222, 10);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(34, 29);
-            this.button1.TabIndex = 4;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnClose.BackgroundImage = global::Wordle_SDD.Properties.Resources.imgCrossIconLight;
+            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.btnClose.Location = new System.Drawing.Point(222, 10);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(34, 29);
+            this.btnClose.TabIndex = 4;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // chkOnScreenKeyboard
             // 
@@ -89,16 +90,16 @@
             this.chkHighContrast.UseVisualStyleBackColor = true;
             this.chkHighContrast.CheckedChanged += new System.EventHandler(this.chkHighContrast_CheckedChanged);
             // 
-            // label1
+            // lblGraphicsTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Rockwell", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(9, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(131, 29);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Graphics:";
+            this.lblGraphicsTitle.AutoSize = true;
+            this.lblGraphicsTitle.Font = new System.Drawing.Font("Rockwell", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGraphicsTitle.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblGraphicsTitle.Location = new System.Drawing.Point(9, 10);
+            this.lblGraphicsTitle.Name = "lblGraphicsTitle";
+            this.lblGraphicsTitle.Size = new System.Drawing.Size(131, 29);
+            this.lblGraphicsTitle.TabIndex = 1;
+            this.lblGraphicsTitle.Text = "Graphics:";
             // 
             // chkDarkMode
             // 
@@ -133,9 +134,9 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblGraphicsTitle;
         private System.Windows.Forms.CheckBox chkDarkMode;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.CheckBox chkOnScreenKeyboard;
         private System.Windows.Forms.CheckBox chkHighContrast;
     }

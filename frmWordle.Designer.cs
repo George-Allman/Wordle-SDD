@@ -46,7 +46,7 @@
             // 
             // btnHelp
             // 
-            this.btnHelp.BackgroundImage = global::Wordle_SDD.Properties.Resources.imgSettingsIconLight;
+            this.btnHelp.BackgroundImage = global::Wordle_SDD.Properties.Resources.imgHelpIconLight;
             this.btnHelp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHelp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
