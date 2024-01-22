@@ -13,9 +13,10 @@ namespace Wordle_SDD
 {
     public partial class frmWordle : Form
     {
+        public event EventHandler DarkModeChanged;
         private Color _baseColour = Color.FromArgb(20,20,20);
         private Color _alternateColour = Color.FromArgb(75,75,75);
-        private Color _textColour = Color.Black;
+        private Color _textColour = Color.White;
         private bool _darkMode = true;
         private bool _highContrastMode = false;
         private bool _onScreenKeyboard = true;
@@ -54,35 +55,28 @@ namespace Wordle_SDD
         public frmWordle()
         {
             InitializeComponent();
-            if (darkMode == true)
-            {
-                alternateColour = Color.FromArgb(75, 75, 75);
-                baseColour = Color.FromArgb(20, 20, 20);
-            }
-            else
-            {
-                alternateColour = Color.FromArgb(200,200,200);
-                baseColour = Color.FromArgb(245,245,245);
-            }
-            this.BackColor = baseColour;
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            Form frmSettings = new frmSettings();
+            Form frmSettings = new frmSettings(this);
             frmSettings.Show();
+
         }
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
             Form frmHelp = new frmHelp();
-            frmHelp.Show();                   
+            frmHelp.Show();
+            redrawWordleForm();
         }
 
         public void redrawWordleForm()
         {
             this.BackColor = baseColour;
             lblTitle.ForeColor = textColour;
+            btnHelp.ForeColor = baseColour;
+            btnSettings.ForeColor = baseColour;
             if (darkMode == true)
             {
                 btnHelp.BackgroundImage = Resources.imgHelpIconLight;
