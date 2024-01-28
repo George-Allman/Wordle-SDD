@@ -21,7 +21,6 @@ namespace Wordle_SDD
         private bool _highContrastMode = false;
         private bool _onScreenKeyboard = true;
         private string input;
-
         public Color baseColour
         {
             get { return _baseColour; }

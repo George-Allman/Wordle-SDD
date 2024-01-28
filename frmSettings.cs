@@ -15,7 +15,6 @@ namespace Wordle_SDD
     public partial class frmSettings : Form
     {
         private frmWordle FrmWordle = new frmWordle();
-        public event EventHandler DarkModeChanged;
         public frmSettings(frmWordle frmWordleInstance)
         {
             InitializeComponent();

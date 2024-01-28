@@ -13,6 +13,19 @@ namespace Wordle_SDD
     public partial class letterBox : UserControl
     {
         private frmWordle FrmWordle = new frmWordle();
+        private Color baseColour;
+        private Color alternateColour;
+        private string _letter;
+
+        public string letter
+        {
+            get { return _letter; }
+            set { 
+                _letter = value; 
+                Invalidate();
+            }
+        }
+
         public letterBox()
         {
             InitializeComponent();
@@ -22,28 +35,27 @@ namespace Wordle_SDD
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            Color baseColor = FrmWordle.baseColour;
-            Color alternateColor = FrmWordle.alternateColour;
-            Font charFont = new Font("Arial", 24, FontStyle.Bold);
+            baseColour = FrmWordle.baseColour;
+            alternateColour = FrmWordle.alternateColour;
+            Font letterFont = new Font("Arial", 24, FontStyle.Bold);
 
             base.OnPaint(e);
 
             Graphics g = e.Graphics;
 
             ControlPaint.DrawBorder(e.Graphics, ClientRectangle,
-                alternateColor, 2, ButtonBorderStyle.Solid,
-                alternateColor, 2, ButtonBorderStyle.Solid,
-                alternateColor, 2, ButtonBorderStyle.Solid,
-                alternateColor, 2, ButtonBorderStyle.Solid
+                alternateColour, 2, ButtonBorderStyle.Solid,
+                alternateColour, 2, ButtonBorderStyle.Solid,
+                alternateColour, 2, ButtonBorderStyle.Solid,
+                alternateColour, 2, ButtonBorderStyle.Solid
                 );
 
-            BackColor = baseColor;
+            BackColor = baseColour;
 
-            string letter = "X";
-            int x = (ClientSize.Width - (int)g.MeasureString(letter, charFont).Width) / 2;
-            int y = (ClientSize.Height - (int)g.MeasureString(letter, charFont).Height) / 2;
+            int x = (ClientSize.Width - (int)g.MeasureString(letter, letterFont).Width) / 2;
+            int y = (ClientSize.Height - (int)g.MeasureString(letter, letterFont).Height) / 2;
 
-            g.DrawString(letter, charFont, Brushes.White, x, y);
+            g.DrawString(letter, letterFont, Brushes.White, x, y);
         }
     }
 }
