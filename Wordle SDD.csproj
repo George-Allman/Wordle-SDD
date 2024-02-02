@@ -78,6 +78,9 @@
     <Compile Include="UILine.Designer.cs">
       <DependentUpon>UILine.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmHelp.resx">
+      <DependentUpon>frmHelp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </EmbeddedResource>

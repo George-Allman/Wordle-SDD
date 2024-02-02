@@ -13,14 +13,18 @@ namespace Wordle_SDD
 {
     public partial class frmWordle : Form
     {
-        public event EventHandler DarkModeChanged;
+        //Declares the local variables for all of the public
+        //booleans and colours, signifys the local variant with an '_' prefix
         private Color _baseColour = Color.FromArgb(20, 20, 20);
         private Color _alternateColour = Color.FromArgb(75, 75, 75);
         private Color _textColour = Color.White;
         private bool _darkMode = true;
         private bool _highContrastMode = false;
         private bool _onScreenKeyboard = true;
+        //Declares the local only variables
         private string input;
+        //Publicly declares all universal variables,
+        //with their initial values set to the local variant
         public Color baseColour
         {
             get { return _baseColour; }
@@ -55,8 +59,14 @@ namespace Wordle_SDD
         public frmWordle()
         {
             InitializeComponent();
+            //Attaches any physical keypresses to the event handler
+            //KeyPreview enables key presses to be interpretted at
+            //the form level, enabling the use of btn?.performClick,
+            //unifying the two keyboards under the same code
             this.KeyDown += frmWordle_KeyDown;
             this.KeyPreview = true;
+            //Attaches all of the onscreen keys to
+            //the event handler 'KeyboardInput'
             btnA.Click += KeyboardInput;
             btnB.Click += KeyboardInput;
             btnC.Click += KeyboardInput;
@@ -87,6 +97,8 @@ namespace Wordle_SDD
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
+            //Creates a new instance of the settings form and attaches the
+            //current form as an instance for reference in the new settings form
             Form frmSettings = new frmSettings(this);
             frmSettings.Show();
 
@@ -94,13 +106,16 @@ namespace Wordle_SDD
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
+            //Creates a new instance of the help form and attaches the
+            //current form as an instance for reference in the new help form
             Form frmHelp = new frmHelp();
             frmHelp.Show();
-            redrawWordleForm();
         }
+
 
         public void redrawWordleForm()
         {
+            
             this.BackColor = baseColour;
             lblTitle.ForeColor = textColour;
             btnHelp.ForeColor = baseColour;
@@ -118,16 +133,24 @@ namespace Wordle_SDD
         }
         private void KeyboardInput(object sender, EventArgs e)
         {
+            //Declares clickedButton as the button triggering the event handler
             if (sender is Button clickedButton)
             {
-                // Access the text of the clicked button (e.g., "A", "B", "C")
+                //Access the button clicked and identifies its letter
+                //through its text value, returning the corresponding uppercase
+                //letter ('A', 'B', etc)
                 input = clickedButton.Text;
-                MessageBox.Show(input);
+                //Error handling for when needing to test physical and
+                //onscreen keyboard inputs
+                //  MessageBox.Show(input);
             }
         }
 
         private void frmWordle_KeyDown(object sender, KeyEventArgs e)
         {
+            //Switchcase for what keycode has been physically pressed
+            //simulates a digital click of one of the onscreen buttons
+            //to remove repetitions and more variables
             switch (e.KeyCode)
             {
                 case Keys.A:

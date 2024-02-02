@@ -14,10 +14,18 @@ namespace Wordle_SDD
 {
     public partial class frmSettings : Form
     {
+        //Creates FrmWordle instance to refer to variables on that form
         private frmWordle FrmWordle = new frmWordle();
+        //Accepts the instance of frmWordle assigned
+        //to this form when it was instantiated
         public frmSettings(frmWordle frmWordleInstance)
         {
+            //Constructs form
             InitializeComponent();
+            //Makes the new instance of the wordle form equal
+            //to the one already on screen, enabling us to actively edit
+            //variables and invoke methods to instantly perform the
+            //necessary visual augments
             FrmWordle = frmWordleInstance;
             drawSettingsForm();
             if (FrmWordle.darkMode == true )
@@ -53,6 +61,7 @@ namespace Wordle_SDD
 
         private void chkDarkMode_CheckedChanged(object sender, EventArgs e)
         {
+            
             if (chkDarkMode.Checked == true)
             {
                 FrmWordle.darkMode = true;
