@@ -21,6 +21,10 @@ namespace Wordle_SDD
         private bool _darkMode = true;
         private bool _highContrastMode = false;
         private bool _onScreenKeyboard = true;
+        private int currentRow = 0;
+        private int currentColumn = 0;
+        private string[,] letterGrid = new string[4, 5];
+
         //Declares the local only variables
         private string input;
         //Publicly declares all universal variables,
@@ -140,10 +144,20 @@ namespace Wordle_SDD
                 //through its text value, returning the corresponding uppercase
                 //letter ('A', 'B', etc)
                 input = clickedButton.Text;
-                //Error handling for when needing to test physical and
-                //onscreen keyboard inputs
-                //  MessageBox.Show(input);
+                addToArray(input);
             }
+        }
+
+        private void addToArray(string input)
+        {
+            letterGrid[currentColumn,currentRow] = input;
+            currentColumn++;
+            
+        }
+
+        private void Input(object sender, EventArgs e)
+        {
+
         }
 
         private void frmWordle_KeyDown(object sender, KeyEventArgs e)

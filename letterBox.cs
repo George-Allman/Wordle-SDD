@@ -12,7 +12,6 @@ namespace Wordle_SDD
 {
     public partial class letterBox : Button
     {
-        private frmWordle FrmWordle = new frmWordle();
         private Color _baseColour = Color.FromArgb(20,20,20);
         private Color _alternateColour = Color.FromArgb(75,75,75);
         private Color _textColour = Color.White;
@@ -61,11 +60,12 @@ namespace Wordle_SDD
             this.Height = 125;
             this.Padding = new System.Windows.Forms.Padding(6,0,0,0);
             this.FlatStyle = FlatStyle.Flat;
-            this.FlatAppearance.BorderSize = 5;
+            this.FlatAppearance.BorderSize = 3;
             this.FlatAppearance.BorderColor = _alternateColour;
             this.BackColor = _baseColour;
             this.ForeColor = _textColour;
             this.Text = _letter;
+            this.Enabled = false;
         }
     }
 }
