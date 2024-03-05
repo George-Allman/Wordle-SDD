@@ -65,7 +65,7 @@
       <DependentUpon>frmWordle.cs</DependentUpon>
     </Compile>
     <Compile Include="letterBox.cs">
-      <SubType>UserControl</SubType>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="letterBox.Designer.cs">
       <DependentUpon>letterBox.cs</DependentUpon>
