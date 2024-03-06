@@ -17,13 +17,24 @@ namespace Wordle_SDD
         //booleans and colours, signifys the local variant with an '_' prefix
         private Color _baseColour = Color.FromArgb(20, 20, 20);
         private Color _alternateColour = Color.FromArgb(75, 75, 75);
+        private Color _correctColour = Color.FromArgb(83,141,78);
+        private Color _partialColour = Color.FromArgb(181,159,59);
         private Color _textColour = Color.White;
         private bool _darkMode = true;
         private bool _highContrastMode = false;
         private bool _onScreenKeyboard = true;
         private int currentRow = 0;
         private int currentColumn = 0;
-        private string[,] letterGrid = new string[4, 5];
+        private char[,] letterGrid = new char[5, 5];
+
+        private char[] correctWordArray = new char[4];
+        private string correctWord = "";
+
+        private char[] currentWordArray = new char[4];
+        private string currentWord = "";
+
+        private int[] resultArray = new int[5];
+
 
         //Declares the local only variables
         private string input;
@@ -59,10 +70,21 @@ namespace Wordle_SDD
             get { return _onScreenKeyboard; }
             set { _onScreenKeyboard = value; }
         }
+        public Color correctColour
+        {
+            get { return _correctColour; }
+            set { _correctColour = value; }
+        }
+        public Color partialColour
+        {
+            get { return _partialColour; }
+            set { _partialColour = value; }
+        }
 
         public frmWordle()
         {
             InitializeComponent();
+            generateWord();
             //Attaches any physical keypresses to the event handler
             //KeyPreview enables key presses to be interpretted at
             //the form level, enabling the use of btn?.performClick,
@@ -97,6 +119,9 @@ namespace Wordle_SDD
             btnX.Click += KeyboardInput;
             btnY.Click += KeyboardInput;
             btnZ.Click += KeyboardInput;
+            btnEnter.Click += KeyboardInput;
+            btnDelete.Click += KeyboardInput;
+            this.ForeColor = Color.White;
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
@@ -144,20 +169,110 @@ namespace Wordle_SDD
                 //through its text value, returning the corresponding uppercase
                 //letter ('A', 'B', etc)
                 input = clickedButton.Text;
-                addToArray(input);
+                Input(input);
             }
         }
+       
 
-        private void addToArray(string input)
+        private void Input(string input)
         {
-            letterGrid[currentColumn,currentRow] = input;
-            currentColumn++;
-            
+            if (input != "Enter" && input != "Delete" && currentColumn < 5)
+            {
+                letterGrid[currentColumn, currentRow] = Convert.ToChar(input);
+                string selectedLetterBox = $"letterBox{currentColumn:D1}{currentRow:D1}";
+                // Iterate through the Controls collection to find the desired letterbox
+                foreach (Control control in Controls)
+                {
+                    if (control.Name == selectedLetterBox && control is letterBox letterBox) // Assuming letterboxes are TextBox controls
+                    {
+                        letterBox.letter = input;
+                        break; // Exit the loop once the letterbox is found and updated
+                    }
+                }
+                currentColumn++;
+            }
+            else if (input == "Delete" && currentColumn > 0)
+            {
+                letterGrid[currentColumn - 1, currentRow] = Convert.ToChar(" ");
+                string selectedLetterBox = $"letterBox{currentColumn-1:D1}{currentRow:D1}";
+                foreach (Control control in Controls)
+                {
+                    if (control.Name == selectedLetterBox && control is letterBox letterBox) // Assuming letterboxes are TextBox controls
+                    {
+                        letterBox.letter = "";
+                        break; // Exit the loop once the letterbox is found and updated
+                    }
+                }
+                currentColumn--;
+            }
+            else if (input == "Enter" && currentColumn == 5)
+            {
+                currentWord = (
+                    letterGrid[0, currentRow].ToString() +
+                    letterGrid[1, currentRow].ToString() +
+                    letterGrid[2, currentRow].ToString() +
+                    letterGrid[3, currentRow].ToString() +
+                    letterGrid[4, currentRow].ToString()
+                    );
+                currentWordArray = currentWord.ToCharArray();
+                checkWord(currentWordArray);
+            }
+        }
+        private void generateWord()
+        {
+            string correctWord = "IRATE";
+            correctWordArray = correctWord.ToCharArray();
         }
 
-        private void Input(object sender, EventArgs e)
+        private void checkWord(Char[] word)
         {
+            for (int i = 0; i <= 4; i++)
+            {
+                if (currentWordArray[i] == correctWordArray[i]) 
+                {
+                    resultArray[i] = 2;
+                }
+            }
 
+            for (int i = 0; i <= 4; i++)
+            {
+                if (resultArray[i] == 0)
+                {
+                    for (int j = 0; j <= 4; j++)
+                    {
+                        if (currentWordArray[i] == correctWordArray[j] && resultArray[j] == 0)
+                        {
+                            resultArray[i] = 1;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            for (int i = 0; i <= 4; i++)
+            {
+                string selectedLetterBox = $"letterBox{i:D1}{currentRow:D1}";
+                foreach (Control control in Controls)
+                {
+                    if (control.Name == selectedLetterBox && control is letterBox letterBox) // Assuming letterboxes are TextBox controls
+                    {
+                        if (resultArray[i] == 2)
+                        {
+                            letterBox.baseColour = correctColour;
+                            letterBox.alternateColour = correctColour;
+                        }
+                        else if (resultArray[i] == 1)
+                        {
+                            letterBox.baseColour = partialColour;
+                            letterBox.alternateColour = partialColour;
+                        }
+                        else
+                        {
+                            letterBox.baseColour = alternateColour;
+                        }
+                    }
+                }
+            }
         }
 
         private void frmWordle_KeyDown(object sender, KeyEventArgs e)
@@ -244,6 +359,15 @@ namespace Wordle_SDD
                     break;
                 case Keys.Z:
                     btnZ.PerformClick();
+                    break;
+                case Keys.Enter: 
+                    btnEnter.PerformClick(); 
+                    break;
+                case Keys.Delete:
+                    btnDelete.PerformClick();
+                    break;
+                case Keys.Back:
+                    btnDelete.PerformClick();
                     break;
             }
         }
