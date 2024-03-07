@@ -67,6 +67,7 @@ namespace Wordle_SDD
             //this.Enabled = false;
             this.Font = new System.Drawing.Font("Arial", 28, FontStyle.Bold);
             this.ForeColor = _textColour;
+            
         }
     }
 }

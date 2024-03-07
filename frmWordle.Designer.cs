@@ -604,6 +604,7 @@
             this.letterBox43.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox43.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.letterBox43.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox43.Enabled = false;
             this.letterBox43.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox43.FlatAppearance.BorderSize = 3;
             this.letterBox43.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -625,6 +626,7 @@
             this.letterBox03.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox03.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.letterBox03.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox03.Enabled = false;
             this.letterBox03.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox03.FlatAppearance.BorderSize = 3;
             this.letterBox03.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -646,6 +648,7 @@
             this.letterBox13.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.letterBox13.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox13.Enabled = false;
             this.letterBox13.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox13.FlatAppearance.BorderSize = 3;
             this.letterBox13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -667,6 +670,7 @@
             this.letterBox33.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.letterBox33.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox33.Enabled = false;
             this.letterBox33.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox33.FlatAppearance.BorderSize = 3;
             this.letterBox33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -688,6 +692,7 @@
             this.letterBox23.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.letterBox23.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox23.Enabled = false;
             this.letterBox23.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox23.FlatAppearance.BorderSize = 3;
             this.letterBox23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -709,6 +714,7 @@
             this.letterBox42.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.letterBox42.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox42.Enabled = false;
             this.letterBox42.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox42.FlatAppearance.BorderSize = 3;
             this.letterBox42.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -730,6 +736,7 @@
             this.letterBox02.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox02.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.letterBox02.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox02.Enabled = false;
             this.letterBox02.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox02.FlatAppearance.BorderSize = 3;
             this.letterBox02.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -751,6 +758,7 @@
             this.letterBox12.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.letterBox12.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox12.Enabled = false;
             this.letterBox12.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox12.FlatAppearance.BorderSize = 3;
             this.letterBox12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -772,6 +780,7 @@
             this.letterBox32.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.letterBox32.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox32.Enabled = false;
             this.letterBox32.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox32.FlatAppearance.BorderSize = 3;
             this.letterBox32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -793,6 +802,7 @@
             this.letterBox22.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.letterBox22.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox22.Enabled = false;
             this.letterBox22.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox22.FlatAppearance.BorderSize = 3;
             this.letterBox22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -814,6 +824,7 @@
             this.letterBox41.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.letterBox41.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox41.Enabled = false;
             this.letterBox41.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox41.FlatAppearance.BorderSize = 3;
             this.letterBox41.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -835,6 +846,7 @@
             this.letterBox01.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox01.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.letterBox01.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox01.Enabled = false;
             this.letterBox01.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox01.FlatAppearance.BorderSize = 3;
             this.letterBox01.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -856,6 +868,7 @@
             this.letterBox11.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.letterBox11.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox11.Enabled = false;
             this.letterBox11.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox11.FlatAppearance.BorderSize = 3;
             this.letterBox11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -877,6 +890,7 @@
             this.letterBox31.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.letterBox31.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox31.Enabled = false;
             this.letterBox31.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox31.FlatAppearance.BorderSize = 3;
             this.letterBox31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -898,6 +912,7 @@
             this.letterBox21.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.letterBox21.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox21.Enabled = false;
             this.letterBox21.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox21.FlatAppearance.BorderSize = 3;
             this.letterBox21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -919,6 +934,7 @@
             this.letterBox40.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.letterBox40.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox40.Enabled = false;
             this.letterBox40.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox40.FlatAppearance.BorderSize = 3;
             this.letterBox40.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -940,6 +956,7 @@
             this.letterBox00.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox00.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.letterBox00.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox00.Enabled = false;
             this.letterBox00.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox00.FlatAppearance.BorderSize = 3;
             this.letterBox00.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -960,6 +977,7 @@
             this.letterBox10.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.letterBox10.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox10.Enabled = false;
             this.letterBox10.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox10.FlatAppearance.BorderSize = 3;
             this.letterBox10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -980,6 +998,7 @@
             this.letterBox30.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.letterBox30.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox30.Enabled = false;
             this.letterBox30.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox30.FlatAppearance.BorderSize = 3;
             this.letterBox30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1001,10 +1020,11 @@
             this.letterBox20.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.letterBox20.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox20.Enabled = false;
             this.letterBox20.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
             this.letterBox20.FlatAppearance.BorderSize = 3;
             this.letterBox20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.letterBox20.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
+            this.letterBox20.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.letterBox20.ForeColor = System.Drawing.Color.White;
             this.letterBox20.letter = "";
             this.letterBox20.Location = new System.Drawing.Point(566, 132);
