@@ -64,7 +64,7 @@ namespace Wordle_SDD
             this.FlatAppearance.BorderColor = _alternateColour;
             this.BackColor = _baseColour;
             this.Text = _letter.ToString();
-            this.Enabled = false;
+            //this.Enabled = false;
             this.Font = new System.Drawing.Font("Arial", 28, FontStyle.Bold);
             this.ForeColor = _textColour;
         }

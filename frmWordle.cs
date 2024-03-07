@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -34,6 +35,8 @@ namespace Wordle_SDD
         private string currentWord = "";
 
         private int[] resultArray = new int[5];
+        private int numberCorrectLetters = 0;
+        private int animationLength = 2;
 
 
         //Declares the local only variables
@@ -173,7 +176,107 @@ namespace Wordle_SDD
             }
         }
        
+        private async void keyPressAnimation(int col, int row)
+        {
+            string selectedLetterBox = $"letterBox{col:D1}{row:D1}";
+            foreach (Control control in Controls)
+            {
+                if (control.Name == selectedLetterBox && control is letterBox letterBox) // Assuming letterboxes are TextBox controls
+                {
+                    for (int i = 0; i <= animationLength; i++)
+                    {
+                        letterBox.Size = new Size(
+                            letterBox.Size.Width+2, 
+                            letterBox.Size.Height+2
+                            );
+                        letterBox.Location = new Point(
+                            letterBox.Location.X-1, 
+                            letterBox.Location.Y-1
+                            );
+                        await Task.Delay(1);
+                    }
 
+                    for (int i = 0; i <= animationLength; i++)
+                    {
+                        letterBox.Size = new Size(
+                        letterBox.Size.Width - 2,
+                        letterBox.Size.Height - 2
+                             );
+                        letterBox.Location = new Point(
+                            letterBox.Location.X + 1,
+                            letterBox.Location.Y + 1
+                            );
+                        await Task.Delay(1);
+                    }
+                }
+            }
+        }
+        private async void correctWordAnimation(int row)
+        {
+            for (int i = 0; i <= 5; i++)
+            {
+                string selectedLetterBox = $"letterBox{i:D1}{row:D1}";
+                foreach (Control control in Controls)
+                {
+                    if (control.Name == selectedLetterBox && control is letterBox letterBox) // Assuming letterboxes are TextBox controls
+                    {
+                        letterBox.baseColour = correctColour;
+                        letterBox.alternateColour = correctColour;
+                        for (int j = 0; j <= animationLength * 3; j++)
+                        {
+                            letterBox.Location = new Point(
+                                letterBox.Location.X,
+                                letterBox.Location.Y - 2
+                                );
+                            await Task.Delay(1);
+                        }
+                        for (int j = 0; j <= animationLength * 3; j++)
+                        {
+                            letterBox.Location = new Point(
+                                letterBox.Location.X,
+                                letterBox.Location.Y + 2
+                                );
+                            await Task.Delay(1);
+                        }
+                    }
+                }
+            }
+        }
+        private async void enteredWordAnimation(int col, int row)
+        {
+            string selectedLetterBox = $"letterBox{col:D1}{row:D1}";
+            foreach (Control control in Controls)
+            {
+                if (control.Name == selectedLetterBox && control is letterBox letterBox) // Assuming letterboxes are TextBox controls
+                {
+                    for (int i = 0; i <= animationLength; i++)
+                    {
+                        letterBox.Size = new Size(
+                            letterBox.Size.Width + 2,
+                            letterBox.Size.Height + 2
+                            );
+                        letterBox.Location = new Point(
+                            letterBox.Location.X - 1,
+                            letterBox.Location.Y - 1
+                            );
+                        await Task.Delay(1);
+                    }
+
+                    for (int i = 0; i <= animationLength; i++)
+                    {
+                        letterBox.Size = new Size(
+                        letterBox.Size.Width - 2,
+                        letterBox.Size.Height - 2
+                             );
+                        letterBox.Location = new Point(
+                            letterBox.Location.X + 1,
+                            letterBox.Location.Y + 1
+                            );
+                        await Task.Delay(1);
+                    }
+                }
+            }    
+        }
         private void Input(string input)
         {
             if (input != "Enter" && input != "Delete" && currentColumn < 5)
@@ -189,6 +292,7 @@ namespace Wordle_SDD
                         break; // Exit the loop once the letterbox is found and updated
                     }
                 }
+                keyPressAnimation(currentColumn, currentRow);
                 currentColumn++;
             }
             else if (input == "Delete" && currentColumn > 0)
@@ -203,6 +307,7 @@ namespace Wordle_SDD
                         break; // Exit the loop once the letterbox is found and updated
                     }
                 }
+                keyPressAnimation(currentColumn-1, currentRow);
                 currentColumn--;
             }
             else if (input == "Enter" && currentColumn == 5)
@@ -231,6 +336,7 @@ namespace Wordle_SDD
                 if (currentWordArray[i] == correctWordArray[i]) 
                 {
                     resultArray[i] = 2;
+                    numberCorrectLetters++;
                 }
             }
 
@@ -258,8 +364,7 @@ namespace Wordle_SDD
                     {
                         if (resultArray[i] == 2)
                         {
-                            letterBox.baseColour = correctColour;
-                            letterBox.alternateColour = correctColour;
+
                         }
                         else if (resultArray[i] == 1)
                         {
@@ -273,6 +378,20 @@ namespace Wordle_SDD
                     }
                 }
             }
+            enteredWordAnimation(0, currentRow);
+            enteredWordAnimation(1, currentRow);
+            enteredWordAnimation(2, currentRow);
+            enteredWordAnimation(3, currentRow);
+            enteredWordAnimation(4, currentRow);
+            if (numberCorrectLetters == 5)
+            {
+                correctWordAnimation(currentRow);
+                //MessageBox.Show("Correct");
+            }
+            Array.Clear(resultArray, 0, resultArray.Length);
+            currentRow++;
+            currentColumn = 0;
+            numberCorrectLetters = 0;
         }
 
         private void frmWordle_KeyDown(object sender, KeyEventArgs e)
