@@ -15,14 +15,14 @@ namespace Wordle_SDD
         private Color _baseColour = Color.FromArgb(20,20,20);
         private Color _alternateColour = Color.FromArgb(75,75,75);
         private Color _textColour = Color.White;
-        private string _letter = "";
+        private string _letter = "X";
 
         public string letter
         {
             get { return _letter; }
             set { 
                 _letter = value; 
-                this.Text = letter;
+                Invalidate();
             }
         }
         public Color baseColour
@@ -63,11 +63,23 @@ namespace Wordle_SDD
             this.FlatAppearance.BorderSize = 3;
             this.FlatAppearance.BorderColor = _alternateColour;
             this.BackColor = _baseColour;
-            this.Text = _letter.ToString();
+            this.Text = "";
             //this.Enabled = false;
             this.Font = new System.Drawing.Font("Arial", 28, FontStyle.Bold);
-            this.ForeColor = _textColour;
+            this.ForeColor = _baseColour;
             
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            Font letterFont = new Font("Arial", 24, FontStyle.Bold);
+            base.OnPaint(e);
+            Graphics g = e.Graphics;
+
+            int x = (ClientSize.Width - (int)g.MeasureString(letter, letterFont).Width) / 2;
+            int y = (ClientSize.Height - (int)g.MeasureString(letter, letterFont).Height) / 2;
+
+            g.DrawString(letter, letterFont, Brushes.White, x, y);
         }
     }
 }

@@ -128,5 +128,8 @@
   <ItemGroup>
     <None Include="Resources\imgSettingsIconDark.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="fiveLetterWords.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
