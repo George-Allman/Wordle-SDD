@@ -343,50 +343,11 @@ namespace Wordle_SDD
             }
             else if (input == "Delete" && currentColumn > 0)
             {
-                letterGrid[currentColumn - 1, currentRow] = Convert.ToChar(" ");
-                string selectedLetterBox = $"letterBox{currentColumn-1:D1}{currentRow:D1}";
-                foreach (Control control in Controls)
-                {
-                    if (control.Name == selectedLetterBox && control is letterBox letterBox) // Assuming letterboxes are TextBox controls
-                    {
-                        letterBox.letter = "";
-                        break; // Exit the loop once the letterbox is found and updated
-                    }
-                }
-                keyPressAnimation(currentColumn-1, currentRow);
-                currentColumn--;
+                deleteLetter();
             }
             else if (input == "Enter" && currentColumn == 5)
             {
-                currentWord = convert2DCharGridRowToString(letterGrid, currentRow);
-
-                if (checkValidWord(currentWord))
-                {
-                    keyPressAnimation(0, currentRow);
-                    keyPressAnimation(1, currentRow);
-                    keyPressAnimation(2, currentRow);
-                    keyPressAnimation(3, currentRow);
-                    keyPressAnimation(4, currentRow);
-                    resultArray = checkEnteredRow(currentWord.ToCharArray(), correctWord.ToCharArray());
-                    colourCompleteWord(resultArray, currentRow, currentWord.ToCharArray());
-                    if (numberCorrectLetters == 5)
-                    {
-                        correctWordAnimation(currentRow);
-                        //MessageBox.Show("Correct");
-                    }
-                    Array.Clear(resultArray, 0, resultArray.Length);
-                    currentRow++;
-                    currentColumn = 0;
-                    numberCorrectLetters = 0;
-                }
-                else
-                {
-                    invalidWordAnimation(0, currentRow);
-                    invalidWordAnimation(1, currentRow);
-                    invalidWordAnimation(2, currentRow);
-                    invalidWordAnimation(3, currentRow);
-                    invalidWordAnimation(4, currentRow);
-                }
+                enterWord();
             }
         }
 
@@ -409,12 +370,51 @@ namespace Wordle_SDD
 
         private void deleteLetter()
         {
-
+            letterGrid[currentColumn - 1, currentRow] = Convert.ToChar(" ");
+            string selectedLetterBox = $"letterBox{currentColumn - 1:D1}{currentRow:D1}";
+            foreach (Control control in Controls)
+            {
+                if (control.Name == selectedLetterBox && control is letterBox letterBox) // Assuming letterboxes are TextBox controls
+                {
+                    letterBox.letter = "";
+                    break; // Exit the loop once the letterbox is found and updated
+                }
+            }
+            keyPressAnimation(currentColumn - 1, currentRow);
+            currentColumn--;
         }
 
         private void enterWord()
         {
+            currentWord = convert2DCharGridRowToString(letterGrid, currentRow);
 
+            if (checkValidWord(currentWord))
+            {
+                keyPressAnimation(0, currentRow);
+                keyPressAnimation(1, currentRow);
+                keyPressAnimation(2, currentRow);
+                keyPressAnimation(3, currentRow);
+                keyPressAnimation(4, currentRow);
+                resultArray = checkEnteredRow(currentWord.ToCharArray(), correctWord.ToCharArray());
+                colourCompleteWord(resultArray, currentRow, currentWord.ToCharArray());
+                if (numberCorrectLetters == 5)
+                {
+                    correctWordAnimation(currentRow);
+                    //MessageBox.Show("Correct");
+                }
+                Array.Clear(resultArray, 0, resultArray.Length);
+                currentRow++;
+                currentColumn = 0;
+                numberCorrectLetters = 0;
+            }
+            else
+            {
+                invalidWordAnimation(0, currentRow);
+                invalidWordAnimation(1, currentRow);
+                invalidWordAnimation(2, currentRow);
+                invalidWordAnimation(3, currentRow);
+                invalidWordAnimation(4, currentRow);
+            }
         }
 
 
@@ -493,6 +493,8 @@ namespace Wordle_SDD
             }
         }
 
+        private int[] checkEnteredRow(char[] currentWordArray, char[] correctWordArray)
+        { 
             for (int i = 0; i <= 4; i++)
             {
                 if (currentWordArray[i] == correctWordArray[i]) 
@@ -519,30 +521,7 @@ namespace Wordle_SDD
 
             return resultArray;
         }
-
-        private void disableKey(char key)
-        {
-            string buttonToChange = $"btn{key:D1}";
-            foreach (Control control in Controls)
-            {
-                if (control.Name == buttonToChange && control is Button button) // Assuming letterboxes are TextBox controls
-                {
-                    if (colour == "correct")
-                    {
-                        button.BackColor = correctColour;
-                    }
-                    else if (colour == "partial")
-                    {
-                        button.BackColor = partialColour;
-                    }
-                    else if (colour == "incorrect")
-                    {
-                        button.BackColor = alternateColour;
-                    }
-                        
-                }
-            }
-        }
+      
         private void frmWordle_KeyDown(object sender, KeyEventArgs e)
         {
             //Switchcase for what keycode has been physically pressed
