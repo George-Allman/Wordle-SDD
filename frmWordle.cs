@@ -129,7 +129,7 @@ namespace Wordle_SDD
             btnDelete.Click += KeyboardInput;
             this.ForeColor = Color.White;
             allWords = System.IO.File.ReadAllText("C:\\Users\\George\\Source\\Repos\\Mozsii\\Wordle-SDD\\fiveLetterWords.txt").Split(',');
-            generateWord();
+            correctWord = generateCorrectWord();
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
@@ -176,8 +176,7 @@ namespace Wordle_SDD
                 //Access the button clicked and identifies its letter
                 //through its text value, returning the corresponding uppercase
                 //letter ('A', 'B', etc)
-                input = clickedButton.Text;
-                Input(input);
+                mainInput(clickedButton.Text);
             }
         }
        
@@ -321,23 +320,11 @@ namespace Wordle_SDD
             }
         }
 
-        private void Input(string input)
+        private void mainInput(string input)
         {
             if (input != "Enter" && input != "Delete" && currentColumn < 5)
             {
-                letterGrid[currentColumn, currentRow] = Convert.ToChar(input);
-                string selectedLetterBox = $"letterBox{currentColumn:D1}{currentRow:D1}";
-                // Iterate through the Controls collection to find the desired letterbox
-                foreach (Control control in Controls)
-                {
-                    if (control.Name == selectedLetterBox && control is letterBox letterBox) // Assuming letterboxes are TextBox controls
-                    {
-                        letterBox.letter = input;
-                        break; // Exit the loop once the letterbox is found and updated
-                    }
-                }
-                keyPressAnimation(currentColumn, currentRow);
-                currentColumn++;
+                appendLetter(input);
             }
             else if (input == "Delete" && currentColumn > 0)
             {
@@ -356,16 +343,26 @@ namespace Wordle_SDD
             }
             else if (input == "Enter" && currentColumn == 5)
             {
-                currentWord = (
-                    letterGrid[0, currentRow].ToString() +
-                    letterGrid[1, currentRow].ToString() +
-                    letterGrid[2, currentRow].ToString() +
-                    letterGrid[3, currentRow].ToString() +
-                    letterGrid[4, currentRow].ToString()
-                    );
+                currentWord = convert2DCharGridRowToString(letterGrid, currentRow);
+
                 if (checkValidWord(currentWord))
                 {
-                    checkRow();
+                    keyPressAnimation(0, currentRow);
+                    keyPressAnimation(1, currentRow);
+                    keyPressAnimation(2, currentRow);
+                    keyPressAnimation(3, currentRow);
+                    keyPressAnimation(4, currentRow);
+                    resultArray = checkEnteredRow(currentWord.ToCharArray(), correctWord.ToCharArray());
+                    colourCompleteWord(resultArray, currentRow, currentWord.ToCharArray());
+                    if (numberCorrectLetters == 5)
+                    {
+                        correctWordAnimation(currentRow);
+                        //MessageBox.Show("Correct");
+                    }
+                    Array.Clear(resultArray, 0, resultArray.Length);
+                    currentRow++;
+                    currentColumn = 0;
+                    numberCorrectLetters = 0;
                 }
                 else
                 {
@@ -377,13 +374,54 @@ namespace Wordle_SDD
                 }
             }
         }
-        private void generateWord()
+
+        private void appendLetter(string input)
+        {
+            letterGrid[currentColumn, currentRow] = Convert.ToChar(input);
+            string selectedLetterBox = $"letterBox{currentColumn:D1}{currentRow:D1}";
+            // Iterate through the Controls collection to find the desired letterbox
+            foreach (Control control in Controls)
+            {
+                if (control.Name == selectedLetterBox && control is letterBox letterBox) // Assuming letterboxes are TextBox controls
+                {
+                    letterBox.letter = input;
+                    break; // Exit the loop once the letterbox is found and updated
+                }
+            }
+            keyPressAnimation(currentColumn, currentRow);
+            currentColumn++;
+        }
+
+        private void deleteLetter()
+        {
+
+        }
+
+        private void enterWord()
+        {
+
+        }
+
+
+
+        private string generateCorrectWord()
         {
             Random random = new Random();
             int wordsNumber = allWords.Length;
             correctWord = allWords[random.Next(wordsNumber)];
-            correctWordArray = correctWord.ToCharArray();
             Console.WriteLine(correctWord);
+            return correctWord;
+        }
+
+        private string convert2DCharGridRowToString(char[,] grid, int row)
+        {
+            return (
+                grid[0, row].ToString() +
+                grid[1, row].ToString() +
+                grid[2, row].ToString() +
+                grid[3, row].ToString() +
+                grid[4, row].ToString()
+                );
         }
 
         private bool checkValidWord(string word)
@@ -391,20 +429,58 @@ namespace Wordle_SDD
             return Array.Exists(allWords, element => element.Equals(word, StringComparison.OrdinalIgnoreCase));
         }
 
-        private void checkRow()
+        private void colourCompleteWord(int[] resultArray, int row, char[] currentWordArray)
         {
-            currentWordArray = currentWord.ToCharArray();
             for (int i = 0; i <= 4; i++)
             {
-                for (int j = 0; j <= 4; j++)
+                string selectedLetterBox = $"letterBox{i:D1}{row:D1}";
+                foreach (Control control in Controls)
                 {
-                    if (currentWordArray[i] == currentWordArray[j])
+                    if (control.Name == selectedLetterBox && control is letterBox letterBox) // Assuming letterboxes are TextBox controls
                     {
-                        doubleLetter = true;
-                        break;
+                        //If the letter is in the correct letter and correct spot, if number of correct letters is 5,
+                        //the word is correct and the letterboxes will be coloured sequentially in the animation
+                        if (resultArray[i] == 2 && numberCorrectLetters != 5)
+                        {
+                            letterBox.baseColour = correctColour;
+                            letterBox.alternateColour = correctColour;
+                            colourButton(currentWordArray[i], correctColour);
+                        }
+                        //if the letter is correct, although in the wrong location
+                        else if (resultArray[i] == 1)
+                        {
+                            letterBox.baseColour = partialColour;
+                            letterBox.alternateColour = partialColour;
+                            colourButton(currentWordArray[i], partialColour);
+                        }
+                        else
+                        {
+                            letterBox.baseColour = alternateColour;
+                            colourButton(currentWordArray[i], alternateColour);
+                        }
                     }
                 }
             }
+        }
+
+        private void colourButton(char letter, Color colour)
+        {
+            string selectedButton = $"btn{letter:D1}";
+            foreach (Control control in Controls)
+            {
+                if (control.Name == selectedButton && control is Button button) // Assuming letterboxes are TextBox controls
+                {
+                    if (button.BackColor != correctColour)
+                    {
+                        button.BackColor = colour;
+                    }
+                }
+            }
+        }
+
+        private int[] checkEnteredRow(char[] currentWordArray, char[] correctWordArray)
+        {
+            int[] resultArray = new int[5];
 
             for (int i = 0; i <= 4; i++)
             {
@@ -430,46 +506,9 @@ namespace Wordle_SDD
                 }
             }
 
-            for (int i = 0; i <= 4; i++)
-            {
-                string selectedLetterBox = $"letterBox{i:D1}{currentRow:D1}";
-                foreach (Control control in Controls)
-                {
-                    if (control.Name == selectedLetterBox && control is letterBox letterBox) // Assuming letterboxes are TextBox controls
-                    {
-                        if (resultArray[i] == 2 && numberCorrectLetters != 5)
-                        {
-                            letterBox.baseColour = correctColour;
-                            letterBox.alternateColour = correctColour;
-                        }
-                        else if (resultArray[i] == 1)
-                        {
-                            letterBox.baseColour = partialColour;
-                            letterBox.alternateColour = partialColour;
-                        }
-                        else
-                        {
-                            letterBox.baseColour = alternateColour;
-                            disableKey(Convert.ToChar(letterBox.letter));
-                        }
-                    }
-                }
-            }
-            enteredWordAnimation(0, currentRow);
-            enteredWordAnimation(1, currentRow);
-            enteredWordAnimation(2, currentRow);
-            enteredWordAnimation(3, currentRow);
-            enteredWordAnimation(4, currentRow);
-            if (numberCorrectLetters == 5)
-            {
-                correctWordAnimation(currentRow);
-                //MessageBox.Show("Correct");
-            }
-            Array.Clear(resultArray, 0, resultArray.Length);
-            currentRow++;
-            currentColumn = 0;
-            numberCorrectLetters = 0;
+            return resultArray;
         }
+
         private void disableKey(char key)
         {
             string buttonToDisable = $"btn{key:D1}";
