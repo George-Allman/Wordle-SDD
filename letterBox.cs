@@ -32,6 +32,7 @@ namespace Wordle_SDD
             {
                 _baseColour = value;
                 this.BackColor = baseColour;
+                
             }
         }
         public Color alternateColour
@@ -41,6 +42,7 @@ namespace Wordle_SDD
             {
                 _alternateColour = value;
                 this.FlatAppearance.BorderColor = alternateColour;
+                
             }
         }
         public Color textColour
@@ -53,6 +55,7 @@ namespace Wordle_SDD
             }
         }
 
+
         public letterBox()
         {
             InitializeComponent();
@@ -64,10 +67,9 @@ namespace Wordle_SDD
             this.FlatAppearance.BorderColor = _alternateColour;
             this.BackColor = _baseColour;
             this.Text = "";
-            //this.Enabled = false;
+            this.Enabled = false;
             this.Font = new System.Drawing.Font("Arial", 28, FontStyle.Bold);
             this.ForeColor = _baseColour;
-            
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -78,8 +80,8 @@ namespace Wordle_SDD
 
             int x = (ClientSize.Width - (int)g.MeasureString(letter, letterFont).Width) / 2;
             int y = (ClientSize.Height - (int)g.MeasureString(letter, letterFont).Height) / 2;
-
-            g.DrawString(letter, letterFont, Brushes.White, x, y);
+            Brush brush = new SolidBrush(this.textColour);
+            g.DrawString(letter, letterFont, brush, x, y);
         }
     }
 }

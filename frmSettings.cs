@@ -27,7 +27,6 @@ namespace Wordle_SDD
             //variables and invoke methods to instantly perform the
             //necessary visual augments
             FrmWordle = frmWordleInstance;
-            drawSettingsForm();
             if (FrmWordle.darkMode == true )
             {
                 chkDarkMode.Checked = true;
@@ -36,26 +35,6 @@ namespace Wordle_SDD
             { 
                 chkDarkMode.Checked = false; 
             }
-
-        }
-
-        private void drawSettingsForm()
-        {
-            this.BackColor = FrmWordle.baseColour;
-            btnClose.ForeColor = FrmWordle.baseColour;
-            if (FrmWordle.darkMode == true)
-            {
-                btnClose.BackgroundImage = Resources.imgCrossIconLight;
-
-            }
-            else
-            {
-                btnClose.BackgroundImage = Resources.imgCrossIconDark;
-            }
-            chkDarkMode.ForeColor = FrmWordle.textColour;
-            chkHighContrast.ForeColor = FrmWordle.textColour;
-            chkOnScreenKeyboard.ForeColor = FrmWordle.textColour;
-            lblGraphicsTitle.ForeColor = FrmWordle.textColour;
 
         }
 
@@ -76,8 +55,23 @@ namespace Wordle_SDD
                 FrmWordle.baseColour = Color.FromArgb(245, 245, 245);
                 FrmWordle.textColour = Color.Black;
             }
-            drawSettingsForm();
-            FrmWordle.redrawWordleForm();
+            if (FrmWordle.darkMode == true)
+            {
+                btnClose.BackgroundImage = Resources.imgCrossIconLight;
+
+            }
+            else
+            {
+                btnClose.BackgroundImage = Resources.imgCrossIconDark;
+            }
+            this.BackColor = FrmWordle.baseColour;
+            btnClose.ForeColor = FrmWordle.baseColour;
+
+            chkDarkMode.ForeColor = FrmWordle.textColour;
+            chkHighContrast.ForeColor = FrmWordle.textColour;
+            chkOnScreenKeyboard.ForeColor = FrmWordle.textColour;
+            lblGraphicsTitle.ForeColor = FrmWordle.textColour;
+            FrmWordle.redrawFormsDarkMode();
         }
 
         private void chkHighContrast_CheckedChanged(object sender, EventArgs e)
@@ -90,8 +84,6 @@ namespace Wordle_SDD
             {
                 FrmWordle.highContrastMode = false;
             }
-            drawSettingsForm();
-            FrmWordle.redrawWordleForm();
         }
 
         private void chkOnScreenKeyboard_CheckedChanged(object sender, EventArgs e)

@@ -104,7 +104,7 @@ namespace Wordle_SDD
             btnC.Click += KeyboardInput;
             btnD.Click += KeyboardInput;
             btnE.Click += KeyboardInput;
-            btnF.Click += KeyboardInput;
+            btnF.Click += KeyboardInput;        
             btnG.Click += KeyboardInput;
             btnH.Click += KeyboardInput;
             btnI.Click += KeyboardInput;
@@ -150,9 +150,8 @@ namespace Wordle_SDD
         }
 
 
-        public void redrawWordleForm()
+        public void redrawFormsDarkMode()
         {
-            
             this.BackColor = baseColour;
             lblTitle.ForeColor = textColour;
             btnHelp.ForeColor = baseColour;
@@ -166,6 +165,22 @@ namespace Wordle_SDD
             {
                 btnHelp.BackgroundImage = Resources.imgHelpIconDark;
                 btnSettings.BackgroundImage = Resources.imgSettingsIconDark;
+            }
+            for (int i = 0; i <= 4; i++)
+            {
+                for(int j = 0; j <= 5; j++)
+                {
+                    string selectedLetterBox = $"letterBox{i:D1}{j:D1}";
+                    foreach (Control control in Controls)
+                    {
+                        if (control.Name == selectedLetterBox && control is letterBox letterBox) // Assuming letterboxes are TextBox controls
+                        {
+                            letterBox.baseColour = baseColour;
+                            letterBox.alternateColour = alternateColour;
+                            letterBox.textColour = textColour;
+                        }
+                    }
+                }
             }
         }
         private void KeyboardInput(object sender, EventArgs e)
@@ -322,7 +337,7 @@ namespace Wordle_SDD
 
         private void mainInput(string input)
         {
-            if (input != "Enter" && input != "Delete" && currentColumn < 5)
+            if (input != "Enter" && input != "Delete" && currentColumn < 5 && currentRow < 6)
             {
                 appendLetter(input);
             }
@@ -478,10 +493,6 @@ namespace Wordle_SDD
             }
         }
 
-        private int[] checkEnteredRow(char[] currentWordArray, char[] correctWordArray)
-        {
-            int[] resultArray = new int[5];
-
             for (int i = 0; i <= 4; i++)
             {
                 if (currentWordArray[i] == correctWordArray[i]) 
@@ -511,12 +522,24 @@ namespace Wordle_SDD
 
         private void disableKey(char key)
         {
-            string buttonToDisable = $"btn{key:D1}";
+            string buttonToChange = $"btn{key:D1}";
             foreach (Control control in Controls)
             {
-                if (control.Name == buttonToDisable && control is Button button) // Assuming letterboxes are TextBox controls
+                if (control.Name == buttonToChange && control is Button button) // Assuming letterboxes are TextBox controls
                 {
-                    button.BackColor = alternateColour;
+                    if (colour == "correct")
+                    {
+                        button.BackColor = correctColour;
+                    }
+                    else if (colour == "partial")
+                    {
+                        button.BackColor = partialColour;
+                    }
+                    else if (colour == "incorrect")
+                    {
+                        button.BackColor = alternateColour;
+                    }
+                        
                 }
             }
         }
