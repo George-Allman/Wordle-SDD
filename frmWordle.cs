@@ -104,7 +104,7 @@ namespace Wordle_SDD
             btnC.Click += KeyboardInput;
             btnD.Click += KeyboardInput;
             btnE.Click += KeyboardInput;
-            btnF.Click += KeyboardInput;
+            btnF.Click += KeyboardInput;        
             btnG.Click += KeyboardInput;
             btnH.Click += KeyboardInput;
             btnI.Click += KeyboardInput;
@@ -128,7 +128,7 @@ namespace Wordle_SDD
             btnEnter.Click += KeyboardInput;
             btnDelete.Click += KeyboardInput;
             this.ForeColor = Color.White;
-            allWords = System.IO.File.ReadAllText("C:\\Users\\George\\Source\\Repos\\Mozsii\\Wordle-SDD\\fiveLetterWords.txt").Split(',');
+            allWords = System.IO.File.ReadAllText("C:\\Users\\Georg\\Source\\Repos\\Mozsii\\Wordle-SDD\\fiveLetterWords.txt").Split(',');
             generateWord();
         }
 
@@ -150,9 +150,8 @@ namespace Wordle_SDD
         }
 
 
-        public void redrawWordleForm()
+        public void redrawFormsDarkMode()
         {
-            
             this.BackColor = baseColour;
             lblTitle.ForeColor = textColour;
             btnHelp.ForeColor = baseColour;
@@ -166,6 +165,22 @@ namespace Wordle_SDD
             {
                 btnHelp.BackgroundImage = Resources.imgHelpIconDark;
                 btnSettings.BackgroundImage = Resources.imgSettingsIconDark;
+            }
+            for (int i = 0; i <= 4; i++)
+            {
+                for(int j = 0; j <= 5; j++)
+                {
+                    string selectedLetterBox = $"letterBox{i:D1}{j:D1}";
+                    foreach (Control control in Controls)
+                    {
+                        if (control.Name == selectedLetterBox && control is letterBox letterBox) // Assuming letterboxes are TextBox controls
+                        {
+                            letterBox.baseColour = baseColour;
+                            letterBox.alternateColour = alternateColour;
+                            letterBox.textColour = textColour;
+                        }
+                    }
+                }
             }
         }
         private void KeyboardInput(object sender, EventArgs e)
@@ -323,7 +338,7 @@ namespace Wordle_SDD
 
         private void Input(string input)
         {
-            if (input != "Enter" && input != "Delete" && currentColumn < 5)
+            if (input != "Enter" && input != "Delete" && currentColumn < 5 && currentRow < 6)
             {
                 letterGrid[currentColumn, currentRow] = Convert.ToChar(input);
                 string selectedLetterBox = $"letterBox{currentColumn:D1}{currentRow:D1}";
@@ -365,7 +380,7 @@ namespace Wordle_SDD
                     );
                 if (checkValidWord(currentWord))
                 {
-                    checkRow();
+                    checkRow(currentWord);
                 }
                 else
                 {
@@ -391,9 +406,9 @@ namespace Wordle_SDD
             return Array.Exists(allWords, element => element.Equals(word, StringComparison.OrdinalIgnoreCase));
         }
 
-        private void checkRow()
+        private void checkRow(string word)
         {
-            currentWordArray = currentWord.ToCharArray();
+            currentWordArray = word.ToCharArray();
             for (int i = 0; i <= 4; i++)
             {
                 for (int j = 0; j <= 4; j++)
@@ -441,16 +456,18 @@ namespace Wordle_SDD
                         {
                             letterBox.baseColour = correctColour;
                             letterBox.alternateColour = correctColour;
+                            KeyColourChange(Convert.ToChar(letterBox.letter), "correct");
                         }
                         else if (resultArray[i] == 1)
                         {
                             letterBox.baseColour = partialColour;
                             letterBox.alternateColour = partialColour;
+                            KeyColourChange(Convert.ToChar(letterBox.letter), "partial");
                         }
                         else
                         {
                             letterBox.baseColour = alternateColour;
-                            disableKey(Convert.ToChar(letterBox.letter));
+                            KeyColourChange(Convert.ToChar(letterBox.letter), "incorrect");
                         }
                     }
                 }
@@ -470,14 +487,27 @@ namespace Wordle_SDD
             currentColumn = 0;
             numberCorrectLetters = 0;
         }
-        private void disableKey(char key)
+
+        private void KeyColourChange(char key, string colour)
         {
-            string buttonToDisable = $"btn{key:D1}";
+            string buttonToChange = $"btn{key:D1}";
             foreach (Control control in Controls)
             {
-                if (control.Name == buttonToDisable && control is Button button) // Assuming letterboxes are TextBox controls
+                if (control.Name == buttonToChange && control is Button button) // Assuming letterboxes are TextBox controls
                 {
-                    button.BackColor = alternateColour;
+                    if (colour == "correct")
+                    {
+                        button.BackColor = correctColour;
+                    }
+                    else if (colour == "partial")
+                    {
+                        button.BackColor = partialColour;
+                    }
+                    else if (colour == "incorrect")
+                    {
+                        button.BackColor = alternateColour;
+                    }
+                        
                 }
             }
         }
