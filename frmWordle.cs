@@ -42,7 +42,6 @@ namespace Wordle_SDD
 
         private bool doubleLetter = false;
 
-
         //Declares the local only variables
         private string input;
         //Publicly declares all universal variables,
@@ -128,8 +127,9 @@ namespace Wordle_SDD
             btnEnter.Click += KeyboardInput;
             btnDelete.Click += KeyboardInput;
             this.ForeColor = Color.White;
-            allWords = System.IO.File.ReadAllText("C:\\Users\\George\\Source\\Repos\\Mozsii\\Wordle-SDD\\fiveLetterWords.txt").Split(',');
+            allWords = Properties.Resources.wordList.Split(',');
             correctWord = generateCorrectWord();
+            Console.WriteLine(allWords);
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
@@ -148,7 +148,6 @@ namespace Wordle_SDD
             Form frmHelp = new frmHelp();
             frmHelp.Show();
         }
-
 
         public void redrawFormsDarkMode()
         {
@@ -183,6 +182,7 @@ namespace Wordle_SDD
                 }
             }
         }
+
         private void KeyboardInput(object sender, EventArgs e)
         {
             //Declares clickedButton as the button triggering the event handler
@@ -387,7 +387,7 @@ namespace Wordle_SDD
         private void enterWord()
         {
             currentWord = convert2DCharGridRowToString(letterGrid, currentRow);
-
+            
             if (checkValidWord(currentWord))
             {
                 keyPressAnimation(0, currentRow);
@@ -417,13 +417,19 @@ namespace Wordle_SDD
             }
         }
 
-
-
         private string generateCorrectWord()
         {
+            string[] correctWordPool = {
+                "HOUSE", "PLACE", "RIGHT", "SMALL", "LARGE", "WATER", "WHERE", "AFTER", "UNDER",
+                "WHILE", "NEVER", "OTHER", "ABOUT", "THESE", "WOULD", "COULD", "SHOULD", "THEIR",
+                "THERE", "WHERE", "WHICH", "THOSE", "AGAIN", "WORLD", "THREE", "GREAT", "STILL",
+                "EVERY", "FOUND", "MIGHT", "FIRST", "THOSE", "AFTER", "COULD", "EVERY", "WHERE",
+                "NEVER", "OTHER", "UNDER", "ABOUT", "WOULD", "THERE", "WHICH", "WHERE", "WORLD",
+                "RIGHT", "LARGE", "SMALL", "PLACE", "IRATE", "AUDIO", "ARISE"
+            };
             Random random = new Random();
-            int wordsNumber = allWords.Length;
-            correctWord = allWords[random.Next(wordsNumber)];
+            int wordsNumber = correctWordPool.Length;
+            correctWord = correctWordPool[random.Next(0,wordsNumber)];
             Console.WriteLine(correctWord);
             return correctWord;
         }
@@ -494,31 +500,37 @@ namespace Wordle_SDD
         }
 
         private int[] checkEnteredRow(char[] currentWordArray, char[] correctWordArray)
-        { 
+        {
+            bool[] alreadyChecked = new bool[5];
             for (int i = 0; i <= 4; i++)
             {
                 if (currentWordArray[i] == correctWordArray[i]) 
                 {
                     resultArray[i] = 2;
+                    alreadyChecked[i] = true;
                     numberCorrectLetters++;
                 }
             }
 
-            for (int i = 0; i <= 4; i++)
+            for (int i = 0; i <= 4; ++i)
             {
                 if (resultArray[i] == 0)
                 {
                     for (int j = 0; j <= 4; j++)
                     {
-                        if (currentWordArray[i] == correctWordArray[j] && resultArray[j] == 0)
+                        if ((alreadyChecked[j] == false) && (i != j))
                         {
-                            resultArray[i] = 1;
-                            break;
+                            if (currentWordArray[i] == correctWordArray[j])
+                            {
+                                resultArray[i] = 1;
+                                alreadyChecked[j] = true;
+                                break;
+                            }
                         }
                     }
                 }
             }
-
+            Console.WriteLine(alreadyChecked[4]);
             return resultArray;
         }
       

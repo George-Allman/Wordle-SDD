@@ -119,5 +119,14 @@ namespace Wordle_SDD.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to aalii,aalst,aalto,aaron,abaca,aback,abaff,abaft,abama,abamp,abase,abash,abask,abate,abave,abaya,abaze,abbas,abbey,abbie,abbot,abdal,abdat,abeam,abear,abele,abhor,abide,abidi,abies,abila,abilo,abkar,abler,ablow,abmho,abner,abnet,abode,abody,abohm,aboil,aboma,aboon,abord,abort,about,above,abram,abret,abrim,abrin,abrus,absit,abuja,abuna,abura,abuse,abuta,abuzz,abwab,abyla,abysm,abyss,acana,acapu,acara,acari,acate,accho,accoy,accra,acedy,acerb,achar,achen,acher,achor,acier,ackee,acker,ackey,aclys,acmic,acned,ac [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string wordList {
+            get {
+                return ResourceManager.GetString("wordList", resourceCulture);
+            }
+        }
     }
 }
