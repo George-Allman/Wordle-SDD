@@ -24,6 +24,10 @@ namespace Wordle_SDD
         private Color darkAlternateColour = Color.FromArgb(75, 75, 75);
         private Color lightTertiaryColour = Color.FromArgb(200, 200, 200);
         private Color darkTertiaryColour = Color.DimGray;
+        private Color lightCorrectColour = Color.FromArgb(106, 170, 100);
+        private Color darkCorrectColour = Color.FromArgb(83, 141, 78);
+        private Color lightPartialColour = Color.FromArgb(201, 180, 88);
+        private Color darkPartialColour = Color.FromArgb(181, 159, 59);
         private Color lightTextColour = Color.Black;
         private Color darkTextColour = Color.White;
         public frmSettings(frmWordle frmWordleInstance)
@@ -53,6 +57,8 @@ namespace Wordle_SDD
                 FrmWordle.baseColour = darkBaseColour;
                 FrmWordle.alternateColour = darkAlternateColour;
                 FrmWordle.tertiaryColour = darkTertiaryColour;
+                FrmWordle.correctColour = darkCorrectColour;
+                FrmWordle.partialColour = darkPartialColour;
                 FrmWordle.textColour = darkTextColour;
                 FrmWordle.darkMode = true;
             }
@@ -61,6 +67,8 @@ namespace Wordle_SDD
                 FrmWordle.baseColour = lightBaseColour;
                 FrmWordle.alternateColour = lightAlternateColour;
                 FrmWordle.tertiaryColour = lightTertiaryColour;
+                FrmWordle.correctColour = lightCorrectColour;
+                FrmWordle.partialColour = lightPartialColour;
                 FrmWordle.textColour = lightTextColour;
                 FrmWordle.darkMode = false;
             }

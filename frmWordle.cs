@@ -19,8 +19,9 @@ namespace Wordle_SDD
         private Color _baseColour = Color.FromArgb(20, 20, 20);
         private Color _alternateColour = Color.FromArgb(75, 75, 75);
         private Color _tertiaryColour = Color.DimGray;
-        private Color _correctColour = Color.FromArgb(83,141,78);
-        private Color _partialColour = Color.FromArgb(181,159,59);
+        private Color _correctColour = Color.FromArgb(83, 141, 78);
+        private Color _partialColour = Color.FromArgb(181, 159, 59);
+
         private Color _textColour = Color.White;
         private bool _darkMode = true;
         private bool _highContrastMode = false;
@@ -39,7 +40,19 @@ namespace Wordle_SDD
         private int numberCorrectLetters = 0;
         private int animationLength = 2;
 
-        private string[] allWords;
+        private string[] allWords; 
+
+        private Color lightCorrectColour = Color.FromArgb(106, 170, 100);
+        private Color darkCorrectColour = Color.FromArgb(83, 141, 78);
+
+        private Color lightPartialColour = Color.FromArgb(201, 180, 88);
+        private Color darkPartialColour = Color.FromArgb(181, 159, 59);
+
+        private Color lightAlternateColour = Color.FromArgb(150, 150, 150);
+        private Color darkAlternateColour = Color.FromArgb(75, 75, 75);
+
+        private Color lightTextColour = Color.Black;
+        private Color darkTextColour = Color.White;
 
         //Declares the local only variables
         private string input;
@@ -60,11 +73,23 @@ namespace Wordle_SDD
             get { return _tertiaryColour; }
             set { _tertiaryColour = value; }
         }
+
         public Color textColour
         {
             get { return _textColour; }
             set { _textColour = value;}
         }
+        public Color correctColour
+        {
+            get { return _correctColour; }
+            set { _correctColour = value; }
+        }
+        public Color partialColour
+        {
+            get { return _partialColour; }
+            set { _partialColour = value; }
+        }
+
         public bool darkMode
         {
             get { return _darkMode; }
@@ -93,9 +118,27 @@ namespace Wordle_SDD
                         {
                             if (control.Name == selectedLetterBox && control is letterBox letterBox) // Assuming letterboxes are TextBox controls
                             {
-                                letterBox.baseColour = baseColour;
-                                letterBox.alternateColour = alternateColour;
-                                letterBox.textColour = textColour;
+                                if (letterBox.baseColour == lightCorrectColour || letterBox.baseColour == darkCorrectColour)
+                                {
+                                    letterBox.baseColour = correctColour;
+                                    letterBox.alternateColour = correctColour;
+                                }
+                                else if (letterBox.baseColour == lightPartialColour || letterBox.baseColour == darkPartialColour)
+                                {
+                                    letterBox.baseColour = partialColour;
+                                    letterBox.alternateColour = partialColour;
+                                }
+                                else if (letterBox.baseColour == lightAlternateColour || letterBox.baseColour == darkAlternateColour)
+                                {
+                                    letterBox.baseColour = alternateColour;
+                                    letterBox.alternateColour = alternateColour;
+                                }
+                                else
+                                {
+                                    letterBox.baseColour = baseColour;
+                                    letterBox.alternateColour = alternateColour;
+                                    letterBox.textColour = textColour;
+                                }
                             }
                         }
                     }
@@ -109,9 +152,28 @@ namespace Wordle_SDD
                             button.Name == "btnEnter" || // Special buttons
                             button.Name == "btnDelete")) // Special buttons
                         {
-                            button.BackColor = tertiaryColour;
+                            if (button.BackColor == lightCorrectColour || button.BackColor == darkCorrectColour)
+                            {
+                                button.BackColor = correctColour;
+                                button.ForeColor = darkTextColour;
+                            }
+                            else if (button.BackColor == lightPartialColour || button.BackColor == darkPartialColour)
+                            {
+                                button.BackColor = partialColour;
+                                button.ForeColor = darkTextColour;
+                            }
+                            else if (button.BackColor == lightAlternateColour || button.BackColor == darkAlternateColour)
+                            {
+                                button.BackColor = alternateColour;
+                                button.ForeColor = darkTextColour;
+                            }
+                            else
+                            {
+                                button.BackColor = tertiaryColour;
+                                button.ForeColor = textColour;
+                            }
                             button.FlatAppearance.BorderColor = alternateColour;
-                            button.ForeColor = textColour;
+                            
                         }
                     }
                 }
@@ -126,16 +188,6 @@ namespace Wordle_SDD
         {
             get { return _onScreenKeyboard; }
             set { _onScreenKeyboard = value; }
-        }
-        public Color correctColour
-        {
-            get { return _correctColour; }
-            set { _correctColour = value; }
-        }
-        public Color partialColour
-        {
-            get { return _partialColour; }
-            set { _partialColour = value; }
         }
 
         public frmWordle()
@@ -181,16 +233,6 @@ namespace Wordle_SDD
             allWords = Properties.Resources.wordList.Split(',');
             correctWord = generateCorrectWord();
             Console.WriteLine(allWords);
-        }
-
-
-        public void redrawFormsDarkMode()
-        {
-            
-            
-
-
-
         }
 
         private void KeyboardInput(object sender, EventArgs e)
@@ -264,6 +306,9 @@ namespace Wordle_SDD
                     {
                         letterBox.baseColour = correctColour;
                         letterBox.alternateColour = correctColour;
+                        letterBox.textColour = Color.White;
+                        char[] currentWordArray = currentWord.ToCharArray();
+                        colourButton(currentWordArray[i], correctColour);
                         for (int j = 0; j <= animationLength * 3; j++)
                         {
                             letterBox.Location = new Point(
@@ -402,14 +447,20 @@ namespace Wordle_SDD
                 keyPressAnimation(3, currentRow);
                 keyPressAnimation(4, currentRow);
                 resultArray = checkEnteredRow(currentWord.ToCharArray(), correctWord.ToCharArray());
-                colourCompleteWord(resultArray, currentRow, currentWord.ToCharArray());
                 if (numberCorrectLetters == 5)
                 {
-                    correctWordAnimation(currentRow);
-                    //MessageBox.Show("Correct");
+                    gameWon(currentRow);
+                }
+                else
+                {
+                    colourCompleteWord(resultArray, currentRow, currentWord.ToCharArray());
                 }
                 Array.Clear(resultArray, 0, resultArray.Length);
                 currentRow++;
+                if (currentRow > 5)
+                {
+                    gameLost(correctWord);
+                }
                 currentColumn = 0;
                 numberCorrectLetters = 0;
             }
@@ -421,6 +472,20 @@ namespace Wordle_SDD
                 invalidWordAnimation(3, currentRow);
                 invalidWordAnimation(4, currentRow);
             }
+        }
+
+        private void gameWon(int row)
+        {
+            correctWordAnimation(row);
+            MessageBox.Show("You won after " + (row + 1) + " guesses");
+        }
+
+        private void gameLost(string correctWord)
+        {
+            string word = correctWord.ToLower();
+            word = (word.Substring(0, 1)).ToUpper() + word.Substring(1,4);
+            
+            MessageBox.Show("You failed to guess the correct word in 6 guesses. \nThe correct word was '" + word + "'.");
         }
 
         private int[] checkEnteredRow(char[] currentWordArray, char[] correctWordArray)
@@ -468,6 +533,7 @@ namespace Wordle_SDD
                     {
                         //If the letter is in the correct letter and correct spot, if number of correct letters is 5,
                         //the word is correct and the letterboxes will be coloured sequentially in the animation
+                        letterBox.textColour = Color.White;
                         if (resultArray[i] == 2 && numberCorrectLetters != 5)
                         {
                             letterBox.baseColour = correctColour;
@@ -501,6 +567,7 @@ namespace Wordle_SDD
                     if (button.BackColor != correctColour)
                     {
                         button.BackColor = colour;
+                        button.ForeColor = darkTextColour;
                     }
                 }
             }
