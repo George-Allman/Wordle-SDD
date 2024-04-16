@@ -18,6 +18,14 @@ namespace Wordle_SDD
         private frmWordle FrmWordle = new frmWordle();
         //Accepts the instance of frmWordle assigned
         //to this form when it was instantiated
+        private Color lightBaseColour = Color.FromArgb(245, 245, 245);
+        private Color darkBaseColour = Color.FromArgb(20, 20, 20);
+        private Color lightAlternateColour = Color.FromArgb(150,150,150);
+        private Color darkAlternateColour = Color.FromArgb(75, 75, 75);
+        private Color lightTertiaryColour = Color.FromArgb(200, 200, 200);
+        private Color darkTertiaryColour = Color.DimGray;
+        private Color lightTextColour = Color.Black;
+        private Color darkTextColour = Color.White;
         public frmSettings(frmWordle frmWordleInstance)
         {
             //Constructs form
@@ -39,21 +47,22 @@ namespace Wordle_SDD
         }
 
         private void chkDarkMode_CheckedChanged(object sender, EventArgs e)
-        {
-            
+        {            
             if (chkDarkMode.Checked == true)
             {
+                FrmWordle.baseColour = darkBaseColour;
+                FrmWordle.alternateColour = darkAlternateColour;
+                FrmWordle.tertiaryColour = darkTertiaryColour;
+                FrmWordle.textColour = darkTextColour;
                 FrmWordle.darkMode = true;
-                FrmWordle.alternateColour = Color.FromArgb(75, 75, 75);
-                FrmWordle.baseColour = Color.FromArgb(20, 20, 20);
-                FrmWordle.textColour = Color.White;
             }
             else
             {
+                FrmWordle.baseColour = lightBaseColour;
+                FrmWordle.alternateColour = lightAlternateColour;
+                FrmWordle.tertiaryColour = lightTertiaryColour;
+                FrmWordle.textColour = lightTextColour;
                 FrmWordle.darkMode = false;
-                FrmWordle.alternateColour = Color.FromArgb(200, 200, 200);
-                FrmWordle.baseColour = Color.FromArgb(245, 245, 245);
-                FrmWordle.textColour = Color.Black;
             }
             if (FrmWordle.darkMode == true)
             {
@@ -71,7 +80,7 @@ namespace Wordle_SDD
             chkHighContrast.ForeColor = FrmWordle.textColour;
             chkOnScreenKeyboard.ForeColor = FrmWordle.textColour;
             lblGraphicsTitle.ForeColor = FrmWordle.textColour;
-            FrmWordle.redrawFormsDarkMode();
+            //FrmWordle.redrawFormsDarkMode();
         }
 
         private void chkHighContrast_CheckedChanged(object sender, EventArgs e)

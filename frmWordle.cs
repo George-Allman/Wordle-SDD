@@ -18,6 +18,7 @@ namespace Wordle_SDD
         //booleans and colours, signifys the local variant with an '_' prefix
         private Color _baseColour = Color.FromArgb(20, 20, 20);
         private Color _alternateColour = Color.FromArgb(75, 75, 75);
+        private Color _tertiaryColour = Color.DimGray;
         private Color _correctColour = Color.FromArgb(83,141,78);
         private Color _partialColour = Color.FromArgb(181,159,59);
         private Color _textColour = Color.White;
@@ -40,8 +41,6 @@ namespace Wordle_SDD
 
         private string[] allWords;
 
-        private bool doubleLetter = false;
-
         //Declares the local only variables
         private string input;
         //Publicly declares all universal variables,
@@ -49,22 +48,74 @@ namespace Wordle_SDD
         public Color baseColour
         {
             get { return _baseColour; }
-            set { _baseColour = value; }
+            set { _baseColour = value;}
         }
         public Color alternateColour
         {
             get { return _alternateColour; }
-            set { _alternateColour = value; }
+            set { _alternateColour = value;}
+        }
+        public Color tertiaryColour
+        {
+            get { return _tertiaryColour; }
+            set { _tertiaryColour = value; }
         }
         public Color textColour
         {
             get { return _textColour; }
-            set { _textColour = value; }
+            set { _textColour = value;}
         }
         public bool darkMode
         {
             get { return _darkMode; }
-            set { _darkMode = value; }
+            set { 
+                _darkMode = value;
+                btnHelp.ForeColor = baseColour;
+                btnSettings.ForeColor = baseColour;
+                this.BackColor = baseColour;
+                lblTitle.ForeColor = textColour;
+                if (darkMode == true)
+                {
+                    btnHelp.BackgroundImage = Resources.imgHelpIconLight;
+                    btnSettings.BackgroundImage = Resources.imgSettingsIconLight;
+                }
+                else
+                {
+                    btnHelp.BackgroundImage = Resources.imgHelpIconDark;
+                    btnSettings.BackgroundImage = Resources.imgSettingsIconDark;
+                }
+                for (int i = 0; i <= 4; i++)
+                {
+                    for (int j = 0; j <= 5; j++)
+                    {
+                        string selectedLetterBox = $"letterBox{i:D1}{j:D1}";
+                        foreach (Control control in Controls)
+                        {
+                            if (control.Name == selectedLetterBox && control is letterBox letterBox) // Assuming letterboxes are TextBox controls
+                            {
+                                letterBox.baseColour = baseColour;
+                                letterBox.alternateColour = alternateColour;
+                                letterBox.textColour = textColour;
+                            }
+                        }
+                    }
+                }
+                foreach (Control control in Controls)
+                {
+                    if (control is Button button) // Assuming letterboxes are TextBox controls
+                    {
+                        if (button.Name.StartsWith("btn") &&
+                           (button.Name.Length == 4 || // Single character buttons (btnA to btnZ)
+                            button.Name == "btnEnter" || // Special buttons
+                            button.Name == "btnDelete")) // Special buttons
+                        {
+                            button.BackColor = tertiaryColour;
+                            button.FlatAppearance.BorderColor = alternateColour;
+                            button.ForeColor = textColour;
+                        }
+                    }
+                }
+            }
         }
         public bool highContrastMode
         {
@@ -132,55 +183,14 @@ namespace Wordle_SDD
             Console.WriteLine(allWords);
         }
 
-        private void btnSettings_Click(object sender, EventArgs e)
-        {
-            //Creates a new instance of the settings form and attaches the
-            //current form as an instance for reference in the new settings form
-            Form frmSettings = new frmSettings(this);
-            frmSettings.Show();
-
-        }
-
-        private void btnHelp_Click(object sender, EventArgs e)
-        {
-            //Creates a new instance of the help form and attaches the
-            //current form as an instance for reference in the new help form
-            Form frmHelp = new frmHelp();
-            frmHelp.Show();
-        }
 
         public void redrawFormsDarkMode()
         {
-            this.BackColor = baseColour;
-            lblTitle.ForeColor = textColour;
-            btnHelp.ForeColor = baseColour;
-            btnSettings.ForeColor = baseColour;
-            if (darkMode == true)
-            {
-                btnHelp.BackgroundImage = Resources.imgHelpIconLight;
-                btnSettings.BackgroundImage = Resources.imgSettingsIconLight;
-            }
-            else
-            {
-                btnHelp.BackgroundImage = Resources.imgHelpIconDark;
-                btnSettings.BackgroundImage = Resources.imgSettingsIconDark;
-            }
-            for (int i = 0; i <= 4; i++)
-            {
-                for(int j = 0; j <= 5; j++)
-                {
-                    string selectedLetterBox = $"letterBox{i:D1}{j:D1}";
-                    foreach (Control control in Controls)
-                    {
-                        if (control.Name == selectedLetterBox && control is letterBox letterBox) // Assuming letterboxes are TextBox controls
-                        {
-                            letterBox.baseColour = baseColour;
-                            letterBox.alternateColour = alternateColour;
-                            letterBox.textColour = textColour;
-                        }
-                    }
-                }
-            }
+            
+            
+
+
+
         }
 
         private void KeyboardInput(object sender, EventArgs e)
@@ -191,7 +201,19 @@ namespace Wordle_SDD
                 //Access the button clicked and identifies its letter
                 //through its text value, returning the corresponding uppercase
                 //letter ('A', 'B', etc)
-                mainInput(clickedButton.Text);
+                input = clickedButton.Text;
+                if (input != "Enter" && input != "Delete" && currentColumn < 5 && currentRow < 6)
+                {
+                    appendLetter(input);
+                }
+                else if (input == "Delete" && currentColumn > 0)
+                {
+                    deleteLetter();
+                }
+                else if (input == "Enter" && currentColumn == 5)
+                {
+                    enterWord();
+                }
             }
         }
        
@@ -335,22 +357,6 @@ namespace Wordle_SDD
             }
         }
 
-        private void mainInput(string input)
-        {
-            if (input != "Enter" && input != "Delete" && currentColumn < 5 && currentRow < 6)
-            {
-                appendLetter(input);
-            }
-            else if (input == "Delete" && currentColumn > 0)
-            {
-                deleteLetter();
-            }
-            else if (input == "Enter" && currentColumn == 5)
-            {
-                enterWord();
-            }
-        }
-
         private void appendLetter(string input)
         {
             letterGrid[currentColumn, currentRow] = Convert.ToChar(input);
@@ -386,7 +392,7 @@ namespace Wordle_SDD
 
         private void enterWord()
         {
-            currentWord = convert2DCharGridRowToString(letterGrid, currentRow);
+            currentWord = convertRowOf2DCharGridToString(letterGrid, currentRow);
             
             if (checkValidWord(currentWord))
             {
@@ -417,37 +423,38 @@ namespace Wordle_SDD
             }
         }
 
-        private string generateCorrectWord()
+        private int[] checkEnteredRow(char[] currentWordArray, char[] correctWordArray)
         {
-            string[] correctWordPool = {
-                "HOUSE", "PLACE", "RIGHT", "SMALL", "LARGE", "WATER", "WHERE", "AFTER", "UNDER",
-                "WHILE", "NEVER", "OTHER", "ABOUT", "THESE", "WOULD", "COULD", "SHOULD", "THEIR",
-                "THERE", "WHERE", "WHICH", "THOSE", "AGAIN", "WORLD", "THREE", "GREAT", "STILL",
-                "EVERY", "FOUND", "MIGHT", "FIRST", "THOSE", "AFTER", "COULD", "EVERY", "WHERE",
-                "NEVER", "OTHER", "UNDER", "ABOUT", "WOULD", "THERE", "WHICH", "WHERE", "WORLD",
-                "RIGHT", "LARGE", "SMALL", "PLACE", "IRATE", "AUDIO", "ARISE"
-            };
-            Random random = new Random();
-            int wordsNumber = correctWordPool.Length;
-            correctWord = correctWordPool[random.Next(0,wordsNumber)];
-            Console.WriteLine(correctWord);
-            return correctWord;
-        }
+            bool[] alreadyChecked = new bool[5];
+            for (int i = 0; i <= 4; i++)
+            {
+                if (currentWordArray[i] == correctWordArray[i]) 
+                {
+                    resultArray[i] = 2;
+                    alreadyChecked[i] = true;
+                    numberCorrectLetters++;
+                }
+            }
 
-        private string convert2DCharGridRowToString(char[,] grid, int row)
-        {
-            return (
-                grid[0, row].ToString() +
-                grid[1, row].ToString() +
-                grid[2, row].ToString() +
-                grid[3, row].ToString() +
-                grid[4, row].ToString()
-                );
-        }
-
-        private bool checkValidWord(string word)
-        {
-            return Array.Exists(allWords, element => element.Equals(word, StringComparison.OrdinalIgnoreCase));
+            for (int i = 0; i <= 4; ++i)
+            {
+                if (resultArray[i] == 0)
+                {
+                    for (int j = 0; j <= 4; j++)
+                    {
+                        if ((alreadyChecked[j] == false) && (i != j))
+                        {
+                            if (currentWordArray[i] == correctWordArray[j])
+                            {
+                                resultArray[i] = 1;
+                                alreadyChecked[j] = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            return resultArray;
         }
 
         private void colourCompleteWord(int[] resultArray, int row, char[] currentWordArray)
@@ -499,41 +506,56 @@ namespace Wordle_SDD
             }
         }
 
-        private int[] checkEnteredRow(char[] currentWordArray, char[] correctWordArray)
+        private string generateCorrectWord()
         {
-            bool[] alreadyChecked = new bool[5];
-            for (int i = 0; i <= 4; i++)
-            {
-                if (currentWordArray[i] == correctWordArray[i]) 
-                {
-                    resultArray[i] = 2;
-                    alreadyChecked[i] = true;
-                    numberCorrectLetters++;
-                }
-            }
-
-            for (int i = 0; i <= 4; ++i)
-            {
-                if (resultArray[i] == 0)
-                {
-                    for (int j = 0; j <= 4; j++)
-                    {
-                        if ((alreadyChecked[j] == false) && (i != j))
-                        {
-                            if (currentWordArray[i] == correctWordArray[j])
-                            {
-                                resultArray[i] = 1;
-                                alreadyChecked[j] = true;
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-            Console.WriteLine(alreadyChecked[4]);
-            return resultArray;
+            string[] correctWordPool = {
+                "HOUSE", "PLACE", "RIGHT", "SMALL", "LARGE", "WATER", "WHERE", "AFTER", "UNDER",
+                "WHILE", "NEVER", "OTHER", "ABOUT", "THESE", "WOULD", "COULD", "SHOULD", "THEIR",
+                "THERE", "WHERE", "WHICH", "THOSE", "AGAIN", "WORLD", "THREE", "GREAT", "STILL",
+                "EVERY", "FOUND", "MIGHT", "FIRST", "THOSE", "AFTER", "COULD", "EVERY", "WHERE",
+                "NEVER", "OTHER", "UNDER", "ABOUT", "WOULD", "THERE", "WHICH", "WHERE", "WORLD",
+                "RIGHT", "LARGE", "SMALL", "PLACE", "IRATE", "AUDIO", "ARISE"
+            };
+            Random random = new Random();
+            int wordsNumber = correctWordPool.Length;
+            correctWord = correctWordPool[random.Next(0, wordsNumber)];
+            Console.WriteLine(correctWord);
+            return correctWord;
         }
-      
+
+        private string convertRowOf2DCharGridToString(char[,] grid, int row)
+        {
+            return (
+                grid[0, row].ToString() +
+                grid[1, row].ToString() +
+                grid[2, row].ToString() +
+                grid[3, row].ToString() +
+                grid[4, row].ToString()
+                );
+        }
+
+        private bool checkValidWord(string word)
+        {
+            return Array.Exists(allWords, element => element.Equals(word, StringComparison.OrdinalIgnoreCase));
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            //Creates a new instance of the settings form and attaches the
+            //current form as an instance for reference in the new settings form
+            Form frmSettings = new frmSettings(this);
+            frmSettings.Show();
+
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            //Creates a new instance of the help form and attaches the
+            //current form as an instance for reference in the new help form
+            Form frmHelp = new frmHelp();
+            frmHelp.Show();
+        }
+
         private void frmWordle_KeyDown(object sender, KeyEventArgs e)
         {
             //Switchcase for what keycode has been physically pressed
@@ -619,8 +641,8 @@ namespace Wordle_SDD
                 case Keys.Z:
                     btnZ.PerformClick();
                     break;
-                case Keys.Enter: 
-                    btnEnter.PerformClick(); 
+                case Keys.Enter:
+                    btnEnter.PerformClick();
                     break;
                 case Keys.Delete:
                     btnDelete.PerformClick();

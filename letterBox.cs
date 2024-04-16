@@ -55,7 +55,6 @@ namespace Wordle_SDD
             }
         }
 
-
         public letterBox()
         {
             InitializeComponent();

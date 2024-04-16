@@ -59,6 +59,16 @@
             this.btnI = new System.Windows.Forms.Button();
             this.btnO = new System.Windows.Forms.Button();
             this.btnP = new System.Windows.Forms.Button();
+            this.letterBox45 = new Wordle_SDD.letterBox();
+            this.letterBox05 = new Wordle_SDD.letterBox();
+            this.letterBox15 = new Wordle_SDD.letterBox();
+            this.letterBox35 = new Wordle_SDD.letterBox();
+            this.letterBox25 = new Wordle_SDD.letterBox();
+            this.letterBox44 = new Wordle_SDD.letterBox();
+            this.letterBox04 = new Wordle_SDD.letterBox();
+            this.letterBox14 = new Wordle_SDD.letterBox();
+            this.letterBox34 = new Wordle_SDD.letterBox();
+            this.letterBox24 = new Wordle_SDD.letterBox();
             this.letterBox43 = new Wordle_SDD.letterBox();
             this.letterBox03 = new Wordle_SDD.letterBox();
             this.letterBox13 = new Wordle_SDD.letterBox();
@@ -79,16 +89,6 @@
             this.letterBox10 = new Wordle_SDD.letterBox();
             this.letterBox30 = new Wordle_SDD.letterBox();
             this.letterBox20 = new Wordle_SDD.letterBox();
-            this.letterBox45 = new Wordle_SDD.letterBox();
-            this.letterBox05 = new Wordle_SDD.letterBox();
-            this.letterBox15 = new Wordle_SDD.letterBox();
-            this.letterBox35 = new Wordle_SDD.letterBox();
-            this.letterBox25 = new Wordle_SDD.letterBox();
-            this.letterBox44 = new Wordle_SDD.letterBox();
-            this.letterBox04 = new Wordle_SDD.letterBox();
-            this.letterBox14 = new Wordle_SDD.letterBox();
-            this.letterBox34 = new Wordle_SDD.letterBox();
-            this.letterBox24 = new Wordle_SDD.letterBox();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -578,6 +578,236 @@
             this.btnP.Text = "P";
             this.btnP.UseVisualStyleBackColor = false;
             // 
+            // letterBox45
+            // 
+            this.letterBox45.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.letterBox45.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox45.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox45.Enabled = false;
+            this.letterBox45.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.letterBox45.FlatAppearance.BorderSize = 3;
+            this.letterBox45.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.letterBox45.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
+            this.letterBox45.ForeColor = System.Drawing.Color.White;
+            this.letterBox45.letter = "";
+            this.letterBox45.Location = new System.Drawing.Point(535, 485);
+            this.letterBox45.Margin = new System.Windows.Forms.Padding(2);
+            this.letterBox45.Name = "letterBox45";
+            this.letterBox45.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.letterBox45.Size = new System.Drawing.Size(70, 70);
+            this.letterBox45.TabIndex = 65;
+            this.letterBox45.TabStop = false;
+            this.letterBox45.Text = "\r\n";
+            this.letterBox45.textColour = System.Drawing.Color.White;
+            this.letterBox45.UseVisualStyleBackColor = false;
+            // 
+            // letterBox05
+            // 
+            this.letterBox05.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.letterBox05.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox05.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox05.Enabled = false;
+            this.letterBox05.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.letterBox05.FlatAppearance.BorderSize = 3;
+            this.letterBox05.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.letterBox05.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
+            this.letterBox05.ForeColor = System.Drawing.Color.White;
+            this.letterBox05.letter = "";
+            this.letterBox05.Location = new System.Drawing.Point(219, 485);
+            this.letterBox05.Margin = new System.Windows.Forms.Padding(2);
+            this.letterBox05.Name = "letterBox05";
+            this.letterBox05.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.letterBox05.Size = new System.Drawing.Size(70, 70);
+            this.letterBox05.TabIndex = 64;
+            this.letterBox05.TabStop = false;
+            this.letterBox05.Text = "\r\n";
+            this.letterBox05.textColour = System.Drawing.Color.White;
+            this.letterBox05.UseVisualStyleBackColor = false;
+            // 
+            // letterBox15
+            // 
+            this.letterBox15.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.letterBox15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox15.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox15.Enabled = false;
+            this.letterBox15.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.letterBox15.FlatAppearance.BorderSize = 3;
+            this.letterBox15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.letterBox15.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
+            this.letterBox15.ForeColor = System.Drawing.Color.White;
+            this.letterBox15.letter = "";
+            this.letterBox15.Location = new System.Drawing.Point(298, 485);
+            this.letterBox15.Margin = new System.Windows.Forms.Padding(2);
+            this.letterBox15.Name = "letterBox15";
+            this.letterBox15.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.letterBox15.Size = new System.Drawing.Size(70, 70);
+            this.letterBox15.TabIndex = 63;
+            this.letterBox15.TabStop = false;
+            this.letterBox15.Text = "\r\n";
+            this.letterBox15.textColour = System.Drawing.Color.White;
+            this.letterBox15.UseVisualStyleBackColor = false;
+            // 
+            // letterBox35
+            // 
+            this.letterBox35.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.letterBox35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox35.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox35.Enabled = false;
+            this.letterBox35.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.letterBox35.FlatAppearance.BorderSize = 3;
+            this.letterBox35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.letterBox35.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
+            this.letterBox35.ForeColor = System.Drawing.Color.White;
+            this.letterBox35.letter = "";
+            this.letterBox35.Location = new System.Drawing.Point(456, 485);
+            this.letterBox35.Margin = new System.Windows.Forms.Padding(2);
+            this.letterBox35.Name = "letterBox35";
+            this.letterBox35.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.letterBox35.Size = new System.Drawing.Size(70, 70);
+            this.letterBox35.TabIndex = 62;
+            this.letterBox35.TabStop = false;
+            this.letterBox35.Text = "\r\n";
+            this.letterBox35.textColour = System.Drawing.Color.White;
+            this.letterBox35.UseVisualStyleBackColor = false;
+            // 
+            // letterBox25
+            // 
+            this.letterBox25.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.letterBox25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox25.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox25.Enabled = false;
+            this.letterBox25.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.letterBox25.FlatAppearance.BorderSize = 3;
+            this.letterBox25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.letterBox25.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
+            this.letterBox25.ForeColor = System.Drawing.Color.White;
+            this.letterBox25.letter = "";
+            this.letterBox25.Location = new System.Drawing.Point(377, 485);
+            this.letterBox25.Margin = new System.Windows.Forms.Padding(2);
+            this.letterBox25.Name = "letterBox25";
+            this.letterBox25.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.letterBox25.Size = new System.Drawing.Size(70, 70);
+            this.letterBox25.TabIndex = 61;
+            this.letterBox25.TabStop = false;
+            this.letterBox25.Text = "\r\n";
+            this.letterBox25.textColour = System.Drawing.Color.White;
+            this.letterBox25.UseVisualStyleBackColor = false;
+            // 
+            // letterBox44
+            // 
+            this.letterBox44.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.letterBox44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox44.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox44.Enabled = false;
+            this.letterBox44.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.letterBox44.FlatAppearance.BorderSize = 3;
+            this.letterBox44.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.letterBox44.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
+            this.letterBox44.ForeColor = System.Drawing.Color.White;
+            this.letterBox44.letter = "";
+            this.letterBox44.Location = new System.Drawing.Point(535, 405);
+            this.letterBox44.Margin = new System.Windows.Forms.Padding(2);
+            this.letterBox44.Name = "letterBox44";
+            this.letterBox44.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.letterBox44.Size = new System.Drawing.Size(70, 70);
+            this.letterBox44.TabIndex = 60;
+            this.letterBox44.TabStop = false;
+            this.letterBox44.Text = "\r\n";
+            this.letterBox44.textColour = System.Drawing.Color.White;
+            this.letterBox44.UseVisualStyleBackColor = false;
+            // 
+            // letterBox04
+            // 
+            this.letterBox04.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.letterBox04.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox04.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox04.Enabled = false;
+            this.letterBox04.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.letterBox04.FlatAppearance.BorderSize = 3;
+            this.letterBox04.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.letterBox04.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
+            this.letterBox04.ForeColor = System.Drawing.Color.White;
+            this.letterBox04.letter = "";
+            this.letterBox04.Location = new System.Drawing.Point(219, 405);
+            this.letterBox04.Margin = new System.Windows.Forms.Padding(2);
+            this.letterBox04.Name = "letterBox04";
+            this.letterBox04.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.letterBox04.Size = new System.Drawing.Size(70, 70);
+            this.letterBox04.TabIndex = 59;
+            this.letterBox04.TabStop = false;
+            this.letterBox04.Text = "\r\n";
+            this.letterBox04.textColour = System.Drawing.Color.White;
+            this.letterBox04.UseVisualStyleBackColor = false;
+            // 
+            // letterBox14
+            // 
+            this.letterBox14.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.letterBox14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox14.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox14.Enabled = false;
+            this.letterBox14.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.letterBox14.FlatAppearance.BorderSize = 3;
+            this.letterBox14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.letterBox14.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
+            this.letterBox14.ForeColor = System.Drawing.Color.White;
+            this.letterBox14.letter = "";
+            this.letterBox14.Location = new System.Drawing.Point(298, 405);
+            this.letterBox14.Margin = new System.Windows.Forms.Padding(2);
+            this.letterBox14.Name = "letterBox14";
+            this.letterBox14.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.letterBox14.Size = new System.Drawing.Size(70, 70);
+            this.letterBox14.TabIndex = 58;
+            this.letterBox14.TabStop = false;
+            this.letterBox14.Text = "\r\n";
+            this.letterBox14.textColour = System.Drawing.Color.White;
+            this.letterBox14.UseVisualStyleBackColor = false;
+            // 
+            // letterBox34
+            // 
+            this.letterBox34.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.letterBox34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox34.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox34.Enabled = false;
+            this.letterBox34.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.letterBox34.FlatAppearance.BorderSize = 3;
+            this.letterBox34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.letterBox34.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
+            this.letterBox34.ForeColor = System.Drawing.Color.White;
+            this.letterBox34.letter = "";
+            this.letterBox34.Location = new System.Drawing.Point(456, 405);
+            this.letterBox34.Margin = new System.Windows.Forms.Padding(2);
+            this.letterBox34.Name = "letterBox34";
+            this.letterBox34.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.letterBox34.Size = new System.Drawing.Size(70, 70);
+            this.letterBox34.TabIndex = 57;
+            this.letterBox34.TabStop = false;
+            this.letterBox34.Text = "\r\n";
+            this.letterBox34.textColour = System.Drawing.Color.White;
+            this.letterBox34.UseVisualStyleBackColor = false;
+            // 
+            // letterBox24
+            // 
+            this.letterBox24.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.letterBox24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox24.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.letterBox24.Enabled = false;
+            this.letterBox24.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.letterBox24.FlatAppearance.BorderSize = 3;
+            this.letterBox24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.letterBox24.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
+            this.letterBox24.ForeColor = System.Drawing.Color.White;
+            this.letterBox24.letter = "";
+            this.letterBox24.Location = new System.Drawing.Point(377, 405);
+            this.letterBox24.Margin = new System.Windows.Forms.Padding(2);
+            this.letterBox24.Name = "letterBox24";
+            this.letterBox24.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.letterBox24.Size = new System.Drawing.Size(70, 70);
+            this.letterBox24.TabIndex = 56;
+            this.letterBox24.TabStop = false;
+            this.letterBox24.Text = "\r\n";
+            this.letterBox24.textColour = System.Drawing.Color.White;
+            this.letterBox24.UseVisualStyleBackColor = false;
+            // 
             // letterBox43
             // 
             this.letterBox43.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
@@ -1036,236 +1266,6 @@
             this.letterBox20.textColour = System.Drawing.Color.White;
             this.letterBox20.UseVisualStyleBackColor = false;
             // 
-            // letterBox45
-            // 
-            this.letterBox45.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.letterBox45.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.letterBox45.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.letterBox45.Enabled = false;
-            this.letterBox45.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.letterBox45.FlatAppearance.BorderSize = 3;
-            this.letterBox45.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.letterBox45.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
-            this.letterBox45.ForeColor = System.Drawing.Color.White;
-            this.letterBox45.letter = "";
-            this.letterBox45.Location = new System.Drawing.Point(535, 485);
-            this.letterBox45.Margin = new System.Windows.Forms.Padding(2);
-            this.letterBox45.Name = "letterBox45";
-            this.letterBox45.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
-            this.letterBox45.Size = new System.Drawing.Size(70, 70);
-            this.letterBox45.TabIndex = 65;
-            this.letterBox45.TabStop = false;
-            this.letterBox45.Text = "\r\n";
-            this.letterBox45.textColour = System.Drawing.Color.White;
-            this.letterBox45.UseVisualStyleBackColor = false;
-            // 
-            // letterBox05
-            // 
-            this.letterBox05.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.letterBox05.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.letterBox05.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.letterBox05.Enabled = false;
-            this.letterBox05.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.letterBox05.FlatAppearance.BorderSize = 3;
-            this.letterBox05.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.letterBox05.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
-            this.letterBox05.ForeColor = System.Drawing.Color.White;
-            this.letterBox05.letter = "";
-            this.letterBox05.Location = new System.Drawing.Point(219, 485);
-            this.letterBox05.Margin = new System.Windows.Forms.Padding(2);
-            this.letterBox05.Name = "letterBox05";
-            this.letterBox05.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
-            this.letterBox05.Size = new System.Drawing.Size(70, 70);
-            this.letterBox05.TabIndex = 64;
-            this.letterBox05.TabStop = false;
-            this.letterBox05.Text = "\r\n";
-            this.letterBox05.textColour = System.Drawing.Color.White;
-            this.letterBox05.UseVisualStyleBackColor = false;
-            // 
-            // letterBox15
-            // 
-            this.letterBox15.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.letterBox15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.letterBox15.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.letterBox15.Enabled = false;
-            this.letterBox15.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.letterBox15.FlatAppearance.BorderSize = 3;
-            this.letterBox15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.letterBox15.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
-            this.letterBox15.ForeColor = System.Drawing.Color.White;
-            this.letterBox15.letter = "";
-            this.letterBox15.Location = new System.Drawing.Point(298, 485);
-            this.letterBox15.Margin = new System.Windows.Forms.Padding(2);
-            this.letterBox15.Name = "letterBox15";
-            this.letterBox15.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
-            this.letterBox15.Size = new System.Drawing.Size(70, 70);
-            this.letterBox15.TabIndex = 63;
-            this.letterBox15.TabStop = false;
-            this.letterBox15.Text = "\r\n";
-            this.letterBox15.textColour = System.Drawing.Color.White;
-            this.letterBox15.UseVisualStyleBackColor = false;
-            // 
-            // letterBox35
-            // 
-            this.letterBox35.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.letterBox35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.letterBox35.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.letterBox35.Enabled = false;
-            this.letterBox35.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.letterBox35.FlatAppearance.BorderSize = 3;
-            this.letterBox35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.letterBox35.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
-            this.letterBox35.ForeColor = System.Drawing.Color.White;
-            this.letterBox35.letter = "";
-            this.letterBox35.Location = new System.Drawing.Point(456, 485);
-            this.letterBox35.Margin = new System.Windows.Forms.Padding(2);
-            this.letterBox35.Name = "letterBox35";
-            this.letterBox35.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
-            this.letterBox35.Size = new System.Drawing.Size(70, 70);
-            this.letterBox35.TabIndex = 62;
-            this.letterBox35.TabStop = false;
-            this.letterBox35.Text = "\r\n";
-            this.letterBox35.textColour = System.Drawing.Color.White;
-            this.letterBox35.UseVisualStyleBackColor = false;
-            // 
-            // letterBox25
-            // 
-            this.letterBox25.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.letterBox25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.letterBox25.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.letterBox25.Enabled = false;
-            this.letterBox25.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.letterBox25.FlatAppearance.BorderSize = 3;
-            this.letterBox25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.letterBox25.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
-            this.letterBox25.ForeColor = System.Drawing.Color.White;
-            this.letterBox25.letter = "";
-            this.letterBox25.Location = new System.Drawing.Point(377, 485);
-            this.letterBox25.Margin = new System.Windows.Forms.Padding(2);
-            this.letterBox25.Name = "letterBox25";
-            this.letterBox25.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
-            this.letterBox25.Size = new System.Drawing.Size(70, 70);
-            this.letterBox25.TabIndex = 61;
-            this.letterBox25.TabStop = false;
-            this.letterBox25.Text = "\r\n";
-            this.letterBox25.textColour = System.Drawing.Color.White;
-            this.letterBox25.UseVisualStyleBackColor = false;
-            // 
-            // letterBox44
-            // 
-            this.letterBox44.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.letterBox44.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.letterBox44.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.letterBox44.Enabled = false;
-            this.letterBox44.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.letterBox44.FlatAppearance.BorderSize = 3;
-            this.letterBox44.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.letterBox44.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
-            this.letterBox44.ForeColor = System.Drawing.Color.White;
-            this.letterBox44.letter = "";
-            this.letterBox44.Location = new System.Drawing.Point(535, 405);
-            this.letterBox44.Margin = new System.Windows.Forms.Padding(2);
-            this.letterBox44.Name = "letterBox44";
-            this.letterBox44.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
-            this.letterBox44.Size = new System.Drawing.Size(70, 70);
-            this.letterBox44.TabIndex = 60;
-            this.letterBox44.TabStop = false;
-            this.letterBox44.Text = "\r\n";
-            this.letterBox44.textColour = System.Drawing.Color.White;
-            this.letterBox44.UseVisualStyleBackColor = false;
-            // 
-            // letterBox04
-            // 
-            this.letterBox04.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.letterBox04.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.letterBox04.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.letterBox04.Enabled = false;
-            this.letterBox04.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.letterBox04.FlatAppearance.BorderSize = 3;
-            this.letterBox04.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.letterBox04.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
-            this.letterBox04.ForeColor = System.Drawing.Color.White;
-            this.letterBox04.letter = "";
-            this.letterBox04.Location = new System.Drawing.Point(219, 405);
-            this.letterBox04.Margin = new System.Windows.Forms.Padding(2);
-            this.letterBox04.Name = "letterBox04";
-            this.letterBox04.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
-            this.letterBox04.Size = new System.Drawing.Size(70, 70);
-            this.letterBox04.TabIndex = 59;
-            this.letterBox04.TabStop = false;
-            this.letterBox04.Text = "\r\n";
-            this.letterBox04.textColour = System.Drawing.Color.White;
-            this.letterBox04.UseVisualStyleBackColor = false;
-            // 
-            // letterBox14
-            // 
-            this.letterBox14.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.letterBox14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.letterBox14.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.letterBox14.Enabled = false;
-            this.letterBox14.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.letterBox14.FlatAppearance.BorderSize = 3;
-            this.letterBox14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.letterBox14.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
-            this.letterBox14.ForeColor = System.Drawing.Color.White;
-            this.letterBox14.letter = "";
-            this.letterBox14.Location = new System.Drawing.Point(298, 405);
-            this.letterBox14.Margin = new System.Windows.Forms.Padding(2);
-            this.letterBox14.Name = "letterBox14";
-            this.letterBox14.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
-            this.letterBox14.Size = new System.Drawing.Size(70, 70);
-            this.letterBox14.TabIndex = 58;
-            this.letterBox14.TabStop = false;
-            this.letterBox14.Text = "\r\n";
-            this.letterBox14.textColour = System.Drawing.Color.White;
-            this.letterBox14.UseVisualStyleBackColor = false;
-            // 
-            // letterBox34
-            // 
-            this.letterBox34.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.letterBox34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.letterBox34.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.letterBox34.Enabled = false;
-            this.letterBox34.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.letterBox34.FlatAppearance.BorderSize = 3;
-            this.letterBox34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.letterBox34.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
-            this.letterBox34.ForeColor = System.Drawing.Color.White;
-            this.letterBox34.letter = "";
-            this.letterBox34.Location = new System.Drawing.Point(456, 405);
-            this.letterBox34.Margin = new System.Windows.Forms.Padding(2);
-            this.letterBox34.Name = "letterBox34";
-            this.letterBox34.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
-            this.letterBox34.Size = new System.Drawing.Size(70, 70);
-            this.letterBox34.TabIndex = 57;
-            this.letterBox34.TabStop = false;
-            this.letterBox34.Text = "\r\n";
-            this.letterBox34.textColour = System.Drawing.Color.White;
-            this.letterBox34.UseVisualStyleBackColor = false;
-            // 
-            // letterBox24
-            // 
-            this.letterBox24.alternateColour = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.letterBox24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.letterBox24.baseColour = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.letterBox24.Enabled = false;
-            this.letterBox24.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.letterBox24.FlatAppearance.BorderSize = 3;
-            this.letterBox24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.letterBox24.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
-            this.letterBox24.ForeColor = System.Drawing.Color.White;
-            this.letterBox24.letter = "";
-            this.letterBox24.Location = new System.Drawing.Point(377, 405);
-            this.letterBox24.Margin = new System.Windows.Forms.Padding(2);
-            this.letterBox24.Name = "letterBox24";
-            this.letterBox24.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
-            this.letterBox24.Size = new System.Drawing.Size(70, 70);
-            this.letterBox24.TabIndex = 56;
-            this.letterBox24.TabStop = false;
-            this.letterBox24.Text = "\r\n";
-            this.letterBox24.textColour = System.Drawing.Color.White;
-            this.letterBox24.UseVisualStyleBackColor = false;
-            // 
             // frmWordle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1335,7 +1335,7 @@
             this.Controls.Add(this.lblTitle);
             this.ForeColor = System.Drawing.Color.White;
             this.Name = "frmWordle";
-            this.Text = "Wordle";
+            this.Text = " ";
             this.ResumeLayout(false);
             this.PerformLayout();
 
