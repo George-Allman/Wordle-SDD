@@ -1,4 +1,18 @@
-﻿using System;
+﻿
+//Student Name: George Allman  Grade: Twelve
+//Assesment Task: Two          Year: 2024
+
+//Declaration:
+//I hereby certify that this assignment is entirely my own work,
+//except where i have acknowledged all material and sources used
+//in the preparation of the assignment. I certify 'that all
+//typing/keystrokes have been done by me.
+
+//I also certify that the material contained in this assignment has not been previously 'submitted by me for assessment in any formal course of study, and that i have not copied 'in part or whole, or otherwise plagiarised the work of other students and/or persons.
+
+//This program is designed as a free user friendly, interactive and recreational product.
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,31 +30,16 @@ namespace Wordle_SDD
     {
         //Declares the local variables for all of the public
         //booleans and colours, signifys the local variant with an '_' prefix
-        private Color _baseColour = Color.FromArgb(20, 20, 20);
-        private Color _alternateColour = Color.FromArgb(75, 75, 75);
-        private Color _tertiaryColour = Color.DimGray;
-        private Color _correctColour = Color.FromArgb(83, 141, 78);
-        private Color _partialColour = Color.FromArgb(181, 159, 59);
-
-        private Color _textColour = Color.White;
-        private bool _darkMode = true;
-        private bool _highContrastMode = false;
-        private bool _onScreenKeyboard = true;
         private int currentRow = 0;
         private int currentColumn = 0;
         private char[,] letterGrid = new char[5, 6];
-
-        private char[] correctWordArray = new char[4];
         private string correctWord = "";
-
-        private char[] currentWordArray = new char[4];
         private string currentWord = "";
-
         private int[] resultArray = new int[5];
         private int numberCorrectLetters = 0;
         private int animationLength = 2;
-
-        private string[] allWords; 
+        private string[] wordListArray;
+        private string input;
 
         private Color lightCorrectColour = Color.FromArgb(106, 170, 100);
         private Color darkCorrectColour = Color.FromArgb(83, 141, 78);
@@ -54,51 +53,35 @@ namespace Wordle_SDD
         private Color lightTextColour = Color.Black;
         private Color darkTextColour = Color.White;
 
-        //Declares the local only variables
-        private string input;
-        //Publicly declares all universal variables,
-        //with their initial values set to the local variant
-        public Color baseColour
-        {
-            get { return _baseColour; }
-            set { _baseColour = value;}
-        }
-        public Color alternateColour
-        {
-            get { return _alternateColour; }
-            set { _alternateColour = value;}
-        }
-        public Color tertiaryColour
-        {
-            get { return _tertiaryColour; }
-            set { _tertiaryColour = value; }
-        }
 
-        public Color textColour
-        {
-            get { return _textColour; }
-            set { _textColour = value;}
-        }
-        public Color correctColour
-        {
-            get { return _correctColour; }
-            set { _correctColour = value; }
-        }
-        public Color partialColour
-        {
-            get { return _partialColour; }
-            set { _partialColour = value; }
-        }
+        //Declares the public variables, they will be accessed by the frmSettings so thus need to be public
+        public Color baseColour = Color.FromArgb(20, 20, 20);
+        public Color alternateColour = Color.FromArgb(75, 75, 75);
+        public Color tertiaryColour = Color.DimGray;
+        public Color correctColour = Color.FromArgb(83, 141, 78);
+        public Color partialColour = Color.FromArgb(181, 159, 59);
+        public Color textColour = Color.White;
+        public bool highContrastMode = false;
+        public bool onScreenKeyboard = true;
 
+        //Declares a local variable of _darkMode to assign the initial value of the unUnderScored darkMode to true
+        private bool _darkMode = true;
+        //Declares the public darkMode variable, using the get & set method to enable
+        //both a value to be received (get) and code to play when the value is altered (set)
+        //This allows all of the visual augments of swapping between darkmode and lightmode
+        //to be intuitively ran whenever the boolean is swapped.
         public bool darkMode
         {
             get { return _darkMode; }
             set { 
+                //Alters the private variable to the new value that has just been passed
                 _darkMode = value;
+                //Assigns the unique controls(all controls that are not the onscreen keyboard or letterBoxes) to the relevant colour
                 btnHelp.ForeColor = baseColour;
                 btnSettings.ForeColor = baseColour;
                 this.BackColor = baseColour;
                 lblTitle.ForeColor = textColour;
+                //Changes the two icon-buttons to the appropriate img out of the resources file
                 if (darkMode == true)
                 {
                     btnHelp.BackgroundImage = Resources.imgHelpIconLight;
@@ -109,30 +92,41 @@ namespace Wordle_SDD
                     btnHelp.BackgroundImage = Resources.imgHelpIconDark;
                     btnSettings.BackgroundImage = Resources.imgSettingsIconDark;
                 }
+                //Double for loop cycles through the 5x6 grid of letterBoxes
                 for (int i = 0; i <= 4; i++)
                 {
                     for (int j = 0; j <= 5; j++)
                     {
+                        //Assigns variable name to find letterBoxes using the two for loops integer's "i" and "j"
                         string selectedLetterBox = $"letterBox{i:D1}{j:D1}";
+                        //Searches through all controls on the page until it finds the letterBox that matches the provided name defined in the line above
                         foreach (Control control in Controls)
                         {
                             if (control.Name == selectedLetterBox && control is letterBox letterBox) // Assuming letterboxes are TextBox controls
                             {
+                                //Checks whether the letterBox has already been filled with a letter in
+                                //the correct spot, thus changing the shade of green to lighter/darker
                                 if (letterBox.baseColour == lightCorrectColour || letterBox.baseColour == darkCorrectColour)
                                 {
                                     letterBox.baseColour = correctColour;
                                     letterBox.alternateColour = correctColour;
                                 }
+                                //Checks whether the letterBox has already been filled with a letter in a
+                                //partially correct spot, thus changing the shade of yellow to lighter/darker
                                 else if (letterBox.baseColour == lightPartialColour || letterBox.baseColour == darkPartialColour)
                                 {
                                     letterBox.baseColour = partialColour;
                                     letterBox.alternateColour = partialColour;
                                 }
+                                //Checks whether the letterBox has already been filled with a letter in the
+                                //incorrect spot, thus changing the full colour grey to the lighter/darker
                                 else if (letterBox.baseColour == lightAlternateColour || letterBox.baseColour == darkAlternateColour)
                                 {
                                     letterBox.baseColour = alternateColour;
                                     letterBox.alternateColour = alternateColour;
                                 }
+                                //If all other checks have failed the letterbox must not have had a letter entered
+                                //into it, thus the colour changes retain the border and the correct text colour
                                 else
                                 {
                                     letterBox.baseColour = baseColour;
@@ -143,25 +137,34 @@ namespace Wordle_SDD
                         }
                     }
                 }
+                //Searches through all controls on the page until it finds the buttons
                 foreach (Control control in Controls)
                 {
                     if (control is Button button) // Assuming letterboxes are TextBox controls
                     {
+                        //This if condition differentiates the buttons of the onscreen keyboard
+                        //from the navigation buttons and inherited button properties of the letterBoxes
                         if (button.Name.StartsWith("btn") &&
                            (button.Name.Length == 4 || // Single character buttons (btnA to btnZ)
                             button.Name == "btnEnter" || // Special buttons
                             button.Name == "btnDelete")) // Special buttons
                         {
+                            //Checks whether the button has already been filled with a colour to represent its
+                            //correct status in the grid, thus changing the shade of green to lighter/darker
                             if (button.BackColor == lightCorrectColour || button.BackColor == darkCorrectColour)
                             {
                                 button.BackColor = correctColour;
                                 button.ForeColor = darkTextColour;
                             }
+                            //Checks whether the button has already been filled with a colour to represent its
+                            //partially correct status in the grid, thus changing the shade of yellow to lighter/darker
                             else if (button.BackColor == lightPartialColour || button.BackColor == darkPartialColour)
                             {
                                 button.BackColor = partialColour;
                                 button.ForeColor = darkTextColour;
                             }
+                            //Checks whether the button has already been filled with a colour to represent its
+                            //incorrect status in the grid, thus changing the shade of grey to lighter/darker
                             else if (button.BackColor == lightAlternateColour || button.BackColor == darkAlternateColour)
                             {
                                 button.BackColor = alternateColour;
@@ -172,6 +175,7 @@ namespace Wordle_SDD
                                 button.BackColor = tertiaryColour;
                                 button.ForeColor = textColour;
                             }
+                            //All buttons have the same border colour thus it gets excluded from the if statement
                             button.FlatAppearance.BorderColor = alternateColour;
                             
                         }
@@ -179,28 +183,17 @@ namespace Wordle_SDD
                 }
             }
         }
-        public bool highContrastMode
-        {
-            get { return _highContrastMode; }
-            set { _highContrastMode = value; }
-        }
-        public bool onScreenKeyboard
-        {
-            get { return _onScreenKeyboard; }
-            set { _onScreenKeyboard = value; }
-        }
 
         public frmWordle()
         {
             InitializeComponent();
             //Attaches any physical keypresses to the event handler
             //KeyPreview enables key presses to be interpretted at
-            //the form level, enabling the use of btn?.performClick,
+            //the form level, enabling the use of btn.performClick,
             //unifying the two keyboards under the same code
             this.KeyDown += frmWordle_KeyDown;
             this.KeyPreview = true;
-            //Attaches all of the onscreen keys to
-            //the event handler 'KeyboardInput'
+            //Attaches all of the onscreen keys to the event handler 'KeyboardInput'
             btnA.Click += KeyboardInput;
             btnB.Click += KeyboardInput;
             btnC.Click += KeyboardInput;
@@ -229,10 +222,9 @@ namespace Wordle_SDD
             btnZ.Click += KeyboardInput;
             btnEnter.Click += KeyboardInput;
             btnDelete.Click += KeyboardInput;
-            this.ForeColor = Color.White;
-            allWords = Properties.Resources.wordList.Split(',');
+            wordListArray = Properties.Resources.wordList.Split(',');
             correctWord = generateCorrectWord();
-            Console.WriteLine(allWords);
+            Console.WriteLine(wordListArray);
         }
 
         private void KeyboardInput(object sender, EventArgs e)
@@ -603,7 +595,7 @@ namespace Wordle_SDD
 
         private bool checkValidWord(string word)
         {
-            return Array.Exists(allWords, element => element.Equals(word, StringComparison.OrdinalIgnoreCase));
+            return Array.Exists(wordListArray, element => element.Equals(word, StringComparison.OrdinalIgnoreCase));
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
