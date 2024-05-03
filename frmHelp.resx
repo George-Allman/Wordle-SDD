@@ -117,4 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="lblGuide.Text" xml:space="preserve">
+    <value>In Wordle, you have 6 tries to guess a mystery 5 letter word. Each time
+you guess a valid 5 letter word, its letters will light up green, yellow and 
+grey to signal how close to the correct word each letter is. If the tile is 
+green, the letter in that tile is in the same location in the correct word. 
+If the tile is yellow the letter in that tile is in the correct word but in a 
+different location. If the tile is grey the letter in that tile is not contained
+in the correct word at all.</value>
+  </data>
 </root>

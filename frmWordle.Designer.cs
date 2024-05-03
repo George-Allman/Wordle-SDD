@@ -1335,7 +1335,8 @@
             this.Controls.Add(this.lblTitle);
             this.ForeColor = System.Drawing.Color.White;
             this.Name = "frmWordle";
-            this.Text = " ";
+            this.Text = " Wordle";
+            this.Load += new System.EventHandler(this.frmWordle_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

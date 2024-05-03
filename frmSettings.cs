@@ -16,6 +16,7 @@ namespace Wordle_SDD
     {
         //Creates FrmWordle instance to refer to variables on that form
         private frmWordle FrmWordle = new frmWordle();
+        private frmHelp FrmHelp = new frmHelp();
         //Accepts the instance of frmWordle assigned
         //to this form when it was instantiated
         private Color lightBaseColour = Color.FromArgb(245, 245, 245);

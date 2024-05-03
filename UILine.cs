@@ -12,7 +12,6 @@ namespace Wordle_SDD
 {
     public partial class UILine : UserControl
     {
-        private frmWordle FrmWordle = new frmWordle();
         public UILine()
         {
             InitializeComponent();
@@ -23,18 +22,18 @@ namespace Wordle_SDD
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            Color alternateColor = FrmWordle.alternateColour;
+            //Color alternateColor = 
 
-            base.OnPaint(e);
+            //base.OnPaint(e);
 
-            Graphics g = e.Graphics;
+            //Graphics g = e.Graphics;
 
-            ControlPaint.DrawBorder(e.Graphics, ClientRectangle,
-                alternateColor, 0, ButtonBorderStyle.Solid,
-                alternateColor, 1, ButtonBorderStyle.Solid,
-                alternateColor, 0, ButtonBorderStyle.Solid,
-                alternateColor, 0, ButtonBorderStyle.Solid
-                );
+            //ControlPaint.DrawBorder(e.Graphics, ClientRectangle,
+                //alternateColor, 0, ButtonBorderStyle.Solid,
+                //alternateColor, 1, ButtonBorderStyle.Solid,
+                //alternateColor, 0, ButtonBorderStyle.Solid,
+                //alternateColor, 0, ButtonBorderStyle.Solid
+                //);
         }
     }
 }

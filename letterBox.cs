@@ -16,6 +16,8 @@ namespace Wordle_SDD
         private Color _alternateColour = Color.FromArgb(75,75,75);
         private Color _textColour = Color.White;
         private string _letter = "X";
+        //default value of status = -1, this signals the box is empty as 0 means an incorrect letter already
+        private int _status = -1;
 
         public string letter
         {
@@ -54,6 +56,11 @@ namespace Wordle_SDD
                 this.ForeColor = textColour;
             }
         }
+        public int status 
+        { 
+            get { return _status; }
+            set {  _status = value; }
+        } 
 
         public letterBox()
         {

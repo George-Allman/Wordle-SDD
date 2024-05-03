@@ -121,7 +121,17 @@ namespace Wordle_SDD.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to aalii,aalst,aalto,aaron,abaca,aback,abaff,abaft,abama,abamp,abase,abash,abask,abate,abave,abaya,abaze,abbas,abbey,abbie,abbot,abdal,abdat,abeam,abear,abele,abhor,abide,abidi,abies,abila,abilo,abkar,abler,ablow,abmho,abner,abnet,abode,abody,abohm,aboil,aboma,aboon,abord,abort,about,above,abram,abret,abrim,abrin,abrus,absit,abuja,abuna,abura,abuse,abuta,abuzz,abwab,abyla,abysm,abyss,acana,acapu,acara,acari,acate,accho,accoy,accra,acedy,acerb,achar,achen,acher,achor,acier,ackee,acker,ackey,aclys,acmic,acned,ac [rest of string was truncated]&quot;;.
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon wordleLogo {
+            get {
+                object obj = ResourceManager.GetObject("wordleLogo", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AALII,AALST,AALTO,AARON,ABACA,ABACK,ABAFF,ABAFT,ABAMA,ABAMP,ABASE,ABASH,ABASK,ABATE,ABAVE,ABAYA,ABAZE,ABBAS,ABBEY,ABBIE,ABBOT,ABDAL,ABDAT,ABEAM,ABEAR,ABELE,ABHOR,ABIDE,ABIDI,ABIES,ABILA,ABILO,ABKAR,ABLER,ABLOW,ABMHO,ABNER,ABNET,ABODE,ABODY,ABOHM,ABOIL,ABOMA,ABOON,ABORD,ABORT,ABOUT,ABOVE,ABRAM,ABRET,ABRIM,ABRIN,ABRUS,ABSIT,ABUJA,ABUNA,ABURA,ABUSE,ABUTA,ABUZZ,ABWAB,ABYLA,ABYSM,ABYSS,ACANA,ACAPU,ACARA,ACARI,ACATE,ACCHO,ACCOY,ACCRA,ACEDY,ACERB,ACHAR,ACHEN,ACHER,ACHOR,ACIER,ACKEE,ACKER,ACKEY,ACLYS,ACMIC,ACNED,AC [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string wordList {
             get {
