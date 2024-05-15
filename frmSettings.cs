@@ -19,18 +19,7 @@ namespace Wordle_SDD
         private frmHelp FrmHelp = new frmHelp();
         //Accepts the instance of frmWordle assigned
         //to this form when it was instantiated
-        private Color lightBaseColour = Color.FromArgb(245, 245, 245);
-        private Color darkBaseColour = Color.FromArgb(20, 20, 20);
-        private Color lightAlternateColour = Color.FromArgb(150,150,150);
-        private Color darkAlternateColour = Color.FromArgb(75, 75, 75);
-        private Color lightTertiaryColour = Color.FromArgb(200, 200, 200);
-        private Color darkTertiaryColour = Color.DimGray;
-        private Color lightCorrectColour = Color.FromArgb(106, 170, 100);
-        private Color darkCorrectColour = Color.FromArgb(83, 141, 78);
-        private Color lightPartialColour = Color.FromArgb(201, 180, 88);
-        private Color darkPartialColour = Color.FromArgb(181, 159, 59);
-        private Color lightTextColour = Color.Black;
-        private Color darkTextColour = Color.White;
+
         public frmSettings(frmWordle frmWordleInstance)
         {
             //Constructs form
@@ -55,22 +44,23 @@ namespace Wordle_SDD
         {            
             if (chkDarkMode.Checked == true)
             {
-                FrmWordle.baseColour = darkBaseColour;
-                FrmWordle.alternateColour = darkAlternateColour;
-                FrmWordle.tertiaryColour = darkTertiaryColour;
-                FrmWordle.correctColour = darkCorrectColour;
-                FrmWordle.partialColour = darkPartialColour;
-                FrmWordle.textColour = darkTextColour;
+                FrmWordle.baseColour = Colours.darkBaseColour;
+                FrmWordle.alternateColour = Colours.darkAlternateColour;
+                FrmWordle.tertiaryColour = Colours.darkTertiaryColour;
+                FrmWordle.correctColour = Colours.darkCorrectColour;
+                FrmWordle.partialColour = Colours.darkPartialColour;
+                FrmWordle.textColour = Colours.darkTextColour;
                 FrmWordle.darkMode = true;
+                
             }
             else
             {
-                FrmWordle.baseColour = lightBaseColour;
-                FrmWordle.alternateColour = lightAlternateColour;
-                FrmWordle.tertiaryColour = lightTertiaryColour;
-                FrmWordle.correctColour = lightCorrectColour;
-                FrmWordle.partialColour = lightPartialColour;
-                FrmWordle.textColour = lightTextColour;
+                FrmWordle.baseColour = Colours.lightBaseColour;
+                FrmWordle.alternateColour = Colours.lightAlternateColour;
+                FrmWordle.tertiaryColour = Colours.lightTertiaryColour;
+                FrmWordle.correctColour = Colours.lightCorrectColour;
+                FrmWordle.partialColour = Colours.lightPartialColour;
+                FrmWordle.textColour = Colours.lightTextColour;
                 FrmWordle.darkMode = false;
             }
             if (FrmWordle.darkMode == true)
@@ -89,7 +79,7 @@ namespace Wordle_SDD
             chkHighContrast.ForeColor = FrmWordle.textColour;
             chkOnScreenKeyboard.ForeColor = FrmWordle.textColour;
             lblGraphicsTitle.ForeColor = FrmWordle.textColour;
-            //FrmWordle.redrawFormsDarkMode();
+            
         }
 
         private void chkHighContrast_CheckedChanged(object sender, EventArgs e)

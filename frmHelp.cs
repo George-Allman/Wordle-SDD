@@ -76,6 +76,16 @@ namespace Wordle_SDD
                         }
                     }
                 }
+
+                btnClose.ForeColor = baseColour;
+                if (darkMode == true)
+                {
+                    btnClose.BackgroundImage = Resources.imgCrossIconLight;
+                }
+                else
+                {
+                    btnClose.BackgroundImage = Resources.imgCrossIconDark;
+                }
             }
         }
         public frmHelp()

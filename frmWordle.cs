@@ -40,22 +40,13 @@ namespace Wordle_SDD
 		private int animationLength = 2;
 		private string[] wordListArray;
 		private string input;
+		private bool animationOngoing = false;
 
-		private Color lightCorrectColour = Color.FromArgb(106, 170, 100);
-		private Color darkCorrectColour = Color.FromArgb(83, 141, 78);
+		private Form frmHelp = new frmHelp();
+		private frmHelp FrmHelp = new frmHelp();
 
-		private Color lightPartialColour = Color.FromArgb(201, 180, 88);
-		private Color darkPartialColour = Color.FromArgb(181, 159, 59);
-
-		private Color lightAlternateColour = Color.FromArgb(150, 150, 150);
-		private Color darkAlternateColour = Color.FromArgb(75, 75, 75);
-
-		private Color lightTextColour = Color.Black;
-		private Color darkTextColour = Color.White;
-
-
-		//Declares the public variables, they will be accessed by the frmSettings so thus need to be public
-		public Color baseColour = Color.FromArgb(20, 20, 20);
+        //Declares the public variables, they will be accessed by the frmSettings so thus need to be public
+        public Color baseColour = Color.FromArgb(20, 20, 20);
 		public Color alternateColour = Color.FromArgb(75, 75, 75);
 		public Color tertiaryColour = Color.DimGray;
 		public Color correctColour = Color.FromArgb(83, 141, 78);
@@ -64,7 +55,7 @@ namespace Wordle_SDD
 		public bool highContrastMode = false;
 		public bool onScreenKeyboard = true;
 
-		private frmHelp FrmHelp = new frmHelp();
+		
 
 		//Declares a local variable of _darkMode to assign the initial value of the unUnderScored darkMode to true
 		private bool _darkMode = true;
@@ -144,24 +135,24 @@ namespace Wordle_SDD
                         {
                             //Checks whether the button has already been filled with a colour to represent its
                             //correct status in the grid, thus changing the shade of green to lighter/darker
-                            if (button.BackColor == lightCorrectColour || button.BackColor == darkCorrectColour)
+                            if (button.BackColor == Colours.lightCorrectColour || button.BackColor == Colours.darkCorrectColour)
                             {
                                 button.BackColor = correctColour;
-                                button.ForeColor = darkTextColour;
+                                button.ForeColor = Colours.darkTextColour;
                             }
                             //Checks whether the button has already been filled with a colour to represent its
                             //partially correct status in the grid, thus changing the shade of yellow to lighter/darker
-                            else if (button.BackColor == lightPartialColour || button.BackColor == darkPartialColour)
+                            else if (button.BackColor == Colours.lightPartialColour || button.BackColor == Colours.darkPartialColour)
                             {
                                 button.BackColor = partialColour;
-                                button.ForeColor = darkTextColour;
+                                button.ForeColor = Colours.darkTextColour;
                             }
                             //Checks whether the button has already been filled with a colour to represent its
                             //incorrect status in the grid, thus changing the shade of grey to lighter/darker
-                            else if (button.BackColor == lightAlternateColour || button.BackColor == darkAlternateColour)
+                            else if (button.BackColor == Colours.lightAlternateColour || button.BackColor == Colours.darkAlternateColour)
                             {
                                 button.BackColor = alternateColour;
-                                button.ForeColor = darkTextColour;
+                                button.ForeColor = Colours.darkTextColour;
                             }
                             else
                             {
@@ -175,10 +166,12 @@ namespace Wordle_SDD
                     }
                 }
 
+				
+
 				FrmHelp.textColour = textColour;
                 FrmHelp.correctColour = correctColour;
 				FrmHelp.partialColour = partialColour;
-				FrmHelp.baseColour = baseColour;
+				FrmHelp.baseColour = this.baseColour;
 				FrmHelp.alternateColour = alternateColour;
 				FrmHelp.darkMode = darkMode;
             }
@@ -188,7 +181,7 @@ namespace Wordle_SDD
 		{
 			//Calls the constructor
 			InitializeComponent();
-
+			
 			//Sets the forms icon to the logo.ico file in the resources
 			//folder so it is continous across devices
 			this.Icon = Resources.wordleLogo;
@@ -237,10 +230,16 @@ namespace Wordle_SDD
             //Produces the correct word in the console for skipping and debug purposes
             Console.WriteLine(correctWord);
 
+            
+
         }
 
 		private void KeyboardInput(object sender, EventArgs e)
 		{
+			if (animationOngoing)
+			{
+				return;
+			}
 			//Removes the focus on the button just pressed to prevent unwanted actions
             this.ActiveControl = null;
             //Declares clickedButton as the button triggering the event handler
@@ -264,7 +263,17 @@ namespace Wordle_SDD
                 else if (input != "Enter" && input != "Delete" && currentColumn < 5)
                 {
                     appendLetter(input, currentColumn, currentRow);
-                }				
+                }		
+				//Checks if the button was Enter, but the row was not a full word
+				else if (input == "Enter" && currentColumn != 5)
+				{
+					//Runs the invalid word animation on each column simultaneously where i is the collumn parameter
+					for (int i = 0; i < 5; i++)
+					{
+						//Calls the invalid word animation function, passing the parameter i and currentRow
+						invalidWordAnimation(i, currentRow);
+					}
+				}
             }
 		}
 	    
@@ -372,6 +381,9 @@ namespace Wordle_SDD
 
         private async void correctWordAnimation(int row, char[] currentWordArray)
         {
+			//Sets the animationOngoing flag to true so that no more letters or buttons can be pressed, preventing bugs
+			animationOngoing = true;
+
             //For loop for each letterBox in the row
             for (int i = 0; i <= 5; i++)
             {
@@ -389,7 +401,8 @@ namespace Wordle_SDD
 						//Completes the green colour change inside the animation to give the 1 by 1 effect of jumping and colouring.
                         letterBox.baseColour = correctColour;
                         letterBox.alternateColour = correctColour;
-                        letterBox.textColour = Color.White;    
+                        letterBox.textColour = Color.White;
+						letterBox.status = 2;
 						
 						//Colours the button that has the same letter as the square being animated, passing the desired letter through
 						//with currentWordArray[i] and the correctColour as this function is used elsewhere for both partial and incorrect
@@ -413,11 +426,15 @@ namespace Wordle_SDD
                                 );
                             await Task.Delay(1);
                         }
-                        //Exits the foreach Loop as it is no longer needed
-                        break;
                     }
                 }
             }
+            //Calls the gameWon function, passing the number of guesses it took to win as a parameter.
+            //The gameWon function playing after the animation ensures they do not reset the
+            //game while the animation is playing, preventing a bug
+            gameWon(row);
+			//Returns the animationOngoing flag back to false to enable the other buttons to be pressed
+			animationOngoing = false;
         }
 
 
@@ -484,11 +501,11 @@ namespace Wordle_SDD
 				//Checks if the row was completely correct and thus the game has been won
 				if (numberCorrectLetters == 5)
 				{
-					//Calls the gameWon function, passing the number of guesses it took to win as a parameter.
-					//Unlike the other two pathways, this does not call the colouring function as it is handled by the Victory animation
-					gameWon(currentRow);
-					//Return statement to exit out of the two if statements and prevent the four lines below the else from being called
-					return;
+                    //Plays the correct word animation, passing through the row and currentWord
+                    //the current word is needed as a parameter as the colouring is done by the animation
+                    correctWordAnimation(currentRow, currentWord.ToCharArray());
+                    //Return statement to exit out of the two if statements and prevent the four lines below the else from being called
+                    return;
 				}
 				//If the game has not been won (First condition above) and it is on Row 5 the game has been lost
 				else if (currentRow == 5)
@@ -530,15 +547,29 @@ namespace Wordle_SDD
 
 		private void gameWon(int row)
 		{
-			//Plays the correct word animation, passing through the row and currentWord
-			//the current word is needed as a parameter as the colouring is done by the animation
-			correctWordAnimation(row, currentWord.ToCharArray());
+            //Returns a personalised victory message to the user, telling them how many
+			//guesses it took them and a congradulatory/conscillatory message
+            if (row == 0)
+			{
+                MessageBox.Show("You won after " + (row + 1) + " guess. How?");
+            }
+            if (row == 1 || row == 2)
+            {
+                MessageBox.Show("You won after " + (row + 1) + " guesses. Impressive guessing!");
+            }
+            if (row == 3 || row == 4)
+            {
+                MessageBox.Show("You won after " + (row + 1) + " guesses. Well done!");
+            }
+            if (row == 5)
+            {
+                MessageBox.Show("You won after " + (row + 1) + " guesses. Close one!");
+            }
 
-			//Returns a victory message to the user, telling them how many guesses it took them
-			MessageBox.Show("You won after " + (row + 1) + " guesses");
 
-			//Calls the reset function to allow the user to continue playing with a new word
-			gameReset();
+
+            //Calls the reset function to allow the user to continue playing with a new word
+            gameReset();
 		}
 
 		private void gameLost(string correctWord)
@@ -548,7 +579,7 @@ namespace Wordle_SDD
 			word = (word.Substring(0, 1)).ToUpper() + word.Substring(1,4);
 			
 			//Returns a defeat message to the user, telling them what the word they failed to guess was
-			MessageBox.Show("You failed to guess the correct word in 6 guesses. \nThe correct word was '" + word + "'.");
+			MessageBox.Show("You failed to guess the correct word in 6 guesses. \nThe correct word was '" + word + "'. Better luck next time");
 
             //Calls the reset function to allow the user to continue playing with a new word
             gameReset();
@@ -586,6 +617,11 @@ namespace Wordle_SDD
 					letterBox.baseColour = baseColour;
 					//Resets the border colour to grey
 					letterBox.alternateColour = alternateColour;
+					//Resets the text colour to black/white
+					letterBox.textColour = textColour;
+					//Resets the status of the letterBox
+					letterBox.status = -1;
+
 				}
 				//Checks whether the control is a button
 				else if (control is Button button)
@@ -610,7 +646,7 @@ namespace Wordle_SDD
 			//Declares a boolean array with bounds 5
 			bool[] alreadyChecked = new bool[5];
 
-            //	Check for correct  \\ 
+            // !	Check for correct  ! \\ 
 
             //Create for loop with 5 iterations, one for each column
             for (int i = 0; i <= 4; i++)
@@ -628,7 +664,7 @@ namespace Wordle_SDD
 				}
 			}
 
-            //	Check for partially correct  \\
+            // !	Check for partially correct  ! \\
 
 			//Create for loop with 5 iterations, one for each column
             for (int i = 0; i <= 4; ++i)
@@ -712,7 +748,7 @@ namespace Wordle_SDD
 					if (button.BackColor != correctColour)
 					{
 						button.BackColor = colour;
-						button.ForeColor = darkTextColour;
+						button.ForeColor = Colours.darkTextColour;
 					}
 				}
 			}
@@ -757,21 +793,33 @@ namespace Wordle_SDD
         }
         private void btnHelp_Click(object sender, EventArgs e)
         {
+            //Guard Clause to prevent button from being pressed while animation is playing
+            if (animationOngoing == true)
+            {
+                return;
+            }
             //Removes the focus from the button just pressed
             this.ActiveControl = null;
-            //Creates a new instance of the help form and attaches the
-            //current form as an instance for reference in the new help form
-            Form frmHelp = new frmHelp();
-            frmHelp.Show();
+			//Opens the FrmHelp instance created at the start
+			//ShowDialog means they cannot click off it until they close the form
+            FrmHelp.ShowDialog();
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
 		{
+			//Guard Clause to prevent button from being pressed while animation is playing
+			if (animationOngoing == true)
+			{
+				return;
+			}
             //Removes the focus from the button just pressed
             this.ActiveControl = null;
-			//Creates a new instance of the settings form and attaches the
-			Form frmSettings = new frmSettings(this);
-			frmSettings.Show();
+            //Creates a new instance of the settings form and passes the current
+			//Wordle instance through so the settings form can alter variables on this form
+            Form frmSettings = new frmSettings(this);
+			//Brings the settings instance up on screen and shows dialog so the
+			//user cannot click off it until they close the form
+			frmSettings.ShowDialog();
 
 		}
 
@@ -876,5 +924,21 @@ namespace Wordle_SDD
         {
 
         }
+    }
+
+	public static class Colours
+	{
+        public static Color lightBaseColour = Color.FromArgb(245, 245, 245);
+        public static Color darkBaseColour = Color.FromArgb(20, 20, 20);
+        public static Color lightAlternateColour = Color.FromArgb(150, 150, 150);
+        public static Color darkAlternateColour = Color.FromArgb(75, 75, 75);
+        public static Color lightTertiaryColour = Color.FromArgb(200, 200, 200);
+        public static Color darkTertiaryColour = Color.DimGray;
+        public static Color lightCorrectColour = Color.FromArgb(106, 170, 100);
+        public static Color darkCorrectColour = Color.FromArgb(83, 141, 78);
+        public static Color lightPartialColour = Color.FromArgb(201, 180, 88);
+        public static Color darkPartialColour = Color.FromArgb(181, 159, 59);
+        public static Color lightTextColour = Color.Black;
+        public static Color darkTextColour = Color.White;
     }
 }
