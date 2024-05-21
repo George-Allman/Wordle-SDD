@@ -52,13 +52,14 @@ namespace Wordle_SDD
 		public Color correctColour = Color.FromArgb(83, 141, 78);
 		public Color partialColour = Color.FromArgb(181, 159, 59);
 		public Color textColour = Color.White;
-		public bool highContrastMode = false;
-		public bool onScreenKeyboard = true;
+		public bool checkDictionary = true;
 
 		
 
 		//Declares a local variable of _darkMode to assign the initial value of the unUnderScored darkMode to true
 		private bool _darkMode = true;
+
+		private bool _highContrast = false;
 
 		//Declares the public darkMode variable, using the get & set method to enable
 		//both a value to be received (get) and code to play when the value is altered (set)
@@ -175,6 +176,16 @@ namespace Wordle_SDD
 				FrmHelp.alternateColour = alternateColour;
 				FrmHelp.darkMode = darkMode;
             }
+		}
+
+		public bool highContrast
+		{
+			get { return highContrast; } 
+			set
+			{
+				_highContrast = value;
+
+			}
 		}
 
 		public frmWordle()
@@ -783,7 +794,14 @@ namespace Wordle_SDD
 
 		private bool checkValidWord(string word)
 		{
-			return Array.Exists(wordListArray, element => element.Equals(word, StringComparison.OrdinalIgnoreCase));
+			if (checkDictionary == false)
+			{
+				return true;
+			}
+			else
+			{
+                return Array.Exists(wordListArray, element => element.Equals(word, StringComparison.OrdinalIgnoreCase));
+            }			
 		}
 
 		private string[] extractWordList(string wordList)
@@ -940,5 +958,7 @@ namespace Wordle_SDD
         public static Color darkPartialColour = Color.FromArgb(181, 159, 59);
         public static Color lightTextColour = Color.Black;
         public static Color darkTextColour = Color.White;
+		public static Color highContrastCorrectColour = Color.FromArgb(224, 52, 43);
+		public static Color highContrastPartialColour = Color.FromArgb(43, 143, 224);
     }
 }

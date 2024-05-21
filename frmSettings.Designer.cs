@@ -30,20 +30,24 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
-            this.chkOnScreenKeyboard = new System.Windows.Forms.CheckBox();
             this.chkHighContrast = new System.Windows.Forms.CheckBox();
+            this.chkCheckDictionary = new System.Windows.Forms.CheckBox();
             this.lblGraphicsTitle = new System.Windows.Forms.Label();
             this.chkDarkMode = new System.Windows.Forms.CheckBox();
             this.lblChkDictWarning = new System.Windows.Forms.Label();
+            this.btnEmail = new System.Windows.Forms.Button();
+            this.lblSupport = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblSupport);
+            this.panel1.Controls.Add(this.btnEmail);
             this.panel1.Controls.Add(this.lblChkDictWarning);
             this.panel1.Controls.Add(this.btnClose);
-            this.panel1.Controls.Add(this.chkOnScreenKeyboard);
             this.panel1.Controls.Add(this.chkHighContrast);
+            this.panel1.Controls.Add(this.chkCheckDictionary);
             this.panel1.Controls.Add(this.lblGraphicsTitle);
             this.panel1.Controls.Add(this.chkDarkMode);
             this.panel1.Location = new System.Drawing.Point(0, -2);
@@ -66,37 +70,35 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // chkOnScreenKeyboard
-            // 
-            this.chkOnScreenKeyboard.AutoSize = true;
-            this.chkOnScreenKeyboard.Checked = true;
-            this.chkOnScreenKeyboard.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkOnScreenKeyboard.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkOnScreenKeyboard.ForeColor = System.Drawing.SystemColors.Control;
-            this.chkOnScreenKeyboard.Location = new System.Drawing.Point(38, 119);
-            this.chkOnScreenKeyboard.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.chkOnScreenKeyboard.Name = "chkOnScreenKeyboard";
-            this.chkOnScreenKeyboard.Size = new System.Drawing.Size(335, 37);
-            this.chkOnScreenKeyboard.TabIndex = 3;
-            this.chkOnScreenKeyboard.Text = "On Screen Keyboard";
-            this.chkOnScreenKeyboard.UseVisualStyleBackColor = true;
-            this.chkOnScreenKeyboard.CheckedChanged += new System.EventHandler(this.chkOnScreenKeyboard_CheckedChanged);
-            // 
             // chkHighContrast
             // 
             this.chkHighContrast.AutoSize = true;
-            this.chkHighContrast.Checked = true;
-            this.chkHighContrast.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkHighContrast.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkHighContrast.ForeColor = System.Drawing.SystemColors.Control;
-            this.chkHighContrast.Location = new System.Drawing.Point(38, 166);
+            this.chkHighContrast.Location = new System.Drawing.Point(38, 119);
             this.chkHighContrast.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkHighContrast.Name = "chkHighContrast";
-            this.chkHighContrast.Size = new System.Drawing.Size(284, 37);
-            this.chkHighContrast.TabIndex = 2;
-            this.chkHighContrast.Text = "Check Dictionary";
+            this.chkHighContrast.Size = new System.Drawing.Size(237, 37);
+            this.chkHighContrast.TabIndex = 3;
+            this.chkHighContrast.Text = "High Contrast";
             this.chkHighContrast.UseVisualStyleBackColor = true;
             this.chkHighContrast.CheckedChanged += new System.EventHandler(this.chkHighContrast_CheckedChanged);
+            // 
+            // chkCheckDictionary
+            // 
+            this.chkCheckDictionary.AutoSize = true;
+            this.chkCheckDictionary.Checked = true;
+            this.chkCheckDictionary.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkCheckDictionary.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkCheckDictionary.ForeColor = System.Drawing.SystemColors.Control;
+            this.chkCheckDictionary.Location = new System.Drawing.Point(38, 166);
+            this.chkCheckDictionary.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.chkCheckDictionary.Name = "chkCheckDictionary";
+            this.chkCheckDictionary.Size = new System.Drawing.Size(284, 37);
+            this.chkCheckDictionary.TabIndex = 2;
+            this.chkCheckDictionary.Text = "Check Dictionary";
+            this.chkCheckDictionary.UseVisualStyleBackColor = true;
+            this.chkCheckDictionary.CheckedChanged += new System.EventHandler(this.chkCheckDictionary_CheckedChanged);
             // 
             // lblGraphicsTitle
             // 
@@ -136,6 +138,33 @@
             this.lblChkDictWarning.TabIndex = 5;
             this.lblChkDictWarning.Text = "*Unchecking this will allow you to \r\nenter any possible 5 letter word.";
             // 
+            // btnEmail
+            // 
+            this.btnEmail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.btnEmail.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.btnEmail.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnEmail.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEmail.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnEmail.Location = new System.Drawing.Point(31, 339);
+            this.btnEmail.Name = "btnEmail";
+            this.btnEmail.Size = new System.Drawing.Size(158, 71);
+            this.btnEmail.TabIndex = 6;
+            this.btnEmail.Text = "Email Me";
+            this.btnEmail.UseVisualStyleBackColor = false;
+            this.btnEmail.Click += new System.EventHandler(this.btnEmail_Click);
+            // 
+            // lblSupport
+            // 
+            this.lblSupport.AutoSize = true;
+            this.lblSupport.Font = new System.Drawing.Font("Rockwell", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSupport.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblSupport.Location = new System.Drawing.Point(14, 280);
+            this.lblSupport.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSupport.Name = "lblSupport";
+            this.lblSupport.Size = new System.Drawing.Size(170, 44);
+            this.lblSupport.TabIndex = 7;
+            this.lblSupport.Text = "Support:";
+            // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -158,8 +187,10 @@
         private System.Windows.Forms.Label lblGraphicsTitle;
         private System.Windows.Forms.CheckBox chkDarkMode;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.CheckBox chkOnScreenKeyboard;
         private System.Windows.Forms.CheckBox chkHighContrast;
+        private System.Windows.Forms.CheckBox chkCheckDictionary;
         private System.Windows.Forms.Label lblChkDictWarning;
+        private System.Windows.Forms.Label lblSupport;
+        private System.Windows.Forms.Button btnEmail;
     }
 }

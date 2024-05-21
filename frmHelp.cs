@@ -20,7 +20,7 @@ namespace Wordle_SDD
         public Color partialColour = Color.FromArgb(181, 159, 59);
         public Color textColour = Color.White;
 
-        private bool _darkMode;
+        private bool _darkMode = true;
         public bool darkMode
         {
             get { return _darkMode; }
