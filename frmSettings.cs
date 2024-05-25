@@ -50,6 +50,14 @@ namespace Wordle_SDD
             {
                 chkCheckDictionary.Checked = false;
             }
+            if (FrmWordle.highContrast == true)
+            {
+                chkHighContrast.Checked = true;
+            }
+            else
+            {
+                chkHighContrast.Checked = false;
+            }
 
         }
 
@@ -62,11 +70,8 @@ namespace Wordle_SDD
                 FrmWordle.baseColour = Colours.darkBaseColour;
                 FrmWordle.alternateColour = Colours.darkAlternateColour;
                 FrmWordle.tertiaryColour = Colours.darkTertiaryColour;
-                if (highContrastMode == false)
-                {
-                    FrmWordle.correctColour = Colours.darkCorrectColour;
-                    FrmWordle.partialColour = Colours.darkPartialColour;
-                }
+                FrmWordle.correctColour = Colours.darkCorrectColour;
+                FrmWordle.partialColour = Colours.darkPartialColour;
                 FrmWordle.textColour = Colours.darkTextColour;
                 FrmWordle.darkMode = true;
                 
@@ -78,11 +83,8 @@ namespace Wordle_SDD
                 FrmWordle.baseColour = Colours.lightBaseColour;
                 FrmWordle.alternateColour = Colours.lightAlternateColour;
                 FrmWordle.tertiaryColour = Colours.lightTertiaryColour;
-                if (highContrastMode == false)
-                {
-                    FrmWordle.correctColour = Colours.lightCorrectColour;
-                    FrmWordle.partialColour = Colours.lightPartialColour;
-                }
+                FrmWordle.correctColour = Colours.lightCorrectColour;
+                FrmWordle.partialColour = Colours.lightPartialColour;
                 FrmWordle.textColour = Colours.lightTextColour;
                 FrmWordle.darkMode = false;
             }

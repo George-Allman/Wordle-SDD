@@ -56,9 +56,10 @@ namespace Wordle_SDD
 
 		
 
-		//Declares a local variable of _darkMode to assign the initial value of the unUnderScored darkMode to true
+		//Declares a local variable of _darkMode to assign the initial value of the public darkMode variable
 		private bool _darkMode = true;
 
+		//Declares a local variable of _highContrast to assign the initial value of the public hightContrast variable
 		private bool _highContrast = false;
 
 		//Declares the public darkMode variable, using the get & set method to enable
@@ -136,14 +137,14 @@ namespace Wordle_SDD
                         {
                             //Checks whether the button has already been filled with a colour to represent its
                             //correct status in the grid, thus changing the shade of green to lighter/darker
-                            if (button.BackColor == Colours.lightCorrectColour || button.BackColor == Colours.darkCorrectColour)
+                            if (button.BackColor == Colours.lightCorrectColour || button.BackColor == Colours.darkCorrectColour || button.BackColor == Colours.highContrastCorrectColour)
                             {
                                 button.BackColor = correctColour;
                                 button.ForeColor = Colours.darkTextColour;
                             }
                             //Checks whether the button has already been filled with a colour to represent its
                             //partially correct status in the grid, thus changing the shade of yellow to lighter/darker
-                            else if (button.BackColor == Colours.lightPartialColour || button.BackColor == Colours.darkPartialColour)
+                            else if (button.BackColor == Colours.lightPartialColour || button.BackColor == Colours.darkPartialColour || button.BackColor == Colours.highContrastPartialColour)
                             {
                                 button.BackColor = partialColour;
                                 button.ForeColor = Colours.darkTextColour;
@@ -167,24 +168,132 @@ namespace Wordle_SDD
                     }
                 }
 
-				
-
+				//Sets all of the colour variables on the help form to what they are on this form
 				FrmHelp.textColour = textColour;
                 FrmHelp.correctColour = correctColour;
 				FrmHelp.partialColour = partialColour;
-				FrmHelp.baseColour = this.baseColour;
+				FrmHelp.baseColour = baseColour;
 				FrmHelp.alternateColour = alternateColour;
+				//Changes the dark mode bool on the help menu, activating the set method which repaints that form
 				FrmHelp.darkMode = darkMode;
+
+				//Calls the highContrast set method again without changing the value to repaint
+				//anything that was wrongly changed in the dark mode get method
+				highContrast = highContrast;
+				
             }
 		}
 
+		//Public highContrast mode variable with get, set methods to call code when the variable has its value changed
 		public bool highContrast
 		{
-			get { return highContrast; } 
+			get { return _highContrast; }
 			set
 			{
+				//Stores the updated value in the local variable
 				_highContrast = value;
 
+				//Changes the correct and partial colour variables, which are the only things that the high contrast mode alters
+				//It first checks if high contrast mode is on and will change the variables appropriately, if it is not on it
+				//means we are turning off high contrast mode and thus have to check whether it is dark mode or light mode
+				if (highContrast == true)
+				{
+					correctColour = Colours.highContrastCorrectColour;
+					partialColour = Colours.highContrastPartialColour;
+				}
+				else if (darkMode == true)
+				{
+					correctColour = Colours.darkCorrectColour;
+					partialColour = Colours.darkPartialColour;
+				}
+				else
+				{
+					correctColour = Colours.lightCorrectColour;
+					partialColour = Colours.lightPartialColour;
+				}
+
+				//Searches through all controls on the page
+				foreach (Control control in Controls)
+				{
+					//Calls code only when this iterations control is a letterBox
+					if (control is letterBox letterBox)
+					{
+						//Checks whether the letterBox has already been filled with a letter in
+						//the correct spot (status = 2), thus changing the shade of green to lighter/darker
+						if (letterBox.status == 2)
+						{
+							letterBox.baseColour = correctColour;
+							letterBox.alternateColour = correctColour;
+						}
+						//Checks whether the letterBox has already been filled with a letter in a
+						//partially correct spot (status = 1), thus changing the shade of yellow to lighter/darker
+						else if (letterBox.status == 1)
+						{
+							letterBox.baseColour = partialColour;
+							letterBox.alternateColour = partialColour;
+						}
+						//Checks whether the letterBox has already been filled with a letter in the
+						//incorrect spot (status = 0), thus changing the full colour grey to the lighter/darker
+						else if (letterBox.status == 0)
+						{
+							letterBox.baseColour = alternateColour;
+							letterBox.alternateColour = alternateColour;
+						}
+						//If all other checks have failed the letterbox must not have had a letter entered
+						//into it, thus the colour changes retain the border and the correct text colour
+						else
+						{
+							letterBox.baseColour = baseColour;
+							letterBox.alternateColour = alternateColour;
+							letterBox.textColour = textColour;
+						}
+					}
+					if (control is Button button) // Assuming letterboxes are TextBox controls
+					{
+						//This if condition differentiates the buttons of the onscreen keyboard
+						//from the navigation buttons and inherited button properties of the letterBoxes
+						if (button.Name.StartsWith("btn") &&
+						   (button.Name.Length == 4 || // Single character buttons (btnA to btnZ)
+							button.Name == "btnEnter" || // Special buttons
+							button.Name == "btnDelete")) // Special buttons
+						{
+							//Checks whether the button has already been filled with a colour to represent its
+							//correct status in the grid, thus changing the shade of green to lighter/darker
+							if (button.BackColor == Colours.lightCorrectColour || button.BackColor == Colours.darkCorrectColour || button.BackColor == Colours.highContrastCorrectColour)
+							{
+								button.BackColor = correctColour;
+								button.ForeColor = Colours.darkTextColour;
+							}
+							//Checks whether the button has already been filled with a colour to represent its
+							//partially correct status in the grid, thus changing the shade of yellow to lighter/darker
+							else if (button.BackColor == Colours.lightPartialColour || button.BackColor == Colours.darkPartialColour || button.BackColor == Colours.highContrastPartialColour)
+							{
+								button.BackColor = partialColour;
+								button.ForeColor = Colours.darkTextColour;
+							}
+							//Checks whether the button has already been filled with a colour to represent its
+							//incorrect status in the grid, thus changing the shade of grey to lighter/darker
+							else if (button.BackColor == Colours.lightAlternateColour || button.BackColor == Colours.darkAlternateColour)
+							{
+								button.BackColor = alternateColour;
+								button.ForeColor = Colours.darkTextColour;
+							}
+							else
+							{
+								button.BackColor = tertiaryColour;
+								button.ForeColor = textColour;
+							}
+							//All buttons have the same border colour thus it gets excluded from the if statement
+							button.FlatAppearance.BorderColor = alternateColour;
+
+						}
+					}
+				}
+
+				//Changes and calls the help forms high contrast variable.
+				//Because the method on this form is called after darkMode plays and when the variable is changed,
+				//the following method will also be called every time darkMode or highContrast is changed
+				FrmHelp.highContrastMode = highContrast;
 			}
 		}
 
@@ -767,6 +876,7 @@ namespace Wordle_SDD
 
 		private string generateCorrectWord()
 		{
+			string tempNoRepeat = correctWord;
 			//Declares the correctWordPool, a far condensed version of wordList.txt that only includes common words
 			string[] correctWordPool = {
 				"HOUSE", "PLACE", "RIGHT", "SMALL", "LARGE", "WATER", "WHERE", "AFTER", "UNDER",
@@ -778,7 +888,13 @@ namespace Wordle_SDD
 			};
 			Random random = new Random();
 			//Returns a random word from the correctWordPool
-			return correctWordPool[random.Next(0, correctWordPool.Length)];
+			string newWord = correctWordPool[random.Next(0, correctWordPool.Length)];
+            while (newWord == tempNoRepeat)
+			{
+				newWord = correctWordPool[random.Next(0, correctWordPool.Length)];
+            }
+			return newWord;
+
 		}
 
 		private string convertRowOf2DCharGridToString(char[,] grid, int row)

@@ -61,6 +61,15 @@ namespace Wordle_SDD.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream audioHelpMenuVoiceOver {
+            get {
+                return ResourceManager.GetStream("audioHelpMenuVoiceOver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap imgCrossIconDark {
@@ -116,6 +125,26 @@ namespace Wordle_SDD.Properties {
         internal static System.Drawing.Bitmap imgSettingsIconLight {
             get {
                 object obj = ResourceManager.GetObject("imgSettingsIconLight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgSpeakerDark {
+            get {
+                object obj = ResourceManager.GetObject("imgSpeakerDark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgSpeakerLight {
+            get {
+                object obj = ResourceManager.GetObject("imgSpeakerLight", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
