@@ -34,9 +34,8 @@ namespace Wordle_SDD
 		private int currentColumn = 0;
 		private char[,] letterGrid = new char[5, 6];
 		private string correctWord = "";
-		private string currentWord = "";
-		private int[] resultArray = new int[5];
-		private int numberCorrectLetters = 0;
+        private int[] resultArray = new int[5];
+        private int numberCorrectLetters = 0;
 		private int animationLength = 2;
 		private string[] wordListArray;
 		private string input;
@@ -253,13 +252,16 @@ namespace Wordle_SDD
 				//before it (not in the first position in the row)
 				if (input == "Delete" && currentColumn > 0)
 				{
-					deleteLetter();
+					deleteLetter(currentColumn - 1, currentRow);
 				}
 				//Checks if the button was Enter and that the row is a full word
 				else if (input == "Enter" && currentColumn == 5)
 				{
-					enterWord();
-				}
+					//Uses the custom function to get the string "currentWord" from the current row of the 2D char array
+					string word = convertRowOf2DCharGridToString(letterGrid, currentRow);
+                    //and inputs it as a parameter into the enterWord method
+                    enterWord(word);                   
+                }
 				//Checks if the button was a key and that the row has spots available for another letter
                 else if (input != "Enter" && input != "Delete" && currentColumn < 5)
                 {
@@ -270,7 +272,7 @@ namespace Wordle_SDD
 	    
 		//Async void is useful here as there is no return statement and the "await Task.Delay" function allows for smooth animations
 		private async void keyPressAnimation(int col, int row)
-		{
+		{ 
 			//Declares a string in the format of letterBoxCR with CR representing the desired location in the grid
 			string selectedLetterBox = $"letterBox{col:D1}{row:D1}";
 
@@ -446,10 +448,10 @@ namespace Wordle_SDD
 			currentColumn++;
 		}
 		
-		private void deleteLetter()
+		private void deleteLetter(int col, int row)
 		{
-			letterGrid[currentColumn - 1, currentRow] = Convert.ToChar(" ");
-			string selectedLetterBox = $"letterBox{currentColumn - 1:D1}{currentRow:D1}";
+			letterGrid[col, row] = Convert.ToChar(" ");
+			string selectedLetterBox = $"letterBox{col:D1}{row:D1}";
 			foreach (Control control in Controls)
 			{
 				if (control.Name == selectedLetterBox && control is letterBox letterBox) // Assuming letterboxes are TextBox controls
@@ -458,25 +460,21 @@ namespace Wordle_SDD
 					break; // Exit the loop once the letterbox is found and updated
 				}
 			}
-			keyPressAnimation(currentColumn - 1, currentRow);
+			keyPressAnimation(col, row);
 			currentColumn--;
 		}
 
-		private void enterWord()
+		private void enterWord(string currentWord)
 		{
-			//Uses the custom function to get the string "currentWord" from the current row of the 2D char array
-			currentWord = convertRowOf2DCharGridToString(letterGrid, currentRow);
-			
 			//Checks if the word is a valid word out of the word pool
 			if (checkValidWord(currentWord))
 			{
 				//Plays the key press animation for all 5 letter boxes simultaneously when word is entered
-				keyPressAnimation(0, currentRow);
-				keyPressAnimation(1, currentRow);
-				keyPressAnimation(2, currentRow);
-				keyPressAnimation(3, currentRow);
-				keyPressAnimation(4, currentRow);
-
+				for (int i = 0; i <= 4; i++)
+				{
+                    keyPressAnimation(i, currentRow);
+                }
+							
 				//Calls the checkEnteredRow function which handles the wordle Logic for which square is correct, partially correct and incorrect.
 				//Additionally, The functions and logic that handle the colouring of the squares and onscreen keyboard are children of this function.
 				resultArray = checkEnteredRow(currentWord.ToCharArray(), correctWord.ToCharArray());
@@ -486,7 +484,7 @@ namespace Wordle_SDD
 				{
 					//Calls the gameWon function, passing the number of guesses it took to win as a parameter.
 					//Unlike the other two pathways, this does not call the colouring function as it is handled by the Victory animation
-					gameWon(currentRow);
+					gameWon(currentRow, currentWord);
 					//Return statement to exit out of the two if statements and prevent the four lines below the else from being called
 					return;
 				}
@@ -516,19 +514,9 @@ namespace Wordle_SDD
 				//Resets the number of correct letters as it is a new row
 				numberCorrectLetters = 0;
 			}
-			//The word was thus invalid and not contained in the assigned wordList
-			else
-			{
-				//Plays the invalidWordAnimation for all 5 letterBoxes in the row, giving a side to side wall shake effect
-				invalidWordAnimation(0, currentRow);
-				invalidWordAnimation(1, currentRow);
-				invalidWordAnimation(2, currentRow);
-				invalidWordAnimation(3, currentRow);
-				invalidWordAnimation(4, currentRow);
-			}
 		}
 
-		private void gameWon(int row)
+		private void gameWon(int row, string currentWord)
 		{
 			//Plays the correct word animation, passing through the row and currentWord
 			//the current word is needed as a parameter as the colouring is done by the animation
@@ -610,7 +598,10 @@ namespace Wordle_SDD
 			//Declares a boolean array with bounds 5
 			bool[] alreadyChecked = new bool[5];
 
-            //	Check for correct  \\ 
+			//Creates a local array with bounds 5 that will return the 0, 1 or 2 values for each letter
+			int[] resultArray = new int[5];
+
+			//	Check for correct  \\ 
 
             //Create for loop with 5 iterations, one for each column
             for (int i = 0; i <= 4; i++)
@@ -618,9 +609,9 @@ namespace Wordle_SDD
 				//Check if the current word matches the correct word at the specific position defined by the iteration of the for loop, if they match the position i is correct
 				if (currentWordArray[i] == correctWordArray[i]) 
 				{
-					//Assigns a 2 to the respective position in the resultArray, meaning a correct
-					//This will be used later for colouring
-					resultArray[i] = 2;
+                    //Assigns a 2 to the respective position in the resultArray, meaning a correct
+                    //This will be used later for colouring
+                    resultArray[i] = 2;
 					//Swaps the respective position in the already checked array to true
 					alreadyChecked[i] = true;
 					//Increments the number of correct letters
@@ -628,7 +619,7 @@ namespace Wordle_SDD
 				}
 			}
 
-            //	Check for partially correct  \\
+            //	Check for partially correct  \\	
 
 			//Create for loop with 5 iterations, one for each column
             for (int i = 0; i <= 4; ++i)
@@ -646,8 +637,8 @@ namespace Wordle_SDD
 						{
 							if (currentWordArray[i] == correctWordArray[j])
 							{
-								//Sets this positions array to 1, meaning a partially correct
-								resultArray[i] = 1;
+                                //Sets this positions array to 1, meaning a partially correct
+                                resultArray[i] = 1;
 								//Sets the j position, the square paired to the i position to already checked to prevent double up
 								alreadyChecked[j] = true;
 								//Exits out of both for loops to prevent the i position from finding another pairing, which would be incorrect
@@ -747,8 +738,22 @@ namespace Wordle_SDD
 
 		private bool checkValidWord(string word)
 		{
-			return Array.Exists(wordListArray, element => element.Equals(word, StringComparison.OrdinalIgnoreCase));
-		}
+            if(Array.Exists(wordListArray, element => element.Equals(word, StringComparison.OrdinalIgnoreCase)))
+			{
+				return true;
+			}
+            //The word was thus invalid and not contained in the assigned wordList
+            else
+            {
+                //Plays the invalidWordAnimation for all 5 letterBoxes in the row, giving a side to side wall shake effect
+				for(int i = 0; i <= 4; i++)
+				{
+                    invalidWordAnimation(i, currentRow);
+                }
+				//Returns false as the word was invalid
+				return false;
+            }
+        }
 
 		private string[] extractWordList(string wordList)
 		{
