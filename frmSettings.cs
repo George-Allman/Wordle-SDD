@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
@@ -17,20 +18,11 @@ namespace Wordle_SDD
         //Creates FrmWordle instance to refer to variables on that form
         private frmWordle FrmWordle = new frmWordle();
         private frmHelp FrmHelp = new frmHelp();
+        private bool darkMode = true;
+        private bool highContrastMode = false;
         //Accepts the instance of frmWordle assigned
         //to this form when it was instantiated
-        private Color lightBaseColour = Color.FromArgb(245, 245, 245);
-        private Color darkBaseColour = Color.FromArgb(20, 20, 20);
-        private Color lightAlternateColour = Color.FromArgb(150,150,150);
-        private Color darkAlternateColour = Color.FromArgb(75, 75, 75);
-        private Color lightTertiaryColour = Color.FromArgb(200, 200, 200);
-        private Color darkTertiaryColour = Color.DimGray;
-        private Color lightCorrectColour = Color.FromArgb(106, 170, 100);
-        private Color darkCorrectColour = Color.FromArgb(83, 141, 78);
-        private Color lightPartialColour = Color.FromArgb(201, 180, 88);
-        private Color darkPartialColour = Color.FromArgb(181, 159, 59);
-        private Color lightTextColour = Color.Black;
-        private Color darkTextColour = Color.White;
+
         public frmSettings(frmWordle frmWordleInstance)
         {
             //Constructs form
@@ -42,11 +34,29 @@ namespace Wordle_SDD
             FrmWordle = frmWordleInstance;
             if (FrmWordle.darkMode == true )
             {
+                darkMode = true;
                 chkDarkMode.Checked = true;
             }
             else 
             { 
+                darkMode = false;
                 chkDarkMode.Checked = false; 
+            }
+            if (FrmWordle.checkDictionary == true )
+            {
+                chkCheckDictionary.Checked = true;
+            }
+            else
+            {
+                chkCheckDictionary.Checked = false;
+            }
+            if (FrmWordle.highContrast == true)
+            {
+                chkHighContrast.Checked = true;
+            }
+            else
+            {
+                chkHighContrast.Checked = false;
             }
 
         }
@@ -55,63 +65,81 @@ namespace Wordle_SDD
         {            
             if (chkDarkMode.Checked == true)
             {
-                FrmWordle.baseColour = darkBaseColour;
-                FrmWordle.alternateColour = darkAlternateColour;
-                FrmWordle.tertiaryColour = darkTertiaryColour;
-                FrmWordle.correctColour = darkCorrectColour;
-                FrmWordle.partialColour = darkPartialColour;
-                FrmWordle.textColour = darkTextColour;
-                FrmWordle.darkMode = true;
-            }
-            else
-            {
-                FrmWordle.baseColour = lightBaseColour;
-                FrmWordle.alternateColour = lightAlternateColour;
-                FrmWordle.tertiaryColour = lightTertiaryColour;
-                FrmWordle.correctColour = lightCorrectColour;
-                FrmWordle.partialColour = lightPartialColour;
-                FrmWordle.textColour = lightTextColour;
-                FrmWordle.darkMode = false;
-            }
-            if (FrmWordle.darkMode == true)
-            {
                 btnClose.BackgroundImage = Resources.imgCrossIconLight;
 
+                FrmWordle.baseColour = Colours.darkBaseColour;
+                FrmWordle.alternateColour = Colours.darkAlternateColour;
+                FrmWordle.tertiaryColour = Colours.darkTertiaryColour;
+                FrmWordle.correctColour = Colours.darkCorrectColour;
+                FrmWordle.partialColour = Colours.darkPartialColour;
+                FrmWordle.textColour = Colours.darkTextColour;
+                FrmWordle.darkMode = true;
+                
             }
             else
             {
                 btnClose.BackgroundImage = Resources.imgCrossIconDark;
+
+                FrmWordle.baseColour = Colours.lightBaseColour;
+                FrmWordle.alternateColour = Colours.lightAlternateColour;
+                FrmWordle.tertiaryColour = Colours.lightTertiaryColour;
+                FrmWordle.correctColour = Colours.lightCorrectColour;
+                FrmWordle.partialColour = Colours.lightPartialColour;
+                FrmWordle.textColour = Colours.lightTextColour;
+                FrmWordle.darkMode = false;
             }
             this.BackColor = FrmWordle.baseColour;
             btnClose.ForeColor = FrmWordle.baseColour;
 
             chkDarkMode.ForeColor = FrmWordle.textColour;
+            chkCheckDictionary.ForeColor = FrmWordle.textColour;
             chkHighContrast.ForeColor = FrmWordle.textColour;
-            chkOnScreenKeyboard.ForeColor = FrmWordle.textColour;
             lblGraphicsTitle.ForeColor = FrmWordle.textColour;
-            //FrmWordle.redrawFormsDarkMode();
+            lblChkDictWarning.ForeColor = FrmWordle.textColour;
+            lblSupport.ForeColor = FrmWordle.textColour;
+
+
         }
 
         private void chkHighContrast_CheckedChanged(object sender, EventArgs e)
         {
+            FrmWordle.correctColour = Colours.highContrastCorrectColour;
+            FrmWordle.partialColour = Colours.highContrastPartialColour;
             if (chkHighContrast.Checked == true)
             {
-                FrmWordle.highContrastMode = true;
+                highContrastMode = true;
+                FrmWordle.highContrast = true;
             }
             else
             {
-                FrmWordle.highContrastMode = false;
+                highContrastMode = false;
+                FrmWordle.highContrast = false;
             }
         }
 
-        private void chkOnScreenKeyboard_CheckedChanged(object sender, EventArgs e)
+        private void chkCheckDictionary_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (chkCheckDictionary.Checked == true)
+            {
+                FrmWordle.checkDictionary = true;
+            }
+            else
+            {
+                FrmWordle.checkDictionary = false;
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void btnEmail_Click(object sender, EventArgs e)
+        {
+            
+            string mailto = "mailto:george.allman@education.nsw.gov.au";
+            Process.Start(new ProcessStartInfo(mailto) { UseShellExecute = true });
+            
         }
     }
 }
