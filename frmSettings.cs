@@ -17,9 +17,6 @@ namespace Wordle_SDD
     {
         //Creates FrmWordle instance to refer to variables on that form
         private frmWordle FrmWordle = new frmWordle();
-        private frmHelp FrmHelp = new frmHelp();
-        private bool darkMode = true;
-        private bool highContrastMode = false;
         //Accepts the instance of frmWordle assigned
         //to this form when it was instantiated
 
@@ -30,18 +27,19 @@ namespace Wordle_SDD
             //Makes the new instance of the wordle form equal
             //to the one already on screen, enabling us to actively edit
             //variables and invoke methods to instantly perform the
-            //necessary visual augments
+            //necessary visual augments of dark mode
             FrmWordle = frmWordleInstance;
+            //Checks if the main form is in dark mode or not and assigns the appropriate value here
+            //This is so when you change the mode, close the settings form and then reopen it it is on the correct setting
             if (FrmWordle.darkMode == true )
             {
-                darkMode = true;
                 chkDarkMode.Checked = true;
             }
             else 
             { 
-                darkMode = false;
                 chkDarkMode.Checked = false; 
             }
+            //Completes the same check for checkDictionary
             if (FrmWordle.checkDictionary == true )
             {
                 chkCheckDictionary.Checked = true;
@@ -50,6 +48,7 @@ namespace Wordle_SDD
             {
                 chkCheckDictionary.Checked = false;
             }
+            //Completes the same check for highContrast
             if (FrmWordle.highContrast == true)
             {
                 chkHighContrast.Checked = true;
@@ -63,83 +62,93 @@ namespace Wordle_SDD
 
         private void chkDarkMode_CheckedChanged(object sender, EventArgs e)
         {            
+            //Checks whether the darkMode check was changed to true or false
+            //In this case true
             if (chkDarkMode.Checked == true)
             {
+                //Changes the btn close image to the dark mode variant
                 btnClose.BackgroundImage = Resources.imgCrossIconLight;
 
+                //Changes all of the main forms public colour variables to the dark variant
                 FrmWordle.baseColour = Colours.darkBaseColour;
                 FrmWordle.alternateColour = Colours.darkAlternateColour;
                 FrmWordle.tertiaryColour = Colours.darkTertiaryColour;
                 FrmWordle.correctColour = Colours.darkCorrectColour;
                 FrmWordle.partialColour = Colours.darkPartialColour;
                 FrmWordle.textColour = Colours.darkTextColour;
+                //Finally changes the main forms dark mode bool, calling the set method
                 FrmWordle.darkMode = true;
                 
             }
+            //In this case false
             else
             {
+                //Changes the btn close image to the dark mode variant
                 btnClose.BackgroundImage = Resources.imgCrossIconDark;
 
+                //Changes all of the main forms public colour variables to the light variant
                 FrmWordle.baseColour = Colours.lightBaseColour;
                 FrmWordle.alternateColour = Colours.lightAlternateColour;
                 FrmWordle.tertiaryColour = Colours.lightTertiaryColour;
                 FrmWordle.correctColour = Colours.lightCorrectColour;
                 FrmWordle.partialColour = Colours.lightPartialColour;
                 FrmWordle.textColour = Colours.lightTextColour;
+                //Finally changes the main forms dark mode bool, calling the set method
                 FrmWordle.darkMode = false;
             }
+            //Changes all of the graphics on this form according to the variables just changed above
             this.BackColor = FrmWordle.baseColour;
             btnClose.ForeColor = FrmWordle.baseColour;
-
             chkDarkMode.ForeColor = FrmWordle.textColour;
             chkCheckDictionary.ForeColor = FrmWordle.textColour;
             chkHighContrast.ForeColor = FrmWordle.textColour;
             lblGraphicsTitle.ForeColor = FrmWordle.textColour;
             lblChkDictWarning.ForeColor = FrmWordle.textColour;
-            lblSupport.ForeColor = FrmWordle.textColour;
-
-
         }
 
         private void chkHighContrast_CheckedChanged(object sender, EventArgs e)
         {
-            FrmWordle.correctColour = Colours.highContrastCorrectColour;
-            FrmWordle.partialColour = Colours.highContrastPartialColour;
+            //This method does not change any colours directly as it is done by the set method on the main form
+            //This is because the high contrast mode is also used by darkMode
+
+            //Checks whether the check box was checked or unchecked
+
+            //In this case checked
             if (chkHighContrast.Checked == true)
             {
-                highContrastMode = true;
+                //Changes the main forms bool and calls the set method
                 FrmWordle.highContrast = true;
             }
+            //In this case unchecked
             else
             {
-                highContrastMode = false;
+                //Changes the main forms bool and calls the set method
                 FrmWordle.highContrast = false;
             }
         }
 
         private void chkCheckDictionary_CheckedChanged(object sender, EventArgs e)
         {
+            //Checks whether the check box was checked or unchecked
+
+            //In this case checked
             if (chkCheckDictionary.Checked == true)
             {
+                //Changes the main forms bool and calls the set method
                 FrmWordle.checkDictionary = true;
             }
+            //In this case unchecked
             else
             {
+                //Changes the main forms bool and calls the set method
                 FrmWordle.checkDictionary = false;
             }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Hide();
-        }
-
-        private void btnEmail_Click(object sender, EventArgs e)
-        {
-            
-            string mailto = "mailto:george.allman@education.nsw.gov.au";
-            Process.Start(new ProcessStartInfo(mailto) { UseShellExecute = true });
-            
+            //Closes this form
+            Close();
         }
     }
 }

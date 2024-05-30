@@ -41,7 +41,7 @@ namespace Wordle_SDD
 		private string input;
 		private bool animationOngoing = false;
 
-		private Form frmHelp = new frmHelp();
+		//Declares instance of this form to pass through to the other forms
 		private frmHelp FrmHelp = new frmHelp();
 
         //Declares the public variables, they will be accessed by the frmSettings so thus need to be public
@@ -67,8 +67,11 @@ namespace Wordle_SDD
 		//to be intuitively ran whenever the boolean is swapped.
 		public bool darkMode
 		{
-			get { return _darkMode; }
-			set { 
+            //Get method that plays when the boolean is read
+            get { return _darkMode; }
+            //Set method that plays when the boolean is changed
+            set
+            { 
 				//Alters the private variable to the new value that has just been passed
 				_darkMode = value;
 				//Assigns the unique controls(all controls that are not the onscreen keyboard or letterBoxes) to the relevant colour
@@ -186,9 +189,11 @@ namespace Wordle_SDD
 		//Public highContrast mode variable with get, set methods to call code when the variable has its value changed
 		public bool highContrast
 		{
-			get { return _highContrast; }
-			set
-			{
+            //Get method that plays when the boolean is read
+            get { return _highContrast; }
+            //Set method that plays when the boolean is changed
+            set
+            {
 				//Stores the updated value in the local variable
 				_highContrast = value;
 
@@ -355,6 +360,7 @@ namespace Wordle_SDD
 
 		private void KeyboardInput(object sender, EventArgs e)
 		{
+			//Guard clause so no keys can be input while the correct word animation is playing
 			if (animationOngoing)
 			{
 				return;
@@ -412,7 +418,7 @@ namespace Wordle_SDD
 				//is found and allows us to use the simple LetterBox name to augment it
 				if (control.Name == selectedLetterBox && control is letterBox letterBox)
 				{
-					//Expand
+					//	Expand	//
 
 					//For loop runs for the universal animation length constant
 					for (int i = 0; i <= animationLength*1.5; i++)
@@ -432,7 +438,7 @@ namespace Wordle_SDD
 						await Task.Delay(1);
 					}
 
-                    //Shrink
+                    //	Shrink	//
 
                     for (int i = 0; i <= animationLength* 1.5; i++)
 					{
@@ -466,6 +472,9 @@ namespace Wordle_SDD
                 //is found and allows us to use the simple LetterBox name to augment it
                 if (control.Name == selectedLetterBox && control is letterBox letterBox) // Assuming letterboxes are TextBox controls
 				{
+
+					//	Shift left	//
+
 					//Moves the letterBox to the left by 1 pixel every iteration
 					for (int i = 0; i <= animationLength; i++)
 					{
@@ -476,8 +485,10 @@ namespace Wordle_SDD
 						await Task.Delay(1);
 					}
 
-					//Moves the letterBox to the right by 2 pixel every iteration so it ends up offset to the right
-					for (int i = 0; i <= animationLength; i++)
+                    //	Shift right	//
+
+                    //Moves the letterBox to the right by 2 pixel every iteration so it ends up offset to the right
+                    for (int i = 0; i <= animationLength; i++)
 					{
 						letterBox.Location = new Point(
 							letterBox.Location.X + 2,
@@ -485,9 +496,11 @@ namespace Wordle_SDD
 							);
 						await Task.Delay(1);
 					}
-					
-					//Moves the letterBox to the left by 1 pixel every iteration so it returns to the center, completing the 'bounce' effect
-					for (int i = 0; i <= animationLength; i++)
+
+                    //	Shift left	//
+
+                    //Moves the letterBox to the left by 1 pixel every iteration so it returns to the center, completing the 'bounce' effect
+                    for (int i = 0; i <= animationLength; i++)
 					{
 						letterBox.Location = new Point(
 							letterBox.Location.X - 1,
@@ -501,10 +514,13 @@ namespace Wordle_SDD
 			}
 		}
 
-        private async void correctWordAnimation(int row, char[] currentWordArray)
+        private async void correctWordAnimation(int row, string currentWord)
         {
 			//Sets the animationOngoing flag to true so that no more letters or buttons can be pressed, preventing bugs
 			animationOngoing = true;
+
+			//Converts the input current word parameter to a char array
+			char[] currentWordArray = currentWord.ToCharArray();
 
             //For loop for each letterBox in the row
             for (int i = 0; i <= 5; i++)
@@ -532,6 +548,9 @@ namespace Wordle_SDD
 						//Same for loops as the other two animation, however multiplying animation length by 3 to make the animation more striking and pronounced
                         for (int j = 0; j <= animationLength * 3; j++)
                         {
+
+							//	Up	//
+
 							//Moves the square up two pixels each iteration
                             letterBox.Location = new Point(
                                 letterBox.Location.X,
@@ -541,6 +560,9 @@ namespace Wordle_SDD
                         }
                         for (int j = 0; j <= animationLength * 3; j++)
                         {
+
+							//	Down	//
+
                             //Moves the square down two pixels each iteration
                             letterBox.Location = new Point(
                                 letterBox.Location.X,
@@ -554,7 +576,7 @@ namespace Wordle_SDD
             //Calls the gameWon function, passing the number of guesses it took to win as a parameter.
             //The gameWon function playing after the animation ensures they do not reset the
             //game while the animation is playing, preventing a bug
-            gameWon(row);
+            gameWon(row, currentWord);
 			//Returns the animationOngoing flag back to false to enable the other buttons to be pressed
 			animationOngoing = false;
         }
@@ -581,23 +603,33 @@ namespace Wordle_SDD
 					break;
 				}
 			}
+			//Plays keyPressAnimation to bounce the letter just entered
 			keyPressAnimation(currentColumn, currentRow);
+			//Increments current column
 			currentColumn++;
 		}
 		
 		private void deleteLetter(int col, int row)
 		{
+			//Removes the previous grid positions letter in the array, the parameter is
+			//entered as (currentColumn - 1) so nothing has to be decremented here
 			letterGrid[col, row] = Convert.ToChar(" ");
+			//Creates a string for the letterBox that needs to be changed
 			string selectedLetterBox = $"letterBox{col:D1}{row:D1}";
+			//Cycles through all controls on screen
 			foreach (Control control in Controls)
 			{
-				if (control.Name == selectedLetterBox && control is letterBox letterBox) // Assuming letterboxes are TextBox controls
+				//If this iterations control is the control assigned by the string above it calls this code
+				if (control.Name == selectedLetterBox && control is letterBox letterBox) 
 				{
+					//Deletes the letter from the letterbox and thus off the screen
 					letterBox.letter = "";
 					break; // Exit the loop once the letterbox is found and updated
 				}
 			}
+			//Bounces the letterBox that just had the letter removed from it
 			keyPressAnimation(col, row);
+			//Decrements the current Column
 			currentColumn--;
 		}
 
@@ -621,7 +653,7 @@ namespace Wordle_SDD
 				{
                     //Plays the correct word animation, passing through the row and currentWord
                     //the current word is needed as a parameter as the colouring is done by the animation
-                    correctWordAnimation(currentRow, currentWord.ToCharArray());
+                    correctWordAnimation(currentRow, currentWord);
                     //Return statement to exit out of the two if statements and prevent the four lines below the else from being called
                     return;
 				}
@@ -674,16 +706,15 @@ namespace Wordle_SDD
                 MessageBox.Show("You won after " + (row + 1) + " guesses. Close one!");
             }
 
-
-
             //Calls the reset function to allow the user to continue playing with a new word
             gameReset();
 		}
 
 		private void gameLost(string correctWord)
 		{
-			//Changes the correctWord from all uppercase to just a 
+			//Creates new string as lowercase variant of correct word
 			string word = correctWord.ToLower();
+			//Capitilises the first letter of the word
 			word = (word.Substring(0, 1)).ToUpper() + word.Substring(1,4);
 			
 			//Returns a defeat message to the user, telling them what the word they failed to guess was
@@ -807,11 +838,15 @@ namespace Wordle_SDD
 
 		private void colourCompleteWord(int[] resultArray, int row, char[] currentWordArray)
 		{
+			//For loop for all 5 letterBoxes in the row
 			for (int i = 0; i <= 4; i++)
 			{
+				//Creates new string for this iterations desired letterBox
 				string selectedLetterBox = $"letterBox{i:D1}{row:D1}";
+				//Cycles through all letterBoxes on screen
 				foreach (Control control in Controls)
 				{
+					//Calls code once the desired letterBox is found
 					if (control.Name == selectedLetterBox && control is letterBox letterBox) // Assuming letterboxes are TextBox controls
 					{
 						//If the letter is in the correct letter and correct spot, if number of correct letters is 5,
@@ -819,26 +854,32 @@ namespace Wordle_SDD
 						letterBox.textColour = Color.White;
 						if (resultArray[i] == 2 && numberCorrectLetters != 5)
 						{
+							//Colours the letterBox fully green/orange
 							letterBox.baseColour = correctColour;
 							letterBox.alternateColour = correctColour;
+							//Calls the colour button function with the letter and correct colour as parameters to change the onscreen keyboards colour
 							colourButton(currentWordArray[i], correctColour);
-							//Sets the letterBoxes status to 2 so the program can tell what colour it is later
+							//Sets the letterBoxes status to 2 so the program can easily tell what colour it is later
 							letterBox.status = 2;
 						}
 						//if the letter is correct, although in the wrong location
 						else if (resultArray[i] == 1)
 						{
-							letterBox.baseColour = partialColour;
+                            //Colours the letterBox fully yellow/blue
+                            letterBox.baseColour = partialColour;
 							letterBox.alternateColour = partialColour;
-							colourButton(currentWordArray[i], partialColour);
-                            //Sets the letterBoxes status to 1 so the program can tell what colour it is later
+                            //Calls the colour button function with the letter and correct colour as parameters to change the onscreen keyboards colour
+                            colourButton(currentWordArray[i], partialColour);
+                            //Sets the letterBoxes status to 1 so the program can easily tell what colour it is later
                             letterBox.status = 1;
                         }
 						else
 						{
-							letterBox.baseColour = alternateColour;
-							colourButton(currentWordArray[i], alternateColour);
-                            //Sets the letterBoxes status 0 so the program can tell what colour it is later
+                            //Colours the letterBox fully grey
+                            letterBox.baseColour = alternateColour;
+                            //Calls the colour button function with the letter and correct colour as parameters to change the onscreen keyboards colour
+                            colourButton(currentWordArray[i], alternateColour);
+                            //Sets the letterBoxes status 0 so the program can easily tell what colour it is later
                             letterBox.status = 0;
                         }
 					}
@@ -848,14 +889,20 @@ namespace Wordle_SDD
 
 		private void colourButton(char letter, Color colour)
 		{
+			//Creates a string of the desired button
 			string selectedButton = $"btn{letter:D1}";
+			//Cycles through all controls on the page
 			foreach (Control control in Controls)
 			{
+				//Plays code once desired letterbox is found
 				if (control.Name == selectedButton && control is Button button) // Assuming letterboxes are TextBox controls
 				{
+					//Checks whether the button has already been coloured green as to not wrongly overwrite it with yellow
 					if (button.BackColor != correctColour)
 					{
+						//Changes the colour to colour passed as a parameter
 						button.BackColor = colour;
+						//Filled in keys are always white so it always changes it to white
 						button.ForeColor = Colours.darkTextColour;
 					}
 				}
@@ -864,6 +911,7 @@ namespace Wordle_SDD
 
 		private string generateCorrectWord()
 		{
+			//Creates a temporary string of the correct word that is being overwritten
 			string tempNoRepeat = correctWord;
 			//Declares the correctWordPool, a far condensed version of wordList.txt that only includes common words
 			string[] correctWordPool = {
@@ -877,16 +925,20 @@ namespace Wordle_SDD
 			Random random = new Random();
 			//Returns a random word from the correctWordPool
 			string newWord = correctWordPool[random.Next(0, correctWordPool.Length)];
+			//Generates new word if the random word was the same as last time
             while (newWord == tempNoRepeat)
 			{
-				newWord = correctWordPool[random.Next(0, correctWordPool.Length)];
+                //Returns a random word from the correctWordPool
+                newWord = correctWordPool[random.Next(0, correctWordPool.Length)];
             }
+			//Returns the new word that is not the same as last time
 			return newWord;
 
 		}
 
 		private string convertRowOf2DCharGridToString(char[,] grid, int row)
 		{
+			//Concatenates all 5 columns character of the row passed through
 			return (
 				grid[0, row].ToString() +
 				grid[1, row].ToString() +
@@ -898,14 +950,30 @@ namespace Wordle_SDD
 
 		private bool checkValidWord(string word)
 		{
+			//Guard clause that exits the method if checkDictionary is false
 			if (checkDictionary == false)
 			{
+				//Returns true as all words are valid in this case
+				return true;
+			}
+
+			//Checks whether the input word exists in the array
+			if (Array.Exists(wordListArray, element => element.Equals(word, StringComparison.OrdinalIgnoreCase))) 
+			{
+				//returns true as it exists in the array
 				return true;
 			}
 			else
 			{
-                return Array.Exists(wordListArray, element => element.Equals(word, StringComparison.OrdinalIgnoreCase));
-            }			
+                //Runs the invalid word animation on each column simultaneously where i is the collumn parameter
+                for (int i = 0; i < 5; i++)
+                {
+                    //Calls the invalid word animation function, passing the parameter i and currentRow
+                    invalidWordAnimation(i, currentRow);
+                }
+				//Returns false is it does not exist in the array
+				return false;
+            }		
 		}
 
 		private string[] extractWordList(string wordList)
@@ -918,6 +986,7 @@ namespace Wordle_SDD
             //Guard Clause to prevent button from being pressed while animation is playing
             if (animationOngoing == true)
             {
+				//Exits the method
                 return;
             }
             //Removes the focus from the button just pressed
@@ -932,6 +1001,7 @@ namespace Wordle_SDD
 			//Guard Clause to prevent button from being pressed while animation is playing
 			if (animationOngoing == true)
 			{
+				//Exits the method
 				return;
 			}
             //Removes the focus from the button just pressed
@@ -1041,13 +1111,9 @@ namespace Wordle_SDD
 					break;
 			}
 		}
-
-        private void frmWordle_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 
+	//Public class to access every Colour variant for light/darkmode and high contrast mode.
 	public static class Colours
 	{
         public static Color lightBaseColour = Color.FromArgb(245, 245, 245);
@@ -1062,7 +1128,7 @@ namespace Wordle_SDD
         public static Color darkPartialColour = Color.FromArgb(181, 159, 59);
         public static Color lightTextColour = Color.Black;
         public static Color darkTextColour = Color.White;
-		public static Color highContrastCorrectColour = Color.FromArgb(224, 52, 43);
+		public static Color highContrastCorrectColour = Color.FromArgb(255, 119, 0);
 		public static Color highContrastPartialColour = Color.FromArgb(43, 143, 224);
     }
 }

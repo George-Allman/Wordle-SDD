@@ -171,9 +171,6 @@
     <None Include="Resources\imgSpeakerLight.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ttsmaker-file-2024-5-22-18-24-44.mp3" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\audioHelpMenuVoiceOver.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

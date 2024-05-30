@@ -14,6 +14,7 @@ namespace Wordle_SDD
 {
     public partial class frmHelp : Form
     {
+        //Defines all of the public colour variables with their default Dark Mode variants
         public Color baseColour = Color.FromArgb(20, 20, 20);
         public Color alternateColour = Color.FromArgb(75, 75, 75);
         public Color tertiaryColour = Color.DimGray;
@@ -21,21 +22,30 @@ namespace Wordle_SDD
         public Color partialColour = Color.FromArgb(181, 159, 59);
         public Color textColour = Color.White;
 
+        //Creates a new soundPlayer object with the audio file from resources file
         private SoundPlayer soundPlayer = new SoundPlayer(Resources.audioHelpMenuVoiceOver);
 
+        //Defines the local variants of the two public booleans
         private bool _darkMode = true;
         private bool _highContrastMode = false;
+
         public bool darkMode
         {
+            //Get method that plays when the boolean is read
             get { return _darkMode; }
+            //Set method that plays when the boolean is changed
             set
             {
+                //Assigns the local variant variable to the same value
                 _darkMode = value;
 
+                //Changes the back colour
                 this.BackColor = baseColour;
 
-                for (int i = 0; i <= 40; i++)
+                //For loop for all 40 example letterBoxes
+                for (int i = 0; i <= 39; i++)
                 {
+                    //Creates string for this iterations desired letterbox
                     string selectedLetterBox = $"exampleLB{i}";
 
                     //Searches through all controls on the page
@@ -104,23 +114,31 @@ namespace Wordle_SDD
         }
         public bool highContrastMode
         {
+            //Get method that plays when the boolean is read
             get { return _highContrastMode; }
+            //Set method that plays when the boolean is changed
             set
             {
+                //Changes the local variable to the same value
                 _highContrastMode = value;
 
+                //Checks if high Contrast was changed to true
                 if (highContrastMode == true)
                 {
+                    //Assigns both partial and correct to their HC values
                     correctColour = Colours.highContrastCorrectColour;
                     partialColour = Colours.highContrastPartialColour;
                 }
+                //If high contrast was not true it must mean that it is being turned off, thus we have to change the variables to dark or light variants
                 else if (darkMode == true)
                 {
+                    //Assigns both partial and correct to their dark variants
                     correctColour = Colours.darkCorrectColour;
                     partialColour = Colours.darkPartialColour;
                 }
                 else
                 {
+                    //Assigns both partial and correct to their light variants
                     correctColour = Colours.lightCorrectColour;
                     partialColour = Colours.lightPartialColour;
                 }
@@ -166,18 +184,29 @@ namespace Wordle_SDD
                 
         public frmHelp()
         {
+            //Plays the designer code
             InitializeComponent();
+
+            //Attaches the closing event to the frmHelp_Close method
+            this.FormClosing += new FormClosingEventHandler(this.frmHelp_Close);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            soundPlayer.Stop();
-            this.Hide();
+            //Closes this form
+            this.Close();
         }
 
         private void btnVoiceOver_Click(object sender, EventArgs e)
         {
+            //Plays the soundplayer defined earlier
             soundPlayer.Play();
+        }
+
+        private void frmHelp_Close(object sender, FormClosingEventArgs e)
+        {
+            //Stops the soundplayer if the form is closed
+            soundPlayer.Stop();
         }
     }
 }

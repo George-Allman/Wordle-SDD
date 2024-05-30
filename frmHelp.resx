@@ -126,7 +126,7 @@ If the tile is yellow, the letter in that tile is in the correct word but in a
 different location. If the tile is grey, the letter in that tile is not contained
 in the correct word at all.
 
-In the case of High Contrast Mode, Correct Letters will show up red and
+In the case of High Contrast Mode, Correct Letters will show up orange and
 partial colours will show up Blue.</value>
   </data>
 </root>
