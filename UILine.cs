@@ -12,6 +12,8 @@ namespace Wordle_SDD
 {
     public partial class UILine : UserControl
     {
+        public Color alternateColour = Color.FromArgb(75, 75, 75);
+
         public UILine()
         {
             InitializeComponent();
@@ -22,18 +24,15 @@ namespace Wordle_SDD
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            //Color alternateColor = 
+            base.OnPaint(e);
+            Graphics g = e.Graphics;
 
-            //base.OnPaint(e);
-
-            //Graphics g = e.Graphics;
-
-            //ControlPaint.DrawBorder(e.Graphics, ClientRectangle,
-                //alternateColor, 0, ButtonBorderStyle.Solid,
-                //alternateColor, 1, ButtonBorderStyle.Solid,
-                //alternateColor, 0, ButtonBorderStyle.Solid,
-                //alternateColor, 0, ButtonBorderStyle.Solid
-                //);
+            ControlPaint.DrawBorder(g, ClientRectangle,
+                alternateColour, 0, ButtonBorderStyle.Solid,
+                alternateColour, 1, ButtonBorderStyle.Solid,
+                alternateColour, 0, ButtonBorderStyle.Solid,
+                alternateColour, 0, ButtonBorderStyle.Solid
+                );
         }
     }
 }

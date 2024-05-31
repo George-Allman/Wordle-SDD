@@ -81,14 +81,13 @@ namespace Wordle_SDD
             //from the toolbox they are all the same and work properly
             this.Width = 125;
             this.Height = 125;
-            this.Padding = new System.Windows.Forms.Padding(6,0,0,0);
+            this.Padding = new Padding(6,0,0,0);
             this.FlatStyle = FlatStyle.Flat;
             this.FlatAppearance.BorderSize = 3;
             this.FlatAppearance.BorderColor = _alternateColour;
             this.BackColor = _baseColour;
             this.Text = "";
             this.Enabled = false;
-            this.Font = new System.Drawing.Font("Arial", 28, FontStyle.Bold);
             this.ForeColor = _baseColour;
         }
 

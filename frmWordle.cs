@@ -577,7 +577,7 @@ namespace Wordle_SDD
             //Calls the gameWon function, passing the number of guesses it took to win as a parameter.
             //The gameWon function playing after the animation ensures they do not reset the
             //game while the animation is playing, preventing a bug
-            gameWon(row, currentWord);
+            gameWon(row);
 			//Returns the animationOngoing flag back to false to enable the other buttons to be pressed
 			animationOngoing = false;
         }
