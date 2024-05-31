@@ -148,7 +148,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(25, 333);
+            this.label2.Location = new System.Drawing.Point(348, 333);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(260, 15);
             this.label2.TabIndex = 50;
@@ -159,7 +159,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(25, 424);
+            this.label3.Location = new System.Drawing.Point(348, 424);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(273, 30);
             this.label3.TabIndex = 51;
@@ -171,7 +171,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(25, 515);
+            this.label4.Location = new System.Drawing.Point(348, 515);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(258, 30);
             this.label4.TabIndex = 52;
@@ -182,7 +182,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.Control;
-            this.label5.Location = new System.Drawing.Point(346, 333);
+            this.label5.Location = new System.Drawing.Point(26, 333);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(259, 15);
             this.label5.TabIndex = 53;
@@ -193,7 +193,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.Control;
-            this.label6.Location = new System.Drawing.Point(346, 424);
+            this.label6.Location = new System.Drawing.Point(26, 424);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(281, 30);
             this.label6.TabIndex = 54;
@@ -204,7 +204,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.Control;
-            this.label7.Location = new System.Drawing.Point(346, 515);
+            this.label7.Location = new System.Drawing.Point(26, 515);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(261, 30);
             this.label7.TabIndex = 55;
@@ -215,7 +215,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.SystemColors.Control;
-            this.label8.Location = new System.Drawing.Point(346, 611);
+            this.label8.Location = new System.Drawing.Point(26, 611);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(177, 15);
             this.label8.TabIndex = 56;
@@ -226,7 +226,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.Control;
-            this.label9.Location = new System.Drawing.Point(25, 611);
+            this.label9.Location = new System.Drawing.Point(348, 611);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(176, 15);
             this.label9.TabIndex = 57;
@@ -257,7 +257,7 @@
             this.exampleLB40.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB40.ForeColor = System.Drawing.Color.White;
             this.exampleLB40.letter = "E";
-            this.exampleLB40.Location = new System.Drawing.Point(571, 558);
+            this.exampleLB40.Location = new System.Drawing.Point(251, 558);
             this.exampleLB40.Name = "exampleLB40";
             this.exampleLB40.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB40.Size = new System.Drawing.Size(50, 50);
@@ -278,7 +278,7 @@
             this.exampleLB39.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB39.ForeColor = System.Drawing.Color.White;
             this.exampleLB39.letter = "G";
-            this.exampleLB39.Location = new System.Drawing.Point(515, 558);
+            this.exampleLB39.Location = new System.Drawing.Point(195, 558);
             this.exampleLB39.Name = "exampleLB39";
             this.exampleLB39.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB39.Size = new System.Drawing.Size(50, 50);
@@ -299,7 +299,7 @@
             this.exampleLB38.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB38.ForeColor = System.Drawing.Color.White;
             this.exampleLB38.letter = "R";
-            this.exampleLB38.Location = new System.Drawing.Point(459, 558);
+            this.exampleLB38.Location = new System.Drawing.Point(139, 558);
             this.exampleLB38.Name = "exampleLB38";
             this.exampleLB38.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB38.Size = new System.Drawing.Size(50, 50);
@@ -320,7 +320,7 @@
             this.exampleLB37.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB37.ForeColor = System.Drawing.Color.White;
             this.exampleLB37.letter = "A";
-            this.exampleLB37.Location = new System.Drawing.Point(403, 558);
+            this.exampleLB37.Location = new System.Drawing.Point(83, 558);
             this.exampleLB37.Name = "exampleLB37";
             this.exampleLB37.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB37.Size = new System.Drawing.Size(50, 50);
@@ -341,7 +341,7 @@
             this.exampleLB36.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB36.ForeColor = System.Drawing.Color.White;
             this.exampleLB36.letter = "L";
-            this.exampleLB36.Location = new System.Drawing.Point(347, 558);
+            this.exampleLB36.Location = new System.Drawing.Point(27, 558);
             this.exampleLB36.Name = "exampleLB36";
             this.exampleLB36.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB36.Size = new System.Drawing.Size(50, 50);
@@ -362,7 +362,7 @@
             this.exampleLB35.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB35.ForeColor = System.Drawing.Color.White;
             this.exampleLB35.letter = "Y";
-            this.exampleLB35.Location = new System.Drawing.Point(251, 558);
+            this.exampleLB35.Location = new System.Drawing.Point(574, 558);
             this.exampleLB35.Name = "exampleLB35";
             this.exampleLB35.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB35.Size = new System.Drawing.Size(50, 50);
@@ -383,7 +383,7 @@
             this.exampleLB34.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB34.ForeColor = System.Drawing.Color.White;
             this.exampleLB34.letter = "R";
-            this.exampleLB34.Location = new System.Drawing.Point(195, 558);
+            this.exampleLB34.Location = new System.Drawing.Point(518, 558);
             this.exampleLB34.Name = "exampleLB34";
             this.exampleLB34.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB34.Size = new System.Drawing.Size(50, 50);
@@ -404,7 +404,7 @@
             this.exampleLB33.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB33.ForeColor = System.Drawing.Color.White;
             this.exampleLB33.letter = "E";
-            this.exampleLB33.Location = new System.Drawing.Point(139, 558);
+            this.exampleLB33.Location = new System.Drawing.Point(462, 558);
             this.exampleLB33.Name = "exampleLB33";
             this.exampleLB33.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB33.Size = new System.Drawing.Size(50, 50);
@@ -425,7 +425,7 @@
             this.exampleLB32.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB32.ForeColor = System.Drawing.Color.White;
             this.exampleLB32.letter = "V";
-            this.exampleLB32.Location = new System.Drawing.Point(83, 558);
+            this.exampleLB32.Location = new System.Drawing.Point(406, 558);
             this.exampleLB32.Name = "exampleLB32";
             this.exampleLB32.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB32.Size = new System.Drawing.Size(50, 50);
@@ -446,7 +446,7 @@
             this.exampleLB31.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB31.ForeColor = System.Drawing.Color.White;
             this.exampleLB31.letter = "E";
-            this.exampleLB31.Location = new System.Drawing.Point(27, 558);
+            this.exampleLB31.Location = new System.Drawing.Point(350, 558);
             this.exampleLB31.Name = "exampleLB31";
             this.exampleLB31.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB31.Size = new System.Drawing.Size(50, 50);
@@ -467,7 +467,7 @@
             this.exampleLB30.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB30.ForeColor = System.Drawing.Color.White;
             this.exampleLB30.letter = "D";
-            this.exampleLB30.Location = new System.Drawing.Point(571, 462);
+            this.exampleLB30.Location = new System.Drawing.Point(251, 462);
             this.exampleLB30.Name = "exampleLB30";
             this.exampleLB30.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB30.Size = new System.Drawing.Size(50, 50);
@@ -488,7 +488,7 @@
             this.exampleLB29.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB29.ForeColor = System.Drawing.Color.White;
             this.exampleLB29.letter = "N";
-            this.exampleLB29.Location = new System.Drawing.Point(515, 462);
+            this.exampleLB29.Location = new System.Drawing.Point(195, 462);
             this.exampleLB29.Name = "exampleLB29";
             this.exampleLB29.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB29.Size = new System.Drawing.Size(50, 50);
@@ -509,7 +509,7 @@
             this.exampleLB28.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB28.ForeColor = System.Drawing.Color.White;
             this.exampleLB28.letter = "U";
-            this.exampleLB28.Location = new System.Drawing.Point(459, 462);
+            this.exampleLB28.Location = new System.Drawing.Point(139, 462);
             this.exampleLB28.Name = "exampleLB28";
             this.exampleLB28.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB28.Size = new System.Drawing.Size(50, 50);
@@ -530,7 +530,7 @@
             this.exampleLB27.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB27.ForeColor = System.Drawing.Color.White;
             this.exampleLB27.letter = "O";
-            this.exampleLB27.Location = new System.Drawing.Point(403, 462);
+            this.exampleLB27.Location = new System.Drawing.Point(83, 462);
             this.exampleLB27.Name = "exampleLB27";
             this.exampleLB27.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB27.Size = new System.Drawing.Size(50, 50);
@@ -551,7 +551,7 @@
             this.exampleLB26.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB26.ForeColor = System.Drawing.Color.White;
             this.exampleLB26.letter = "B";
-            this.exampleLB26.Location = new System.Drawing.Point(347, 462);
+            this.exampleLB26.Location = new System.Drawing.Point(27, 462);
             this.exampleLB26.Name = "exampleLB26";
             this.exampleLB26.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB26.Size = new System.Drawing.Size(50, 50);
@@ -572,7 +572,7 @@
             this.exampleLB25.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB25.ForeColor = System.Drawing.Color.White;
             this.exampleLB25.letter = "T";
-            this.exampleLB25.Location = new System.Drawing.Point(251, 462);
+            this.exampleLB25.Location = new System.Drawing.Point(574, 462);
             this.exampleLB25.Name = "exampleLB25";
             this.exampleLB25.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB25.Size = new System.Drawing.Size(50, 50);
@@ -593,7 +593,7 @@
             this.exampleLB24.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB24.ForeColor = System.Drawing.Color.White;
             this.exampleLB24.letter = "U";
-            this.exampleLB24.Location = new System.Drawing.Point(195, 462);
+            this.exampleLB24.Location = new System.Drawing.Point(518, 462);
             this.exampleLB24.Name = "exampleLB24";
             this.exampleLB24.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB24.Size = new System.Drawing.Size(50, 50);
@@ -614,7 +614,7 @@
             this.exampleLB23.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB23.ForeColor = System.Drawing.Color.White;
             this.exampleLB23.letter = "O";
-            this.exampleLB23.Location = new System.Drawing.Point(139, 462);
+            this.exampleLB23.Location = new System.Drawing.Point(462, 462);
             this.exampleLB23.Name = "exampleLB23";
             this.exampleLB23.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB23.Size = new System.Drawing.Size(50, 50);
@@ -635,7 +635,7 @@
             this.exampleLB22.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB22.ForeColor = System.Drawing.Color.White;
             this.exampleLB22.letter = "B";
-            this.exampleLB22.Location = new System.Drawing.Point(83, 462);
+            this.exampleLB22.Location = new System.Drawing.Point(406, 462);
             this.exampleLB22.Name = "exampleLB22";
             this.exampleLB22.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB22.Size = new System.Drawing.Size(50, 50);
@@ -656,7 +656,7 @@
             this.exampleLB21.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB21.ForeColor = System.Drawing.Color.White;
             this.exampleLB21.letter = "A";
-            this.exampleLB21.Location = new System.Drawing.Point(27, 462);
+            this.exampleLB21.Location = new System.Drawing.Point(350, 462);
             this.exampleLB21.Name = "exampleLB21";
             this.exampleLB21.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB21.Size = new System.Drawing.Size(50, 50);
@@ -677,7 +677,7 @@
             this.exampleLB20.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB20.ForeColor = System.Drawing.Color.White;
             this.exampleLB20.letter = "S";
-            this.exampleLB20.Location = new System.Drawing.Point(571, 371);
+            this.exampleLB20.Location = new System.Drawing.Point(251, 371);
             this.exampleLB20.Name = "exampleLB20";
             this.exampleLB20.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB20.Size = new System.Drawing.Size(50, 50);
@@ -698,7 +698,7 @@
             this.exampleLB19.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB19.ForeColor = System.Drawing.Color.White;
             this.exampleLB19.letter = "D";
-            this.exampleLB19.Location = new System.Drawing.Point(515, 371);
+            this.exampleLB19.Location = new System.Drawing.Point(195, 371);
             this.exampleLB19.Name = "exampleLB19";
             this.exampleLB19.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB19.Size = new System.Drawing.Size(50, 50);
@@ -719,7 +719,7 @@
             this.exampleLB18.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB18.ForeColor = System.Drawing.Color.White;
             this.exampleLB18.letter = "E";
-            this.exampleLB18.Location = new System.Drawing.Point(459, 371);
+            this.exampleLB18.Location = new System.Drawing.Point(139, 371);
             this.exampleLB18.Name = "exampleLB18";
             this.exampleLB18.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB18.Size = new System.Drawing.Size(50, 50);
@@ -740,7 +740,7 @@
             this.exampleLB17.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB17.ForeColor = System.Drawing.Color.White;
             this.exampleLB17.letter = "E";
-            this.exampleLB17.Location = new System.Drawing.Point(403, 371);
+            this.exampleLB17.Location = new System.Drawing.Point(83, 371);
             this.exampleLB17.Name = "exampleLB17";
             this.exampleLB17.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB17.Size = new System.Drawing.Size(50, 50);
@@ -761,7 +761,7 @@
             this.exampleLB16.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB16.ForeColor = System.Drawing.Color.White;
             this.exampleLB16.letter = "W";
-            this.exampleLB16.Location = new System.Drawing.Point(347, 371);
+            this.exampleLB16.Location = new System.Drawing.Point(27, 371);
             this.exampleLB16.Name = "exampleLB16";
             this.exampleLB16.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB16.Size = new System.Drawing.Size(50, 50);
@@ -782,7 +782,7 @@
             this.exampleLB15.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB15.ForeColor = System.Drawing.Color.White;
             this.exampleLB15.letter = "L";
-            this.exampleLB15.Location = new System.Drawing.Point(251, 371);
+            this.exampleLB15.Location = new System.Drawing.Point(574, 371);
             this.exampleLB15.Name = "exampleLB15";
             this.exampleLB15.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB15.Size = new System.Drawing.Size(50, 50);
@@ -803,7 +803,7 @@
             this.exampleLB14.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB14.ForeColor = System.Drawing.Color.White;
             this.exampleLB14.letter = "E";
-            this.exampleLB14.Location = new System.Drawing.Point(195, 371);
+            this.exampleLB14.Location = new System.Drawing.Point(518, 371);
             this.exampleLB14.Name = "exampleLB14";
             this.exampleLB14.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB14.Size = new System.Drawing.Size(50, 50);
@@ -824,7 +824,7 @@
             this.exampleLB13.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB13.ForeColor = System.Drawing.Color.White;
             this.exampleLB13.letter = "Z";
-            this.exampleLB13.Location = new System.Drawing.Point(139, 371);
+            this.exampleLB13.Location = new System.Drawing.Point(462, 371);
             this.exampleLB13.Name = "exampleLB13";
             this.exampleLB13.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB13.Size = new System.Drawing.Size(50, 50);
@@ -845,7 +845,7 @@
             this.exampleLB12.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB12.ForeColor = System.Drawing.Color.White;
             this.exampleLB12.letter = "E";
-            this.exampleLB12.Location = new System.Drawing.Point(83, 371);
+            this.exampleLB12.Location = new System.Drawing.Point(406, 371);
             this.exampleLB12.Name = "exampleLB12";
             this.exampleLB12.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB12.Size = new System.Drawing.Size(50, 50);
@@ -866,7 +866,7 @@
             this.exampleLB11.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB11.ForeColor = System.Drawing.Color.White;
             this.exampleLB11.letter = "B";
-            this.exampleLB11.Location = new System.Drawing.Point(27, 371);
+            this.exampleLB11.Location = new System.Drawing.Point(350, 371);
             this.exampleLB11.Name = "exampleLB11";
             this.exampleLB11.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB11.Size = new System.Drawing.Size(50, 50);
@@ -887,7 +887,7 @@
             this.exampleLB10.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB10.ForeColor = System.Drawing.Color.White;
             this.exampleLB10.letter = "T";
-            this.exampleLB10.Location = new System.Drawing.Point(571, 280);
+            this.exampleLB10.Location = new System.Drawing.Point(251, 280);
             this.exampleLB10.Name = "exampleLB10";
             this.exampleLB10.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB10.Size = new System.Drawing.Size(50, 50);
@@ -908,7 +908,7 @@
             this.exampleLB9.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB9.ForeColor = System.Drawing.Color.White;
             this.exampleLB9.letter = "I";
-            this.exampleLB9.Location = new System.Drawing.Point(515, 280);
+            this.exampleLB9.Location = new System.Drawing.Point(195, 280);
             this.exampleLB9.Name = "exampleLB9";
             this.exampleLB9.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB9.Size = new System.Drawing.Size(50, 50);
@@ -929,7 +929,7 @@
             this.exampleLB8.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB8.ForeColor = System.Drawing.Color.White;
             this.exampleLB8.letter = "M";
-            this.exampleLB8.Location = new System.Drawing.Point(459, 280);
+            this.exampleLB8.Location = new System.Drawing.Point(139, 280);
             this.exampleLB8.Name = "exampleLB8";
             this.exampleLB8.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB8.Size = new System.Drawing.Size(50, 50);
@@ -950,7 +950,7 @@
             this.exampleLB7.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB7.ForeColor = System.Drawing.Color.White;
             this.exampleLB7.letter = "I";
-            this.exampleLB7.Location = new System.Drawing.Point(403, 280);
+            this.exampleLB7.Location = new System.Drawing.Point(83, 280);
             this.exampleLB7.Name = "exampleLB7";
             this.exampleLB7.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB7.Size = new System.Drawing.Size(50, 50);
@@ -971,7 +971,7 @@
             this.exampleLB6.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB6.ForeColor = System.Drawing.Color.White;
             this.exampleLB6.letter = "L";
-            this.exampleLB6.Location = new System.Drawing.Point(347, 280);
+            this.exampleLB6.Location = new System.Drawing.Point(27, 280);
             this.exampleLB6.Name = "exampleLB6";
             this.exampleLB6.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB6.Size = new System.Drawing.Size(50, 50);
@@ -992,7 +992,7 @@
             this.exampleLB5.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB5.ForeColor = System.Drawing.Color.White;
             this.exampleLB5.letter = "L";
-            this.exampleLB5.Location = new System.Drawing.Point(251, 280);
+            this.exampleLB5.Location = new System.Drawing.Point(574, 280);
             this.exampleLB5.Name = "exampleLB5";
             this.exampleLB5.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB5.Size = new System.Drawing.Size(50, 50);
@@ -1013,7 +1013,7 @@
             this.exampleLB4.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB4.ForeColor = System.Drawing.Color.White;
             this.exampleLB4.letter = "I";
-            this.exampleLB4.Location = new System.Drawing.Point(195, 280);
+            this.exampleLB4.Location = new System.Drawing.Point(518, 280);
             this.exampleLB4.Name = "exampleLB4";
             this.exampleLB4.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB4.Size = new System.Drawing.Size(50, 50);
@@ -1034,7 +1034,7 @@
             this.exampleLB3.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB3.ForeColor = System.Drawing.Color.White;
             this.exampleLB3.letter = "A";
-            this.exampleLB3.Location = new System.Drawing.Point(139, 280);
+            this.exampleLB3.Location = new System.Drawing.Point(462, 280);
             this.exampleLB3.Name = "exampleLB3";
             this.exampleLB3.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB3.Size = new System.Drawing.Size(50, 50);
@@ -1055,7 +1055,7 @@
             this.exampleLB2.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB2.ForeColor = System.Drawing.Color.White;
             this.exampleLB2.letter = "M";
-            this.exampleLB2.Location = new System.Drawing.Point(83, 280);
+            this.exampleLB2.Location = new System.Drawing.Point(406, 280);
             this.exampleLB2.Name = "exampleLB2";
             this.exampleLB2.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB2.Size = new System.Drawing.Size(50, 50);
@@ -1076,7 +1076,7 @@
             this.exampleLB1.Font = new System.Drawing.Font("Arial", 28F, System.Drawing.FontStyle.Bold);
             this.exampleLB1.ForeColor = System.Drawing.Color.White;
             this.exampleLB1.letter = "E";
-            this.exampleLB1.Location = new System.Drawing.Point(27, 280);
+            this.exampleLB1.Location = new System.Drawing.Point(350, 280);
             this.exampleLB1.Name = "exampleLB1";
             this.exampleLB1.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.exampleLB1.Size = new System.Drawing.Size(50, 50);
@@ -1090,7 +1090,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.ClientSize = new System.Drawing.Size(660, 649);
+            this.ClientSize = new System.Drawing.Size(650, 649);
             this.Controls.Add(this.btnVoiceOver);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);

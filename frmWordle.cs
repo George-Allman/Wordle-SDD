@@ -358,6 +358,7 @@ namespace Wordle_SDD
 
         }
 
+		//Method that plays each time a key is pressed and decides the pathway that the code should take depending on position and the key pressed
 		private void KeyboardInput(object sender, EventArgs e)
 		{
 			//Guard clause so no keys can be input while the correct word animation is playing
@@ -405,7 +406,7 @@ namespace Wordle_SDD
             }
 		}
 	    
-		//Async void is useful here as there is no return statement and the "await Task.Delay" function allows for smooth animations
+		//Async method for animations that runs separately to the rest of the code for each animation
 		private async void keyPressAnimation(int col, int row)
 		{ 
 			//Declares a string in the format of letterBoxCR with CR representing the desired location in the grid
@@ -581,7 +582,7 @@ namespace Wordle_SDD
 			animationOngoing = false;
         }
 
-
+		//Method that adds letters to the next position in the grid
         private void appendLetter(string input, int col, int row)
 		{
 			//Adds the letter to the internal 2D array
@@ -609,6 +610,7 @@ namespace Wordle_SDD
 			currentColumn++;
 		}
 		
+		//Method that removes the previous letter in the grid
 		private void deleteLetter(int col, int row)
 		{
 			//Removes the previous grid positions letter in the array, the parameter is
@@ -633,6 +635,8 @@ namespace Wordle_SDD
 			currentColumn--;
 		}
 
+		//Method that plays when the enter key is pressed and position is at the end of the word,
+		//diverges to the majority of the code including word checking, win/loss screens, colouring and resetting
 		private void enterWord(string currentWord)
 		{
 			//Checks if the word is a valid word out of the word pool
@@ -685,7 +689,8 @@ namespace Wordle_SDD
 			}
 		}
 
-		private void gameWon(int row, string currentWord)
+		//Method that plays after the correct word animation is complete and presents the user with a win screen and then resets the game
+		private void gameWon(int row)
 		{
             //Returns a personalised victory message to the user, telling them how many
 			//guesses it took them and a congradulatory/conscillatory message
@@ -710,6 +715,7 @@ namespace Wordle_SDD
             gameReset();
 		}
 
+		//Method that plays when the user fails to guess the word, presenting them with a loss screen and resets the game
 		private void gameLost(string correctWord)
 		{
 			//Creates new string as lowercase variant of correct word
@@ -724,6 +730,7 @@ namespace Wordle_SDD
             gameReset();
 		}
 
+		//Method that generates a new word and then resets every single object and variable back to default values
 		private void gameReset()
 		{
 			//Generates a new correctWord
@@ -780,6 +787,7 @@ namespace Wordle_SDD
 			}
 		}
 
+		//Method that handles all logic for checking the words correctness
 		private int[] checkEnteredRow(char[] currentWordArray, char[] correctWordArray)
 		{
 			//Declares a boolean array with bounds 5
@@ -836,6 +844,7 @@ namespace Wordle_SDD
 			return resultArray;
 		}
 
+		//Method that colours each letter in a row depending on whether they are correct, partial or incorrect
 		private void colourCompleteWord(int[] resultArray, int row, char[] currentWordArray)
 		{
 			//For loop for all 5 letterBoxes in the row
@@ -887,6 +896,7 @@ namespace Wordle_SDD
 			}
 		}
 
+		//Method that plays when colouring in the row but colours the onscreen buttons appropriately
 		private void colourButton(char letter, Color colour)
 		{
 			//Creates a string of the desired button
@@ -909,6 +919,7 @@ namespace Wordle_SDD
 			}
 		}
 
+		//Generates a new correct word out of a small word pool
 		private string generateCorrectWord()
 		{
 			//Creates a temporary string of the correct word that is being overwritten
@@ -936,6 +947,7 @@ namespace Wordle_SDD
 
 		}
 
+		//Function used to easily convert a singular row of a 2d char grid, primarily the letter grid to a singular string
 		private string convertRowOf2DCharGridToString(char[,] grid, int row)
 		{
 			//Concatenates all 5 columns character of the row passed through
@@ -948,6 +960,7 @@ namespace Wordle_SDD
 				);
 		}
 
+		//Method that compares guesses to the word dictionary
 		private bool checkValidWord(string word)
 		{
 			//Guard clause that exits the method if checkDictionary is false
@@ -976,11 +989,14 @@ namespace Wordle_SDD
             }		
 		}
 
+		//Method that plays at the start to convert the text file to an array
 		private string[] extractWordList(string wordList)
 		{
             //Creates and returns an array out of the given text file
             return wordList.Split(',');
         }
+
+		//Method handler for button clicks
         private void btnHelp_Click(object sender, EventArgs e)
         {
             //Guard Clause to prevent button from being pressed while animation is playing
@@ -996,6 +1012,7 @@ namespace Wordle_SDD
             FrmHelp.ShowDialog();
         }
 
+        //Method handler for button clicks
         private void btnSettings_Click(object sender, EventArgs e)
 		{
 			//Guard Clause to prevent button from being pressed while animation is playing
@@ -1015,7 +1032,8 @@ namespace Wordle_SDD
 
 		}
 
-		private void frmWordle_KeyDown(object sender, KeyEventArgs e)
+        //Method handler for keyboard clicks while the form is focused
+        private void frmWordle_KeyDown(object sender, KeyEventArgs e)
 		{
 			//Switchcase for what keycode has been physically pressed
 			//simulates a digital click of one of the onscreen buttons
