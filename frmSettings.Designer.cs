@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblHardModeWarning = new System.Windows.Forms.Label();
             this.lblChkDictWarning = new System.Windows.Forms.Label();
+            this.chkHardMode = new System.Windows.Forms.CheckBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.chkHighContrast = new System.Windows.Forms.CheckBox();
             this.chkCheckDictionary = new System.Windows.Forms.CheckBox();
@@ -40,7 +42,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblHardModeWarning);
             this.panel1.Controls.Add(this.lblChkDictWarning);
+            this.panel1.Controls.Add(this.chkHardMode);
             this.panel1.Controls.Add(this.btnClose);
             this.panel1.Controls.Add(this.chkHighContrast);
             this.panel1.Controls.Add(this.chkCheckDictionary);
@@ -51,16 +55,41 @@
             this.panel1.Size = new System.Drawing.Size(272, 446);
             this.panel1.TabIndex = 0;
             // 
+            // lblHardModeWarning
+            // 
+            this.lblHardModeWarning.AutoSize = true;
+            this.lblHardModeWarning.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblHardModeWarning.Location = new System.Drawing.Point(43, 184);
+            this.lblHardModeWarning.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblHardModeWarning.Name = "lblHardModeWarning";
+            this.lblHardModeWarning.Size = new System.Drawing.Size(160, 39);
+            this.lblHardModeWarning.TabIndex = 7;
+            this.lblHardModeWarning.Text = "*Removes the restrictions on the\r\n word pool, meaning the correct\r\n word can be e" +
+    "xtremely obscure\r\n";
+            // 
             // lblChkDictWarning
             // 
             this.lblChkDictWarning.AutoSize = true;
             this.lblChkDictWarning.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblChkDictWarning.Location = new System.Drawing.Point(43, 131);
+            this.lblChkDictWarning.Location = new System.Drawing.Point(43, 130);
             this.lblChkDictWarning.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblChkDictWarning.Name = "lblChkDictWarning";
             this.lblChkDictWarning.Size = new System.Drawing.Size(167, 26);
             this.lblChkDictWarning.TabIndex = 5;
             this.lblChkDictWarning.Text = "*Unchecking this will allow you to \r\nenter any possible 5 letter word.";
+            // 
+            // chkHardMode
+            // 
+            this.chkHardMode.AutoSize = true;
+            this.chkHardMode.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkHardMode.ForeColor = System.Drawing.SystemColors.Control;
+            this.chkHardMode.Location = new System.Drawing.Point(25, 162);
+            this.chkHardMode.Name = "chkHardMode";
+            this.chkHardMode.Size = new System.Drawing.Size(129, 26);
+            this.chkHardMode.TabIndex = 6;
+            this.chkHardMode.Text = "Hard Mode";
+            this.chkHardMode.UseVisualStyleBackColor = true;
+            this.chkHardMode.CheckedChanged += new System.EventHandler(this.chkHardMode_CheckedChanged);
             // 
             // btnClose
             // 
@@ -134,7 +163,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.ClientSize = new System.Drawing.Size(268, 339);
+            this.ClientSize = new System.Drawing.Size(264, 339);
             this.Controls.Add(this.panel1);
             this.Name = "frmSettings";
             this.Text = "Settings";
@@ -153,5 +182,7 @@
         private System.Windows.Forms.CheckBox chkHighContrast;
         private System.Windows.Forms.CheckBox chkCheckDictionary;
         private System.Windows.Forms.Label lblChkDictWarning;
+        private System.Windows.Forms.CheckBox chkHardMode;
+        private System.Windows.Forms.Label lblHardModeWarning;
     }
 }

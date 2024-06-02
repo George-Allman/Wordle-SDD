@@ -20,6 +20,8 @@ namespace Wordle_SDD
         //Accepts the instance of frmWordle assigned
         //to this form when it was instantiated
 
+        private bool justOpenedFlag;
+
         public frmSettings(frmWordle frmWordleInstance)
         {
             //Constructs form
@@ -57,9 +59,20 @@ namespace Wordle_SDD
             {
                 chkHighContrast.Checked = false;
             }
-
+            //Completes the same check for hardMode
+            if (FrmWordle.hardMode == true)
+            {
+                //Sets the justOpened flag to true
+                justOpenedFlag = true;
+                chkHardMode.Checked = true;
+            }
+            else
+            {
+                chkHardMode.Checked = false;
+            }
         }
 
+        //Method that handles the chkDarkMode checkedChanged event
         private void chkDarkMode_CheckedChanged(object sender, EventArgs e)
         {            
             //Checks whether the darkMode check was changed to true or false
@@ -104,8 +117,11 @@ namespace Wordle_SDD
             chkHighContrast.ForeColor = FrmWordle.textColour;
             lblGraphicsTitle.ForeColor = FrmWordle.textColour;
             lblChkDictWarning.ForeColor = FrmWordle.textColour;
+            lblHardModeWarning.ForeColor = FrmWordle.textColour;
+            chkHardMode.ForeColor = FrmWordle.textColour;
         }
 
+        //Method that handles the chkHighContrast checkedChanged event
         private void chkHighContrast_CheckedChanged(object sender, EventArgs e)
         {
             //This method does not change any colours directly as it is done by the set method on the main form
@@ -127,6 +143,7 @@ namespace Wordle_SDD
             }
         }
 
+        //Method that handles the chkCheckDictionary checkedChanged event
         private void chkCheckDictionary_CheckedChanged(object sender, EventArgs e)
         {
             //Checks whether the check box was checked or unchecked
@@ -134,13 +151,13 @@ namespace Wordle_SDD
             //In this case checked
             if (chkCheckDictionary.Checked == true)
             {
-                //Changes the main forms bool and calls the set method
+                //Changes the main forms checkDictionary bool
                 FrmWordle.checkDictionary = true;
             }
             //In this case unchecked
             else
             {
-                //Changes the main forms bool and calls the set method
+                //Changes the main forms checkDictionary bool 
                 FrmWordle.checkDictionary = false;
             }
         }
@@ -149,6 +166,33 @@ namespace Wordle_SDD
         {
             //Closes this form
             Close();
+        }
+
+        //Method that handles the chkHardMode checkedChanged event
+        private void chkHardMode_CheckedChanged(object sender, EventArgs e)
+        {
+            //Guard clause to not reset the game if the form was just opened
+            //This is to prevent the game from resetting when the settings
+            //form is opened mid game with hardmode on as it will trigger
+            //the checkedchanged method
+            if (justOpenedFlag == true)
+            {
+                justOpenedFlag = false;
+                return;
+            }
+            if (chkHardMode.Checked == true)
+            {
+                //Changes the main forms hardMode bool 
+                FrmWordle.hardMode = true;
+            }
+            //In this case unchecked
+            else
+            {
+                //Changes the main forms hardMode bool
+                FrmWordle.hardMode = false;
+            }
+            //Calls the frmWordle game reset function so the game restarts with hard mode now on
+            FrmWordle.gameReset();
         }
     }
 }

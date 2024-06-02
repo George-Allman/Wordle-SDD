@@ -12,7 +12,17 @@ namespace Wordle_SDD
 {
     public partial class UILine : UserControl
     {
-        public Color alternateColour = Color.FromArgb(75, 75, 75);
+        private Color _alternateColour = Colours.darkAlternateColour;
+
+        public Color alternateColour
+        {
+            get { return _alternateColour; }
+            set {
+                _alternateColour = value;
+                Invalidate();            
+            }
+        }
+
 
         public UILine()
         {

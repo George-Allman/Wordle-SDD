@@ -38,11 +38,11 @@ namespace Wordle_SDD
         private int numberCorrectLetters = 0;
 		private int animationLength = 2;
 		private string[] wordListArray;
-		private string input;
 		private bool animationOngoing = false;
 
 		//Declares instance of this form to pass through to the other forms
 		private frmHelp FrmHelp = new frmHelp();
+
 
         //Declares the public variables, they will be accessed by the frmSettings so thus need to be public
         public Color baseColour = Color.FromArgb(20, 20, 20);
@@ -52,6 +52,7 @@ namespace Wordle_SDD
 		public Color partialColour = Color.FromArgb(181, 159, 59);
 		public Color textColour = Color.White;
 		public bool checkDictionary = true;
+		public bool hardMode = false;
 
 		
 
@@ -79,9 +80,10 @@ namespace Wordle_SDD
 				btnSettings.ForeColor = baseColour;
 				lblTitle.ForeColor = textColour;
 				this.BackColor = baseColour;
-				
-				//Changes the two icon-buttons to the appropriate img out of the resources file
-				if (darkMode == true)
+                linUIline.alternateColour = alternateColour;
+
+                //Changes the two icon-buttons to the appropriate img out of the resources file
+                if (darkMode == true)
 				{
 					btnHelp.BackgroundImage = Resources.imgHelpIconLight;
 					btnSettings.BackgroundImage = Resources.imgSettingsIconLight;
@@ -310,11 +312,12 @@ namespace Wordle_SDD
 			//folder so it is continous across devices
 			this.Icon = Resources.wordleLogo;
 
-			//Attaches any physical keypresses to the event handler
-			//KeyPreview enables key presses to be interpretted at
-			//the form level, enabling the use of btn.performClick,
-			//unifying the two keyboards under the same code
-			this.KeyDown += frmWordle_KeyDown;
+
+            //Attaches any physical keypresses to the event handler
+            //KeyPreview enables key presses to be interpretted at
+            //the form level, enabling the use of btn.performClick,
+            //unifying the two keyboards under the same code
+            this.KeyDown += frmWordle_KeyDown;
 			this.KeyPreview = true;
 			//Attaches all of the onscreen keys to the event handler 'KeyboardInput'
 			btnA.Click += KeyboardInput;
@@ -353,9 +356,6 @@ namespace Wordle_SDD
             correctWord = generateCorrectWord();
             //Produces the correct word in the console for skipping and debug purposes
             Console.WriteLine(correctWord);
-
-            
-
         }
 
 		//Method that plays each time a key is pressed and decides the pathway that the code should take depending on position and the key pressed
@@ -372,7 +372,7 @@ namespace Wordle_SDD
             if (sender is Button clickedButton)
 			{
 				//Accesses the clicked buttons text to identify whether it is a letter, delete or enter
-				input = clickedButton.Text;
+				string input = clickedButton.Text;
 
 				//Checks if the button was Delete and that there are letters
 				//before it (not in the first position in the row)
@@ -731,7 +731,7 @@ namespace Wordle_SDD
 		}
 
 		//Method that generates a new word and then resets every single object and variable back to default values
-		private void gameReset()
+		public void gameReset()
 		{
 			//Generates a new correctWord
 			correctWord = generateCorrectWord();
@@ -798,7 +798,8 @@ namespace Wordle_SDD
             //Create for loop with 5 iterations, one for each column
             for (int i = 0; i <= 4; i++)
 			{
-				//Check if the current word matches the correct word at the specific position defined by the iteration of the for loop, if they match the position i is correct
+				//Check if the current word matches the correct word at the specific position defined
+				//by the iteration of the for loop, if they match the position i is correct
 				if (currentWordArray[i] == correctWordArray[i]) 
 				{
                     //Assigns a 2 to the respective position in the resultArray, meaning a correct
@@ -922,28 +923,41 @@ namespace Wordle_SDD
 		//Generates a new correct word out of a small word pool
 		private string generateCorrectWord()
 		{
-			//Creates a temporary string of the correct word that is being overwritten
-			string tempNoRepeat = correctWord;
-			//Declares the correctWordPool, a far condensed version of wordList.txt that only includes common words
-			string[] correctWordPool = {
-				"HOUSE", "PLACE", "RIGHT", "SMALL", "LARGE", "WATER", "WHERE", "AFTER", "UNDER",
-				"WHILE", "NEVER", "OTHER", "ABOUT", "THESE", "WOULD", "COULD", "THEIR", "ARISE",
-                "THERE", "WHERE", "WHICH", "THOSE", "AGAIN", "WORLD", "THREE", "GREAT", "STILL",
-				"EVERY", "FOUND", "MIGHT", "FIRST", "THOSE", "AFTER", "COULD", "EVERY", "WHERE",
-				"NEVER", "OTHER", "UNDER", "ABOUT", "WOULD", "THERE", "WHICH", "WHERE", "WORLD",
-				"RIGHT", "LARGE", "SMALL", "PLACE", "IRATE", "AUDIO", 
-			};
-			Random random = new Random();
-			//Returns a random word from the correctWordPool
-			string newWord = correctWordPool[random.Next(0, correctWordPool.Length)];
-			//Generates new word if the random word was the same as last time
-            while (newWord == tempNoRepeat)
+			//Creates a new random number generator object
+            Random random = new Random();
+			//Checks whether hard mode is disabled
+			//If hard mode is disabled the word list will be restricted so the correct word is a common word
+            if (hardMode == false)
 			{
+                //Creates a temporary string of the correct word that is being overwritten
+                string tempNoRepeat = correctWord;
+                //Declares the correctWordPool, a far condensed version of wordList.txt that only includes common words
+                string[] correctWordPool = {
+                "HOUSE", "PLACE", "RIGHT", "SMALL", "LARGE", "WATER", "WHERE", "AFTER", "UNDER",
+                "WHILE", "NEVER", "OTHER", "ABOUT", "THESE", "WOULD", "COULD", "THEIR", "ARISE",
+                "THERE", "WHERE", "WHICH", "THOSE", "AGAIN", "WORLD", "THREE", "GREAT", "STILL",
+                "EVERY", "FOUND", "MIGHT", "FIRST", "THOSE", "AFTER", "COULD", "EVERY", "WHERE",
+                "NEVER", "OTHER", "UNDER", "ABOUT", "WOULD", "THERE", "WHICH", "WHERE", "WORLD",
+                "RIGHT", "LARGE", "SMALL", "PLACE", "IRATE", "AUDIO",
+				};
+                
                 //Returns a random word from the correctWordPool
-                newWord = correctWordPool[random.Next(0, correctWordPool.Length)];
+                string newWord = correctWordPool[random.Next(0, correctWordPool.Length)];
+                //Generates new word if the random word was the same as last time
+                while (newWord == tempNoRepeat)
+                {
+                    //Returns a random word from the correctWordPool
+                    newWord = correctWordPool[random.Next(0, correctWordPool.Length)];
+                }
+                //Returns the new word that is not the same as last time
+                return newWord;
             }
-			//Returns the new word that is not the same as last time
-			return newWord;
+			//If hard mode is not disabled, the correct word could be anything
+			else
+			{
+				//Returns the random word
+				return wordListArray[random.Next(0, wordListArray.Length)];
+			}
 
 		}
 
@@ -1023,14 +1037,13 @@ namespace Wordle_SDD
 			}
             //Removes the focus from the button just pressed
             this.ActiveControl = null;
-            //Creates a new instance of the settings form and passes the current
-			//Wordle instance through so the settings form can alter variables on this form
-            Form frmSettings = new frmSettings(this);
+
+            frmSettings FrmSettings = new frmSettings(this);
+
 			//Brings the settings instance up on screen and shows dialog so the
 			//user cannot click off it until they close the form
-			frmSettings.ShowDialog();
-
-		}
+			FrmSettings.ShowDialog();
+        }
 
         //Method handler for keyboard clicks while the form is focused
         private void frmWordle_KeyDown(object sender, KeyEventArgs e)
@@ -1131,8 +1144,8 @@ namespace Wordle_SDD
 		}
     }
 
-	//Public class to access every Colour variant for light/darkmode and high contrast mode.
-	public static class Colours
+    //Public class to access every Colour variant for light/darkmode and high contrast mode.
+    public static class Colours
 	{
         public static Color lightBaseColour = Color.FromArgb(245, 245, 245);
         public static Color darkBaseColour = Color.FromArgb(20, 20, 20);
